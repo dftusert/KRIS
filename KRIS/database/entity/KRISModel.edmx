@@ -1,0 +1,791 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище KRISModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bid">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bid_number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="counterparty_id" Type="int" Nullable="false" />
+          <Property Name="create_date" Type="date" Nullable="false" />
+          <Property Name="status_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BidProduct">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bid_id" Type="int" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="product_count" Type="int" Nullable="false" />
+          <Property Name="product_price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Counterparty">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="inn" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="kpp" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="deleted" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="CounterpatryAttrs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="counterparty_id" Type="int" Nullable="false" />
+          <Property Name="attr_id" Type="int" Nullable="false" />
+          <Property Name="attr_value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="deleted" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dictionary">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="entity_id" Type="int" Nullable="false" />
+          <Property Name="term_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="deleted" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Entity">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Logs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="action" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="acttime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="vendor_code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="recommended_price" Type="int" Nullable="false" />
+          <Property Name="remainder" Type="int" Nullable="false" />
+          <Property Name="deleted" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="ProductAttrs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="attr_id" Type="int" Nullable="false" />
+          <Property Name="attr_value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="deleted" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rolename" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="deleted" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="role_id" Type="int" Nullable="false" />
+          <Property Name="deleted" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Bid_Counterparty">
+          <End Role="Counterparty" Type="Self.Counterparty" Multiplicity="1" />
+          <End Role="Bid" Type="Self.Bid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Counterparty">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Bid">
+              <PropertyRef Name="counterparty_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bid_Status">
+          <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="1" />
+          <End Role="Bid" Type="Self.Bid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionary">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Bid">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BP_Bid">
+          <End Role="Bid" Type="Self.Bid" Multiplicity="1" />
+          <End Role="BidProduct" Type="Self.BidProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bid">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BidProduct">
+              <PropertyRef Name="bid_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BP_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="BidProduct" Type="Self.BidProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BidProduct">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CA_counterparty">
+          <End Role="Counterparty" Type="Self.Counterparty" Multiplicity="1" />
+          <End Role="CounterpatryAttrs" Type="Self.CounterpatryAttrs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Counterparty">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CounterpatryAttrs">
+              <PropertyRef Name="counterparty_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CA_Dictionary">
+          <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="1" />
+          <End Role="CounterpatryAttrs" Type="Self.CounterpatryAttrs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionary">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CounterpatryAttrs">
+              <PropertyRef Name="attr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dictionary_Entity">
+          <End Role="Entity" Type="Self.Entity" Multiplicity="1" />
+          <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entity">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dictionary">
+              <PropertyRef Name="entity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PA_Dictionary">
+          <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="1" />
+          <End Role="ProductAttrs" Type="Self.ProductAttrs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionary">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductAttrs">
+              <PropertyRef Name="attr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PA_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductAttrs" Type="Self.ProductAttrs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductAttrs">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище KRISModelContainer">
+          <EntitySet Name="Bid" EntityType="Self.Bid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BidProduct" EntityType="Self.BidProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Counterparty" EntityType="Self.Counterparty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CounterpatryAttrs" EntityType="Self.CounterpatryAttrs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dictionary" EntityType="Self.Dictionary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entity" EntityType="Self.Entity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductAttrs" EntityType="Self.ProductAttrs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Bid_Counterparty" Association="Self.FK_Bid_Counterparty">
+            <End Role="Counterparty" EntitySet="Counterparty" />
+            <End Role="Bid" EntitySet="Bid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bid_Status" Association="Self.FK_Bid_Status">
+            <End Role="Dictionary" EntitySet="Dictionary" />
+            <End Role="Bid" EntitySet="Bid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BP_Bid" Association="Self.FK_BP_Bid">
+            <End Role="Bid" EntitySet="Bid" />
+            <End Role="BidProduct" EntitySet="BidProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BP_Product" Association="Self.FK_BP_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="BidProduct" EntitySet="BidProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CA_counterparty" Association="Self.FK_CA_counterparty">
+            <End Role="Counterparty" EntitySet="Counterparty" />
+            <End Role="CounterpatryAttrs" EntitySet="CounterpatryAttrs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CA_Dictionary" Association="Self.FK_CA_Dictionary">
+            <End Role="Dictionary" EntitySet="Dictionary" />
+            <End Role="CounterpatryAttrs" EntitySet="CounterpatryAttrs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dictionary_Entity" Association="Self.FK_Dictionary_Entity">
+            <End Role="Entity" EntitySet="Entity" />
+            <End Role="Dictionary" EntitySet="Dictionary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PA_Dictionary" Association="Self.FK_PA_Dictionary">
+            <End Role="Dictionary" EntitySet="Dictionary" />
+            <End Role="ProductAttrs" EntitySet="ProductAttrs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PA_Product" Association="Self.FK_PA_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductAttrs" EntitySet="ProductAttrs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_Role" Association="Self.FK_UserRole_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_Users" Association="Self.FK_UserRole_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KRISModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bid">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bid_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="counterparty_id" Type="Int32" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Counterparty" Relationship="Self.FK_Bid_Counterparty" FromRole="Bid" ToRole="Counterparty" />
+          <NavigationProperty Name="Dictionary" Relationship="Self.FK_Bid_Status" FromRole="Bid" ToRole="Dictionary" />
+          <NavigationProperty Name="BidProduct" Relationship="Self.FK_BP_Bid" FromRole="Bid" ToRole="BidProduct" />
+        </EntityType>
+        <EntityType Name="BidProduct">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bid_id" Type="Int32" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="product_count" Type="Int32" Nullable="false" />
+          <Property Name="product_price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bid" Relationship="Self.FK_BP_Bid" FromRole="BidProduct" ToRole="Bid" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_BP_Product" FromRole="BidProduct" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Counterparty">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="inn" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kpp" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="deleted" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Bid" Relationship="Self.FK_Bid_Counterparty" FromRole="Counterparty" ToRole="Bid" />
+          <NavigationProperty Name="CounterpatryAttrs" Relationship="Self.FK_CA_counterparty" FromRole="Counterparty" ToRole="CounterpatryAttrs" />
+        </EntityType>
+        <EntityType Name="CounterpatryAttrs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="counterparty_id" Type="Int32" Nullable="false" />
+          <Property Name="attr_id" Type="Int32" Nullable="false" />
+          <Property Name="attr_value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="deleted" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Counterparty" Relationship="Self.FK_CA_counterparty" FromRole="CounterpatryAttrs" ToRole="Counterparty" />
+          <NavigationProperty Name="Dictionary" Relationship="Self.FK_CA_Dictionary" FromRole="CounterpatryAttrs" ToRole="Dictionary" />
+        </EntityType>
+        <EntityType Name="Dictionary">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="entity_id" Type="Int32" Nullable="false" />
+          <Property Name="term_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="deleted" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Bid" Relationship="Self.FK_Bid_Status" FromRole="Dictionary" ToRole="Bid" />
+          <NavigationProperty Name="CounterpatryAttrs" Relationship="Self.FK_CA_Dictionary" FromRole="Dictionary" ToRole="CounterpatryAttrs" />
+          <NavigationProperty Name="Entity" Relationship="Self.FK_Dictionary_Entity" FromRole="Dictionary" ToRole="Entity" />
+          <NavigationProperty Name="ProductAttrs" Relationship="Self.FK_PA_Dictionary" FromRole="Dictionary" ToRole="ProductAttrs" />
+        </EntityType>
+        <EntityType Name="Entity">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Dictionary" Relationship="Self.FK_Dictionary_Entity" FromRole="Entity" ToRole="Dictionary" />
+        </EntityType>
+        <EntityType Name="Logs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="action" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="acttime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="vendor_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="recommended_price" Type="Int32" Nullable="false" />
+          <Property Name="remainder" Type="Int32" Nullable="false" />
+          <Property Name="deleted" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="BidProduct" Relationship="Self.FK_BP_Product" FromRole="Product" ToRole="BidProduct" />
+          <NavigationProperty Name="ProductAttrs" Relationship="Self.FK_PA_Product" FromRole="Product" ToRole="ProductAttrs" />
+        </EntityType>
+        <EntityType Name="ProductAttrs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="attr_id" Type="Int32" Nullable="false" />
+          <Property Name="attr_value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="deleted" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Dictionary" Relationship="Self.FK_PA_Dictionary" FromRole="ProductAttrs" ToRole="Dictionary" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_PA_Product" FromRole="ProductAttrs" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rolename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="deleted" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FK_UserRole_Role" FromRole="Role" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <Property Name="deleted" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_UserRole_Role" FromRole="UserRole" ToRole="Role" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_UserRole_Users" FromRole="UserRole" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FK_UserRole_Users" FromRole="Users" ToRole="UserRole" />
+        </EntityType>
+        <Association Name="FK_Bid_Counterparty">
+          <End Role="Counterparty" Type="Self.Counterparty" Multiplicity="1" />
+          <End Role="Bid" Type="Self.Bid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Counterparty">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Bid">
+              <PropertyRef Name="counterparty_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bid_Status">
+          <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="1" />
+          <End Role="Bid" Type="Self.Bid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionary">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Bid">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BP_Bid">
+          <End Role="Bid" Type="Self.Bid" Multiplicity="1" />
+          <End Role="BidProduct" Type="Self.BidProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bid">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BidProduct">
+              <PropertyRef Name="bid_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BP_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="BidProduct" Type="Self.BidProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BidProduct">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CA_counterparty">
+          <End Role="Counterparty" Type="Self.Counterparty" Multiplicity="1" />
+          <End Role="CounterpatryAttrs" Type="Self.CounterpatryAttrs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Counterparty">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CounterpatryAttrs">
+              <PropertyRef Name="counterparty_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CA_Dictionary">
+          <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="1" />
+          <End Role="CounterpatryAttrs" Type="Self.CounterpatryAttrs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionary">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CounterpatryAttrs">
+              <PropertyRef Name="attr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dictionary_Entity">
+          <End Role="Entity" Type="Self.Entity" Multiplicity="1" />
+          <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entity">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dictionary">
+              <PropertyRef Name="entity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PA_Dictionary">
+          <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="1" />
+          <End Role="ProductAttrs" Type="Self.ProductAttrs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionary">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductAttrs">
+              <PropertyRef Name="attr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PA_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductAttrs" Type="Self.ProductAttrs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductAttrs">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KRISEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bid" EntityType="Self.Bid" />
+          <EntitySet Name="BidProduct" EntityType="Self.BidProduct" />
+          <EntitySet Name="Counterparty" EntityType="Self.Counterparty" />
+          <EntitySet Name="CounterpatryAttrs" EntityType="Self.CounterpatryAttrs" />
+          <EntitySet Name="Dictionary" EntityType="Self.Dictionary" />
+          <EntitySet Name="Entity" EntityType="Self.Entity" />
+          <EntitySet Name="Logs" EntityType="Self.Logs" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="ProductAttrs" EntityType="Self.ProductAttrs" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Bid_Counterparty" Association="Self.FK_Bid_Counterparty">
+            <End Role="Counterparty" EntitySet="Counterparty" />
+            <End Role="Bid" EntitySet="Bid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bid_Status" Association="Self.FK_Bid_Status">
+            <End Role="Dictionary" EntitySet="Dictionary" />
+            <End Role="Bid" EntitySet="Bid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BP_Bid" Association="Self.FK_BP_Bid">
+            <End Role="Bid" EntitySet="Bid" />
+            <End Role="BidProduct" EntitySet="BidProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BP_Product" Association="Self.FK_BP_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="BidProduct" EntitySet="BidProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CA_counterparty" Association="Self.FK_CA_counterparty">
+            <End Role="Counterparty" EntitySet="Counterparty" />
+            <End Role="CounterpatryAttrs" EntitySet="CounterpatryAttrs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CA_Dictionary" Association="Self.FK_CA_Dictionary">
+            <End Role="Dictionary" EntitySet="Dictionary" />
+            <End Role="CounterpatryAttrs" EntitySet="CounterpatryAttrs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dictionary_Entity" Association="Self.FK_Dictionary_Entity">
+            <End Role="Entity" EntitySet="Entity" />
+            <End Role="Dictionary" EntitySet="Dictionary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PA_Dictionary" Association="Self.FK_PA_Dictionary">
+            <End Role="Dictionary" EntitySet="Dictionary" />
+            <End Role="ProductAttrs" EntitySet="ProductAttrs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PA_Product" Association="Self.FK_PA_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductAttrs" EntitySet="ProductAttrs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_Role" Association="Self.FK_UserRole_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_Users" Association="Self.FK_UserRole_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище KRISModelContainer" CdmEntityContainer="KRISEntities">
+          <EntitySetMapping Name="Bid">
+            <EntityTypeMapping TypeName="KRISModel.Bid">
+              <MappingFragment StoreEntitySet="Bid">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="bid_number" ColumnName="bid_number" />
+                <ScalarProperty Name="counterparty_id" ColumnName="counterparty_id" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BidProduct">
+            <EntityTypeMapping TypeName="KRISModel.BidProduct">
+              <MappingFragment StoreEntitySet="BidProduct">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="bid_id" ColumnName="bid_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_count" ColumnName="product_count" />
+                <ScalarProperty Name="product_price" ColumnName="product_price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Counterparty">
+            <EntityTypeMapping TypeName="KRISModel.Counterparty">
+              <MappingFragment StoreEntitySet="Counterparty">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="inn" ColumnName="inn" />
+                <ScalarProperty Name="kpp" ColumnName="kpp" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CounterpatryAttrs">
+            <EntityTypeMapping TypeName="KRISModel.CounterpatryAttrs">
+              <MappingFragment StoreEntitySet="CounterpatryAttrs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="counterparty_id" ColumnName="counterparty_id" />
+                <ScalarProperty Name="attr_id" ColumnName="attr_id" />
+                <ScalarProperty Name="attr_value" ColumnName="attr_value" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dictionary">
+            <EntityTypeMapping TypeName="KRISModel.Dictionary">
+              <MappingFragment StoreEntitySet="Dictionary">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="entity_id" ColumnName="entity_id" />
+                <ScalarProperty Name="term_name" ColumnName="term_name" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entity">
+            <EntityTypeMapping TypeName="KRISModel.Entity">
+              <MappingFragment StoreEntitySet="Entity">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="KRISModel.Logs">
+              <MappingFragment StoreEntitySet="Logs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="action" ColumnName="action" />
+                <ScalarProperty Name="acttime" ColumnName="acttime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="KRISModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="vendor_code" ColumnName="vendor_code" />
+                <ScalarProperty Name="recommended_price" ColumnName="recommended_price" />
+                <ScalarProperty Name="remainder" ColumnName="remainder" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductAttrs">
+            <EntityTypeMapping TypeName="KRISModel.ProductAttrs">
+              <MappingFragment StoreEntitySet="ProductAttrs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="attr_id" ColumnName="attr_id" />
+                <ScalarProperty Name="attr_value" ColumnName="attr_value" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="KRISModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="rolename" ColumnName="rolename" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRole">
+            <EntityTypeMapping TypeName="KRISModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="KRISModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
