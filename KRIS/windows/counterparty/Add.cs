@@ -125,6 +125,11 @@ namespace KRIS.windows.counterparty
 
                 db.Counterparty.Add(counterparty);
 
+                Logs log = new Logs();
+                log.username = username;
+                log.acttime = DateTime.Now;
+                log.action = "Added counterparty: " + counterparty.name + ", " + counterparty.inn + ", " + counterparty.kpp;
+                db.Logs.Add(log);
                 try
                 {
                     db.SaveChanges();
