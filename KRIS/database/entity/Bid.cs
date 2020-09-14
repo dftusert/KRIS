@@ -24,10 +24,13 @@ namespace KRIS.database.entity
         public string bid_number { get; set; }
         public int counterparty_id { get; set; }
         public System.DateTime create_date { get; set; }
+        public System.DateTime status_date { get; set; }
         public int status_id { get; set; }
+        public int type_id { get; set; }
     
         public virtual Counterparty Counterparty { get; set; }
         public virtual Dictionary Dictionary { get; set; }
+        public virtual Dictionary Dictionary1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BidProduct> BidProduct { get; set; }
     }

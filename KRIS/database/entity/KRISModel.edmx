@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище KRISModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище KRISModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bid">
           <Key>
             <PropertyRef Name="id" />
@@ -13,7 +13,9 @@
           <Property Name="bid_number" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="counterparty_id" Type="int" Nullable="false" />
           <Property Name="create_date" Type="date" Nullable="false" />
+          <Property Name="status_date" Type="date" Nullable="false" />
           <Property Name="status_id" Type="int" Nullable="false" />
+          <Property Name="type_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="BidProduct">
           <Key>
@@ -52,6 +54,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="entity_id" Type="int" Nullable="false" />
           <Property Name="term_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="target" Type="nvarchar(max)" />
           <Property Name="deleted" Type="char" MaxLength="1" />
         </EntityType>
         <EntityType Name="Entity">
@@ -76,6 +79,8 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="type_id" Type="int" Nullable="false" />
+          <Property Name="okei_id" Type="int" Nullable="false" />
           <Property Name="vendor_code" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="recommended_price" Type="int" Nullable="false" />
           <Property Name="remainder" Type="int" Nullable="false" />
@@ -126,6 +131,18 @@
             </Principal>
             <Dependent Role="Bid">
               <PropertyRef Name="counterparty_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bid_Dictionary">
+          <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="1" />
+          <End Role="Bid" Type="Self.Bid" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionary">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Bid">
+              <PropertyRef Name="id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -225,6 +242,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Product_Dictionary">
+          <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionary">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="okei_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Dictionary1">
+          <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionary">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserRole_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
@@ -266,6 +307,10 @@
             <End Role="Counterparty" EntitySet="Counterparty" />
             <End Role="Bid" EntitySet="Bid" />
           </AssociationSet>
+          <AssociationSet Name="FK_Bid_Dictionary" Association="Self.FK_Bid_Dictionary">
+            <End Role="Dictionary" EntitySet="Dictionary" />
+            <End Role="Bid" EntitySet="Bid" />
+          </AssociationSet>
           <AssociationSet Name="FK_Bid_Status" Association="Self.FK_Bid_Status">
             <End Role="Dictionary" EntitySet="Dictionary" />
             <End Role="Bid" EntitySet="Bid" />
@@ -298,6 +343,14 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductAttrs" EntitySet="ProductAttrs" />
           </AssociationSet>
+          <AssociationSet Name="FK_Product_Dictionary" Association="Self.FK_Product_Dictionary">
+            <End Role="Dictionary" EntitySet="Dictionary" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Dictionary1" Association="Self.FK_Product_Dictionary1">
+            <End Role="Dictionary" EntitySet="Dictionary" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
           <AssociationSet Name="FK_UserRole_Role" Association="Self.FK_UserRole_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="UserRole" EntitySet="UserRole" />
@@ -307,7 +360,8 @@
             <End Role="UserRole" EntitySet="UserRole" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KRISModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -319,9 +373,12 @@
           <Property Name="bid_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="counterparty_id" Type="Int32" Nullable="false" />
           <Property Name="create_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="status_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="status_id" Type="Int32" Nullable="false" />
+          <Property Name="type_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Counterparty" Relationship="Self.FK_Bid_Counterparty" FromRole="Bid" ToRole="Counterparty" />
-          <NavigationProperty Name="Dictionary" Relationship="Self.FK_Bid_Status" FromRole="Bid" ToRole="Dictionary" />
+          <NavigationProperty Name="Dictionary" Relationship="Self.FK_Bid_Dictionary" FromRole="Bid" ToRole="Dictionary" />
+          <NavigationProperty Name="Dictionary1" Relationship="Self.FK_Bid_Status" FromRole="Bid" ToRole="Dictionary" />
           <NavigationProperty Name="BidProduct" Relationship="Self.FK_BP_Bid" FromRole="Bid" ToRole="BidProduct" />
         </EntityType>
         <EntityType Name="BidProduct">
@@ -367,11 +424,15 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="entity_id" Type="Int32" Nullable="false" />
           <Property Name="term_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="target" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="deleted" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Bid" Relationship="Self.FK_Bid_Status" FromRole="Dictionary" ToRole="Bid" />
+          <NavigationProperty Name="Bid" Relationship="Self.FK_Bid_Dictionary" FromRole="Dictionary" ToRole="Bid" />
+          <NavigationProperty Name="Bid1" Relationship="Self.FK_Bid_Status" FromRole="Dictionary" ToRole="Bid" />
           <NavigationProperty Name="CounterpatryAttrs" Relationship="Self.FK_CA_Dictionary" FromRole="Dictionary" ToRole="CounterpatryAttrs" />
           <NavigationProperty Name="Entity" Relationship="Self.FK_Dictionary_Entity" FromRole="Dictionary" ToRole="Entity" />
           <NavigationProperty Name="ProductAttrs" Relationship="Self.FK_PA_Dictionary" FromRole="Dictionary" ToRole="ProductAttrs" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Dictionary" FromRole="Dictionary" ToRole="Product" />
+          <NavigationProperty Name="Product1" Relationship="Self.FK_Product_Dictionary1" FromRole="Dictionary" ToRole="Product" />
         </EntityType>
         <EntityType Name="Entity">
           <Key>
@@ -396,11 +457,15 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="type_id" Type="Int32" Nullable="false" />
+          <Property Name="okei_id" Type="Int32" Nullable="false" />
           <Property Name="vendor_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="recommended_price" Type="Int32" Nullable="false" />
           <Property Name="remainder" Type="Int32" Nullable="false" />
           <Property Name="deleted" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="BidProduct" Relationship="Self.FK_BP_Product" FromRole="Product" ToRole="BidProduct" />
+          <NavigationProperty Name="Dictionary" Relationship="Self.FK_Product_Dictionary" FromRole="Product" ToRole="Dictionary" />
+          <NavigationProperty Name="Dictionary1" Relationship="Self.FK_Product_Dictionary1" FromRole="Product" ToRole="Dictionary" />
           <NavigationProperty Name="ProductAttrs" Relationship="Self.FK_PA_Product" FromRole="Product" ToRole="ProductAttrs" />
         </EntityType>
         <EntityType Name="ProductAttrs">
@@ -457,6 +522,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Bid_Dictionary">
+          <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="1" />
+          <End Role="Bid" Type="Self.Bid" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionary">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Bid">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Bid_Status">
           <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="1" />
           <End Role="Bid" Type="Self.Bid" Multiplicity="*" />
@@ -541,6 +618,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Product_Dictionary">
+          <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionary">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="okei_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Dictionary1">
+          <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionary">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PA_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="ProductAttrs" Type="Self.ProductAttrs" Multiplicity="*" />
@@ -577,7 +678,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="KRISEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bid" EntityType="Self.Bid" />
           <EntitySet Name="BidProduct" EntityType="Self.BidProduct" />
           <EntitySet Name="Counterparty" EntityType="Self.Counterparty" />
@@ -592,6 +693,10 @@
           <EntitySet Name="Users" EntityType="Self.Users" />
           <AssociationSet Name="FK_Bid_Counterparty" Association="Self.FK_Bid_Counterparty">
             <End Role="Counterparty" EntitySet="Counterparty" />
+            <End Role="Bid" EntitySet="Bid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bid_Dictionary" Association="Self.FK_Bid_Dictionary">
+            <End Role="Dictionary" EntitySet="Dictionary" />
             <End Role="Bid" EntitySet="Bid" />
           </AssociationSet>
           <AssociationSet Name="FK_Bid_Status" Association="Self.FK_Bid_Status">
@@ -622,6 +727,14 @@
             <End Role="Dictionary" EntitySet="Dictionary" />
             <End Role="ProductAttrs" EntitySet="ProductAttrs" />
           </AssociationSet>
+          <AssociationSet Name="FK_Product_Dictionary" Association="Self.FK_Product_Dictionary">
+            <End Role="Dictionary" EntitySet="Dictionary" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Dictionary1" Association="Self.FK_Product_Dictionary1">
+            <End Role="Dictionary" EntitySet="Dictionary" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
           <AssociationSet Name="FK_PA_Product" Association="Self.FK_PA_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductAttrs" EntitySet="ProductAttrs" />
@@ -640,7 +753,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище KRISModelContainer" CdmEntityContainer="KRISEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище KRISModelContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Bid">
             <EntityTypeMapping TypeName="KRISModel.Bid">
               <MappingFragment StoreEntitySet="Bid">
@@ -648,7 +761,9 @@
                 <ScalarProperty Name="bid_number" ColumnName="bid_number" />
                 <ScalarProperty Name="counterparty_id" ColumnName="counterparty_id" />
                 <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="status_date" ColumnName="status_date" />
                 <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -691,6 +806,7 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="entity_id" ColumnName="entity_id" />
                 <ScalarProperty Name="term_name" ColumnName="term_name" />
+                <ScalarProperty Name="target" ColumnName="target" />
                 <ScalarProperty Name="deleted" ColumnName="deleted" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -718,6 +834,8 @@
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
+                <ScalarProperty Name="okei_id" ColumnName="okei_id" />
                 <ScalarProperty Name="vendor_code" ColumnName="vendor_code" />
                 <ScalarProperty Name="recommended_price" ColumnName="recommended_price" />
                 <ScalarProperty Name="remainder" ColumnName="remainder" />

@@ -73,12 +73,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="datasets\counterparty\CounterpartyDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CounterpartyDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="database\DBCtx.cs" />
     <Compile Include="database\entity\Bid.cs">
       <DependentUpon>KRISModel.tt</DependentUpon>
     </Compile>
@@ -130,6 +124,12 @@
     <Compile Include="database\entity\Users.cs">
       <DependentUpon>KRISModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="datasets\counterparty\CounterpartyDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CounterpartyDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="database\DBCtx.cs" />
     <Compile Include="Kris.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,11 +150,23 @@
     <Compile Include="windows\counterparty\Add.Designer.cs">
       <DependentUpon>Add.cs</DependentUpon>
     </Compile>
+    <Compile Include="windows\counterparty\Delete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="windows\counterparty\Delete.Designer.cs">
+      <DependentUpon>Delete.cs</DependentUpon>
+    </Compile>
     <Compile Include="windows\counterparty\Filter.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="windows\counterparty\Filter.Designer.cs">
       <DependentUpon>Filter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="windows\counterparty\Modify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="windows\counterparty\Modify.Designer.cs">
+      <DependentUpon>Modify.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Kris.resx">
       <DependentUpon>Kris.cs</DependentUpon>
@@ -174,13 +186,22 @@
     <EmbeddedResource Include="windows\counterparty\Add.resx">
       <DependentUpon>Add.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="windows\counterparty\Delete.resx">
+      <DependentUpon>Delete.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="windows\counterparty\Filter.resx">
       <DependentUpon>Filter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="windows\counterparty\Modify.resx">
+      <DependentUpon>Modify.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="database\entity\KRISModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>KRISModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="database\entity\KRISModel.edmx.diagram">
+      <DependentUpon>KRISModel.edmx</DependentUpon>
+    </None>
     <None Include="datasets\counterparty\CounterpartyDataSet.xsc">
       <DependentUpon>CounterpartyDataSet.xsd</DependentUpon>
     </None>
@@ -191,9 +212,6 @@
     </None>
     <None Include="datasets\counterparty\CounterpartyDataSet.xss">
       <DependentUpon>CounterpartyDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="database\entity\KRISModel.edmx.diagram">
-      <DependentUpon>KRISModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

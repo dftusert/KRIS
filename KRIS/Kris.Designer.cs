@@ -167,6 +167,7 @@ namespace KRIS
             this.btnDeleteC.TabIndex = 3;
             this.btnDeleteC.Text = "Удалить";
             this.btnDeleteC.UseVisualStyleBackColor = true;
+            this.btnDeleteC.Click += new System.EventHandler(this.deleteCounterparty);
             // 
             // btnEditC
             // 
@@ -176,6 +177,7 @@ namespace KRIS
             this.btnEditC.TabIndex = 2;
             this.btnEditC.Text = "Изменить";
             this.btnEditC.UseVisualStyleBackColor = true;
+            this.btnEditC.Click += new System.EventHandler(this.modifyCounterparty);
             // 
             // btnAddC
             // 

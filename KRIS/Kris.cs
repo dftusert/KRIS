@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KRIS.database.entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -70,11 +71,60 @@ namespace KRIS
             refreshCounterparty();
         }
 
+        private void modifyCounterparty(object sender, EventArgs e)
+        {
+            if((dgvCounterparty.SelectedRows == null || dgvCounterparty.SelectedRows.Count != 1) &&
+               (dgvCounterparty.SelectedCells == null || dgvCounterparty.SelectedCells.Count != 1))
+            {
+                MessageBox.Show("Не выбрана запись для редактирования или выбрано больше одной", "Информация");
+                return;
+            }
+
+            int rowIndex;
+            if (dgvCounterparty.SelectedCells != null && dgvCounterparty.SelectedCells.Count == 1)
+                rowIndex = dgvCounterparty.SelectedCells[0].RowIndex;
+            else
+                rowIndex = dgvCounterparty.SelectedRows[0].Index;
+
+            Counterparty counterparty = new Counterparty();
+            counterparty.name = dgvCounterparty.Rows[rowIndex].Cells[0].Value.ToString();
+            counterparty.inn = dgvCounterparty.Rows[rowIndex].Cells[1].Value.ToString();
+            counterparty.kpp = dgvCounterparty.Rows[rowIndex].Cells[2].Value.ToString();
+            
+            windows.counterparty.Modify modify = new windows.counterparty.Modify(username, counterparty);
+            modify.ShowDialog();     //Show secondary form, code execution stop until frm2 is closed
+            
+            refreshCounterparty();
+        }
+
+        private void deleteCounterparty(object sender, EventArgs e)
+        {
+            if ((dgvCounterparty.SelectedRows == null || dgvCounterparty.SelectedRows.Count != 1) &&
+               (dgvCounterparty.SelectedCells == null || dgvCounterparty.SelectedCells.Count != 1))
+            {
+                MessageBox.Show("Не выбрана запись для редактирования или выбрано больше одной", "Информация");
+                return;
+            }
+
+            int rowIndex;
+            if (dgvCounterparty.SelectedCells != null && dgvCounterparty.SelectedCells.Count == 1)
+                rowIndex = dgvCounterparty.SelectedCells[0].RowIndex;
+            else
+                rowIndex = dgvCounterparty.SelectedRows[0].Index;
+
+            Counterparty counterparty = new Counterparty();
+            counterparty.name = dgvCounterparty.Rows[rowIndex].Cells[0].Value.ToString();
+            counterparty.inn = dgvCounterparty.Rows[rowIndex].Cells[1].Value.ToString();
+            counterparty.kpp = dgvCounterparty.Rows[rowIndex].Cells[2].Value.ToString();
+
+            windows.counterparty.Delete delete = new windows.counterparty.Delete(username, counterparty);
+            delete.ShowDialog();     //Show secondary form, code execution stop until frm2 is closed
+
+            refreshCounterparty();
+        }
+
         private void Kris_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "counterpartyDataSet.Counterparty". При необходимости она может быть перемещена или удалена.
-            this.counterpartyTableAdapter.Fill(this.counterpartyDataSet.Counterparty);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "counterpartyDataSet.Counterparty". При необходимости она может быть перемещена или удалена.
             refreshCounterparty(sender, e);
         }
     }

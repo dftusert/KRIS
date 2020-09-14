@@ -23,6 +23,8 @@ namespace KRIS.database.entity
     
         public int id { get; set; }
         public string name { get; set; }
+        public int type_id { get; set; }
+        public int okei_id { get; set; }
         public string vendor_code { get; set; }
         public int recommended_price { get; set; }
         public int remainder { get; set; }
@@ -30,6 +32,8 @@ namespace KRIS.database.entity
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BidProduct> BidProduct { get; set; }
+        public virtual Dictionary Dictionary { get; set; }
+        public virtual Dictionary Dictionary1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductAttrs> ProductAttrs { get; set; }
     }
