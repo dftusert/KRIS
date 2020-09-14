@@ -136,13 +136,13 @@
         </Association>
         <Association Name="FK_Bid_Dictionary">
           <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="1" />
-          <End Role="Bid" Type="Self.Bid" Multiplicity="0..1" />
+          <End Role="Bid" Type="Self.Bid" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Dictionary">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Bid">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="type_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -524,13 +524,13 @@
         </Association>
         <Association Name="FK_Bid_Dictionary">
           <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="1" />
-          <End Role="Bid" Type="Self.Bid" Multiplicity="0..1" />
+          <End Role="Bid" Type="Self.Bid" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Dictionary">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Bid">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="type_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

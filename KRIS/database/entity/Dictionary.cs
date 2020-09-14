@@ -17,6 +17,7 @@ namespace KRIS.database.entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Dictionary()
         {
+            this.Bid = new HashSet<Bid>();
             this.Bid1 = new HashSet<Bid>();
             this.CounterpatryAttrs = new HashSet<CounterpatryAttrs>();
             this.ProductAttrs = new HashSet<ProductAttrs>();
@@ -30,7 +31,8 @@ namespace KRIS.database.entity
         public string target { get; set; }
         public string deleted { get; set; }
     
-        public virtual Bid Bid { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bid> Bid { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bid> Bid1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
