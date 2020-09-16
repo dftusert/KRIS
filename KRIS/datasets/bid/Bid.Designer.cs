@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace KRIS.datasets.counterparty {
+namespace KRIS.datasets.bid {
     
     
     /// <summary>
@@ -20,17 +20,17 @@ namespace KRIS.datasets.counterparty {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("CounterpartyDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("Bid")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class CounterpartyDataSet : global::System.Data.DataSet {
+    public partial class Bid : global::System.Data.DataSet {
         
-        private CounterpartyDataTable tableCounterparty;
+        private BidDataTable tableBid;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public CounterpartyDataSet() {
+        public Bid() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace KRIS.datasets.counterparty {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected CounterpartyDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected Bid(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace KRIS.datasets.counterparty {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Counterparty"] != null)) {
-                    base.Tables.Add(new CounterpartyDataTable(ds.Tables["Counterparty"]));
+                if ((ds.Tables["Bid"] != null)) {
+                    base.Tables.Add(new BidDataTable(ds.Tables["Bid"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace KRIS.datasets.counterparty {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public CounterpartyDataTable Counterparty {
+        public BidDataTable _Bid {
             get {
-                return this.tableCounterparty;
+                return this.tableBid;
             }
         }
         
@@ -127,7 +127,7 @@ namespace KRIS.datasets.counterparty {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            CounterpartyDataSet cln = ((CounterpartyDataSet)(base.Clone()));
+            Bid cln = ((Bid)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace KRIS.datasets.counterparty {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Counterparty"] != null)) {
-                    base.Tables.Add(new CounterpartyDataTable(ds.Tables["Counterparty"]));
+                if ((ds.Tables["Bid"] != null)) {
+                    base.Tables.Add(new BidDataTable(ds.Tables["Bid"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace KRIS.datasets.counterparty {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableCounterparty = ((CounterpartyDataTable)(base.Tables["Counterparty"]));
+            this.tableBid = ((BidDataTable)(base.Tables["Bid"]));
             if ((initTable == true)) {
-                if ((this.tableCounterparty != null)) {
-                    this.tableCounterparty.InitVars();
+                if ((this.tableBid != null)) {
+                    this.tableBid.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace KRIS.datasets.counterparty {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "CounterpartyDataSet";
+            this.DataSetName = "Bid";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/CounterpartyDataSet.xsd";
+            this.Namespace = "http://tempuri.org/Bid.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableCounterparty = new CounterpartyDataTable();
-            base.Tables.Add(this.tableCounterparty);
+            this.tableBid = new BidDataTable();
+            base.Tables.Add(this.tableBid);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeCounterparty() {
+        private bool ShouldSerialize_Bid() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace KRIS.datasets.counterparty {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            CounterpartyDataSet ds = new CounterpartyDataSet();
+            Bid ds = new Bid();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,25 +270,31 @@ namespace KRIS.datasets.counterparty {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void CounterpartyRowChangeEventHandler(object sender, CounterpartyRowChangeEvent e);
+        public delegate void BidRowChangeEventHandler(object sender, BidRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class CounterpartyDataTable : global::System.Data.TypedTableBase<CounterpartyRow> {
+        public partial class BidDataTable : global::System.Data.TypedTableBase<BidRow> {
             
-            private global::System.Data.DataColumn columnname;
+            private global::System.Data.DataColumn columnbid_number;
+            
+            private global::System.Data.DataColumn columncreate_date;
+            
+            private global::System.Data.DataColumn columnstatus_date;
+            
+            private global::System.Data.DataColumn columnterm_name;
+            
+            private global::System.Data.DataColumn columnExpr1;
             
             private global::System.Data.DataColumn columninn;
             
-            private global::System.Data.DataColumn columnkpp;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CounterpartyDataTable() {
-                this.TableName = "Counterparty";
+            public BidDataTable() {
+                this.TableName = "Bid";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -296,7 +302,7 @@ namespace KRIS.datasets.counterparty {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal CounterpartyDataTable(global::System.Data.DataTable table) {
+            internal BidDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -313,16 +319,48 @@ namespace KRIS.datasets.counterparty {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected CounterpartyDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected BidDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn nameColumn {
+            public global::System.Data.DataColumn bid_numberColumn {
                 get {
-                    return this.columnname;
+                    return this.columnbid_number;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn create_dateColumn {
+                get {
+                    return this.columncreate_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn status_dateColumn {
+                get {
+                    return this.columnstatus_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn term_nameColumn {
+                get {
+                    return this.columnterm_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Expr1Column {
+                get {
+                    return this.columnExpr1;
                 }
             }
             
@@ -331,14 +369,6 @@ namespace KRIS.datasets.counterparty {
             public global::System.Data.DataColumn innColumn {
                 get {
                     return this.columninn;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn kppColumn {
-                get {
-                    return this.columnkpp;
                 }
             }
             
@@ -353,47 +383,50 @@ namespace KRIS.datasets.counterparty {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CounterpartyRow this[int index] {
+            public BidRow this[int index] {
                 get {
-                    return ((CounterpartyRow)(this.Rows[index]));
+                    return ((BidRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event CounterpartyRowChangeEventHandler CounterpartyRowChanging;
+            public event BidRowChangeEventHandler BidRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event CounterpartyRowChangeEventHandler CounterpartyRowChanged;
+            public event BidRowChangeEventHandler BidRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event CounterpartyRowChangeEventHandler CounterpartyRowDeleting;
+            public event BidRowChangeEventHandler BidRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event CounterpartyRowChangeEventHandler CounterpartyRowDeleted;
+            public event BidRowChangeEventHandler BidRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddCounterpartyRow(CounterpartyRow row) {
+            public void AddBidRow(BidRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CounterpartyRow AddCounterpartyRow(string name, string inn, string kpp) {
-                CounterpartyRow rowCounterpartyRow = ((CounterpartyRow)(this.NewRow()));
+            public BidRow AddBidRow(string bid_number, System.DateTime create_date, System.DateTime status_date, string term_name, string Expr1, string inn) {
+                BidRow rowBidRow = ((BidRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        name,
-                        inn,
-                        kpp};
-                rowCounterpartyRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowCounterpartyRow);
-                return rowCounterpartyRow;
+                        bid_number,
+                        create_date,
+                        status_date,
+                        term_name,
+                        Expr1,
+                        inn};
+                rowBidRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowBidRow);
+                return rowBidRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                CounterpartyDataTable cln = ((CounterpartyDataTable)(base.Clone()));
+                BidDataTable cln = ((BidDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -401,58 +434,73 @@ namespace KRIS.datasets.counterparty {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new CounterpartyDataTable();
+                return new BidDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnname = base.Columns["name"];
+                this.columnbid_number = base.Columns["bid_number"];
+                this.columncreate_date = base.Columns["create_date"];
+                this.columnstatus_date = base.Columns["status_date"];
+                this.columnterm_name = base.Columns["term_name"];
+                this.columnExpr1 = base.Columns["Expr1"];
                 this.columninn = base.Columns["inn"];
-                this.columnkpp = base.Columns["kpp"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnname = new global::System.Data.DataColumn("name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnname);
+                this.columnbid_number = new global::System.Data.DataColumn("bid_number", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbid_number);
+                this.columncreate_date = new global::System.Data.DataColumn("create_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncreate_date);
+                this.columnstatus_date = new global::System.Data.DataColumn("status_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstatus_date);
+                this.columnterm_name = new global::System.Data.DataColumn("term_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnterm_name);
+                this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExpr1);
                 this.columninn = new global::System.Data.DataColumn("inn", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columninn);
-                this.columnkpp = new global::System.Data.DataColumn("kpp", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnkpp);
-                this.columnname.AllowDBNull = false;
-                this.columnname.MaxLength = 50;
+                this.columnbid_number.AllowDBNull = false;
+                this.columnbid_number.MaxLength = 50;
+                this.columncreate_date.AllowDBNull = false;
+                this.columnstatus_date.AllowDBNull = false;
+                this.columnterm_name.AllowDBNull = false;
+                this.columnterm_name.MaxLength = 50;
+                this.columnExpr1.AllowDBNull = false;
+                this.columnExpr1.MaxLength = 50;
                 this.columninn.AllowDBNull = false;
                 this.columninn.MaxLength = 15;
-                this.columnkpp.AllowDBNull = false;
-                this.columnkpp.MaxLength = 15;
+                this.ExtendedProperties.Add("Generator_TablePropName", "_Bid");
+                this.ExtendedProperties.Add("Generator_UserTableName", "Bid");
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CounterpartyRow NewCounterpartyRow() {
-                return ((CounterpartyRow)(this.NewRow()));
+            public BidRow NewBidRow() {
+                return ((BidRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new CounterpartyRow(builder);
+                return new BidRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(CounterpartyRow);
+                return typeof(BidRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.CounterpartyRowChanged != null)) {
-                    this.CounterpartyRowChanged(this, new CounterpartyRowChangeEvent(((CounterpartyRow)(e.Row)), e.Action));
+                if ((this.BidRowChanged != null)) {
+                    this.BidRowChanged(this, new BidRowChangeEvent(((BidRow)(e.Row)), e.Action));
                 }
             }
             
@@ -460,8 +508,8 @@ namespace KRIS.datasets.counterparty {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.CounterpartyRowChanging != null)) {
-                    this.CounterpartyRowChanging(this, new CounterpartyRowChangeEvent(((CounterpartyRow)(e.Row)), e.Action));
+                if ((this.BidRowChanging != null)) {
+                    this.BidRowChanging(this, new BidRowChangeEvent(((BidRow)(e.Row)), e.Action));
                 }
             }
             
@@ -469,8 +517,8 @@ namespace KRIS.datasets.counterparty {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.CounterpartyRowDeleted != null)) {
-                    this.CounterpartyRowDeleted(this, new CounterpartyRowChangeEvent(((CounterpartyRow)(e.Row)), e.Action));
+                if ((this.BidRowDeleted != null)) {
+                    this.BidRowDeleted(this, new BidRowChangeEvent(((BidRow)(e.Row)), e.Action));
                 }
             }
             
@@ -478,14 +526,14 @@ namespace KRIS.datasets.counterparty {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.CounterpartyRowDeleting != null)) {
-                    this.CounterpartyRowDeleting(this, new CounterpartyRowChangeEvent(((CounterpartyRow)(e.Row)), e.Action));
+                if ((this.BidRowDeleting != null)) {
+                    this.BidRowDeleting(this, new BidRowChangeEvent(((BidRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveCounterpartyRow(CounterpartyRow row) {
+            public void RemoveBidRow(BidRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -494,7 +542,7 @@ namespace KRIS.datasets.counterparty {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CounterpartyDataSet ds = new CounterpartyDataSet();
+                Bid ds = new Bid();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -512,7 +560,7 @@ namespace KRIS.datasets.counterparty {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "CounterpartyDataTable";
+                attribute2.FixedValue = "BidDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -556,25 +604,69 @@ namespace KRIS.datasets.counterparty {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class CounterpartyRow : global::System.Data.DataRow {
+        public partial class BidRow : global::System.Data.DataRow {
             
-            private CounterpartyDataTable tableCounterparty;
+            private BidDataTable tableBid;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal CounterpartyRow(global::System.Data.DataRowBuilder rb) : 
+            internal BidRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableCounterparty = ((CounterpartyDataTable)(this.Table));
+                this.tableBid = ((BidDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string name {
+            public string bid_number {
                 get {
-                    return ((string)(this[this.tableCounterparty.nameColumn]));
+                    return ((string)(this[this.tableBid.bid_numberColumn]));
                 }
                 set {
-                    this[this.tableCounterparty.nameColumn] = value;
+                    this[this.tableBid.bid_numberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime create_date {
+                get {
+                    return ((global::System.DateTime)(this[this.tableBid.create_dateColumn]));
+                }
+                set {
+                    this[this.tableBid.create_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime status_date {
+                get {
+                    return ((global::System.DateTime)(this[this.tableBid.status_dateColumn]));
+                }
+                set {
+                    this[this.tableBid.status_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string term_name {
+                get {
+                    return ((string)(this[this.tableBid.term_nameColumn]));
+                }
+                set {
+                    this[this.tableBid.term_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Expr1 {
+                get {
+                    return ((string)(this[this.tableBid.Expr1Column]));
+                }
+                set {
+                    this[this.tableBid.Expr1Column] = value;
                 }
             }
             
@@ -582,21 +674,10 @@ namespace KRIS.datasets.counterparty {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string inn {
                 get {
-                    return ((string)(this[this.tableCounterparty.innColumn]));
+                    return ((string)(this[this.tableBid.innColumn]));
                 }
                 set {
-                    this[this.tableCounterparty.innColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string kpp {
-                get {
-                    return ((string)(this[this.tableCounterparty.kppColumn]));
-                }
-                set {
-                    this[this.tableCounterparty.kppColumn] = value;
+                    this[this.tableBid.innColumn] = value;
                 }
             }
         }
@@ -605,22 +686,22 @@ namespace KRIS.datasets.counterparty {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class CounterpartyRowChangeEvent : global::System.EventArgs {
+        public class BidRowChangeEvent : global::System.EventArgs {
             
-            private CounterpartyRow eventRow;
+            private BidRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CounterpartyRowChangeEvent(CounterpartyRow row, global::System.Data.DataRowAction action) {
+            public BidRowChangeEvent(BidRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CounterpartyRow Row {
+            public BidRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -636,7 +717,7 @@ namespace KRIS.datasets.counterparty {
         }
     }
 }
-namespace KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters {
+namespace KRIS.datasets.bid.BidTableAdapters {
     
     
     /// <summary>
@@ -648,7 +729,7 @@ namespace KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class CounterpartyTableAdapter : global::System.ComponentModel.Component {
+    public partial class BidTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -662,7 +743,7 @@ namespace KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public CounterpartyTableAdapter() {
+        public BidTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -759,19 +840,14 @@ namespace KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Counterparty";
-            tableMapping.ColumnMappings.Add("name", "name");
+            tableMapping.DataSetTable = "Bid";
+            tableMapping.ColumnMappings.Add("bid_number", "bid_number");
+            tableMapping.ColumnMappings.Add("create_date", "create_date");
+            tableMapping.ColumnMappings.Add("status_date", "status_date");
+            tableMapping.ColumnMappings.Add("term_name", "term_name");
+            tableMapping.ColumnMappings.Add("Expr1", "Expr1");
             tableMapping.ColumnMappings.Add("inn", "inn");
-            tableMapping.ColumnMappings.Add("kpp", "kpp");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Counterparty] ([name], [inn], [kpp]) VALUES (@name, @inn, @kpp" +
-                ")";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@inn", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "inn", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kpp", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kpp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -788,7 +864,11 @@ namespace KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT name, inn, kpp FROM dbo.Counterparty";
+            this._commandCollection[0].CommandText = @"SELECT        b.bid_number, b.create_date, b.status_date, d1.term_name, d2.term_name AS Expr1, c.inn
+FROM            Bid AS b INNER JOIN
+                         Dictionary AS d1 ON b.status_id = d1.id INNER JOIN
+                         Dictionary AS d2 ON b.type_id = d2.id INNER JOIN
+                         Counterparty AS c ON b.counterparty_id = c.id";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -796,7 +876,7 @@ namespace KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CounterpartyDataSet.CounterpartyDataTable dataTable) {
+        public virtual int Fill(Bid.BidDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -809,79 +889,11 @@ namespace KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CounterpartyDataSet.CounterpartyDataTable GetData() {
+        public virtual Bid.BidDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CounterpartyDataSet.CounterpartyDataTable dataTable = new CounterpartyDataSet.CounterpartyDataTable();
+            Bid.BidDataTable dataTable = new Bid.BidDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CounterpartyDataSet.CounterpartyDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CounterpartyDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Counterparty");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string name, string inn, string kpp) {
-            if ((name == null)) {
-                throw new global::System.ArgumentNullException("name");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(name));
-            }
-            if ((inn == null)) {
-                throw new global::System.ArgumentNullException("inn");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(inn));
-            }
-            if ((kpp == null)) {
-                throw new global::System.ArgumentNullException("kpp");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(kpp));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
         }
     }
     
@@ -897,8 +909,6 @@ namespace KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters {
         
         private UpdateOrderOption _updateOrder;
         
-        private CounterpartyTableAdapter _counterpartyTableAdapter;
-        
         private bool _backupDataSetBeforeUpdate;
         
         private global::System.Data.IDbConnection _connection;
@@ -911,20 +921,6 @@ namespace KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters {
             }
             set {
                 this._updateOrder = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public CounterpartyTableAdapter CounterpartyTableAdapter {
-            get {
-                return this._counterpartyTableAdapter;
-            }
-            set {
-                this._counterpartyTableAdapter = value;
             }
         }
         
@@ -947,10 +943,6 @@ namespace KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters {
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._counterpartyTableAdapter != null) 
-                            && (this._counterpartyTableAdapter.Connection != null))) {
-                    return this._counterpartyTableAdapter.Connection;
-                }
                 return null;
             }
             set {
@@ -964,9 +956,6 @@ namespace KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters {
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._counterpartyTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 return count;
             }
         }
@@ -976,17 +965,8 @@ namespace KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(CounterpartyDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(Bid dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._counterpartyTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Counterparty.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._counterpartyTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             return result;
         }
         
@@ -995,16 +975,8 @@ namespace KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(CounterpartyDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(Bid dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._counterpartyTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Counterparty.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._counterpartyTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -1013,16 +985,8 @@ namespace KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(CounterpartyDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(Bid dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._counterpartyTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Counterparty.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._counterpartyTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             return result;
         }
         
@@ -1055,17 +1019,12 @@ namespace KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(CounterpartyDataSet dataSet) {
+        public virtual int UpdateAll(Bid dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
-            }
-            if (((this._counterpartyTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._counterpartyTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
-                        "r, должны использовать одинаковую строку подключения.");
             }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
@@ -1099,15 +1058,6 @@ namespace KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters {
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._counterpartyTableAdapter != null)) {
-                    revertConnections.Add(this._counterpartyTableAdapter, this._counterpartyTableAdapter.Connection);
-                    this._counterpartyTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._counterpartyTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._counterpartyTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._counterpartyTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._counterpartyTableAdapter.Adapter);
-                    }
-                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -1165,10 +1115,6 @@ namespace KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters {
             finally {
                 if (workConnOpened) {
                     workConnection.Close();
-                }
-                if ((this._counterpartyTableAdapter != null)) {
-                    this._counterpartyTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._counterpartyTableAdapter]));
-                    this._counterpartyTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

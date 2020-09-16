@@ -73,6 +73,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="datasets\bidproduct\BidProduct.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BidProduct.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="datasets\bid\Bid.cs">
+      <DependentUpon>Bid.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="datasets\bid\Bid.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bid.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="datasets\counterpartyattrs\CounterpartyAttrs.cs">
+      <DependentUpon>CounterpartyAttrs.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="datasets\counterpartyattrs\CounterpartyAttrs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CounterpartyAttrs.xsd</DependentUpon>
+    </Compile>
     <Compile Include="database\entity\Bid.cs">
       <DependentUpon>KRISModel.tt</DependentUpon>
     </Compile>
@@ -124,12 +145,28 @@
     <Compile Include="database\entity\Users.cs">
       <DependentUpon>KRISModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="datasets\counterparty\CounterpartyDataSet.cs">
+      <DependentUpon>CounterpartyDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="datasets\counterparty\CounterpartyDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CounterpartyDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="database\DBCtx.cs" />
+    <Compile Include="datasets\productattrs\ProductAttrs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductAttrs.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="datasets\product\Product.cs">
+      <DependentUpon>Product.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="datasets\product\Product.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Product.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Kris.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +236,39 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>KRISModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="datasets\bidproduct\BidProduct.xsc">
+      <DependentUpon>BidProduct.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\bidproduct\BidProduct.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BidProduct.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="datasets\bidproduct\BidProduct.xss">
+      <DependentUpon>BidProduct.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\bid\Bid.xsc">
+      <DependentUpon>Bid.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\bid\Bid.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Bid.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="datasets\bid\Bid.xss">
+      <DependentUpon>Bid.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\counterpartyattrs\CounterpartyAttrs.xsc">
+      <DependentUpon>CounterpartyAttrs.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\counterpartyattrs\CounterpartyAttrs.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CounterpartyAttrs.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="datasets\counterpartyattrs\CounterpartyAttrs.xss">
+      <DependentUpon>CounterpartyAttrs.xsd</DependentUpon>
+    </None>
     <None Include="database\entity\KRISModel.edmx.diagram">
       <DependentUpon>KRISModel.edmx</DependentUpon>
     </None>
@@ -212,6 +282,28 @@
     </None>
     <None Include="datasets\counterparty\CounterpartyDataSet.xss">
       <DependentUpon>CounterpartyDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\productattrs\ProductAttrs.xsc">
+      <DependentUpon>ProductAttrs.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\productattrs\ProductAttrs.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProductAttrs.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="datasets\productattrs\ProductAttrs.xss">
+      <DependentUpon>ProductAttrs.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\product\Product.xsc">
+      <DependentUpon>Product.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\product\Product.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Product.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="datasets\product\Product.xss">
+      <DependentUpon>Product.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -255,6 +347,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

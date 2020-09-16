@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ProductAttrs" targetNamespace="http://tempuri.org/ProductAttrs.xsd" xmlns:mstns="http://tempuri.org/ProductAttrs.xsd" xmlns="http://tempuri.org/ProductAttrs.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=DESKTOP-UP485F2;Initial Catalog=KRIS;User ID=dbuser;Password=dbpassword" IsAppSettingsProperty="false" Modifier="Assembly" Name="desktop-up485f2.KRIS.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProductAttrsTableAdapter" GeneratorDataComponentClassName="ProductAttrsTableAdapter" Name="ProductAttrs" UserDataComponentName="ProductAttrsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="desktop-up485f2.KRIS.dbo" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Product.vendor_code, Dictionary.term_name, ProductAttrs.attr_value
+FROM            Dictionary INNER JOIN
+                         ProductAttrs ON Dictionary.id = ProductAttrs.attr_id INNER JOIN
+                         Product ON ProductAttrs.product_id = Product.id
+WHERE        (Product.deleted IS NULL) AND (ProductAttrs.deleted IS NULL)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="vendor_code" DataSetColumn="vendor_code" />
+              <Mapping SourceColumn="term_name" DataSetColumn="term_name" />
+              <Mapping SourceColumn="attr_value" DataSetColumn="attr_value" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ProductAttrs" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ProductAttrs" msprop:Generator_UserDSName="ProductAttrs">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ProductAttrs" msprop:Generator_TableClassName="ProductAttrsDataTable" msprop:Generator_TableVarName="tableProductAttrs" msprop:Generator_TablePropName="_ProductAttrs" msprop:Generator_RowDeletingName="ProductAttrsRowDeleting" msprop:Generator_RowChangingName="ProductAttrsRowChanging" msprop:Generator_RowEvHandlerName="ProductAttrsRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductAttrsRowDeleted" msprop:Generator_UserTableName="ProductAttrs" msprop:Generator_RowChangedName="ProductAttrsRowChanged" msprop:Generator_RowEvArgName="ProductAttrsRowChangeEvent" msprop:Generator_RowClassName="ProductAttrsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="vendor_code" msprop:Generator_ColumnVarNameInTable="columnvendor_code" msprop:Generator_ColumnPropNameInRow="vendor_code" msprop:Generator_ColumnPropNameInTable="vendor_codeColumn" msprop:Generator_UserColumnName="vendor_code">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="term_name" msprop:Generator_ColumnVarNameInTable="columnterm_name" msprop:Generator_ColumnPropNameInRow="term_name" msprop:Generator_ColumnPropNameInTable="term_nameColumn" msprop:Generator_UserColumnName="term_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="attr_value" msprop:Generator_ColumnVarNameInTable="columnattr_value" msprop:Generator_ColumnPropNameInRow="attr_value" msprop:Generator_ColumnPropNameInTable="attr_valueColumn" msprop:Generator_UserColumnName="attr_value">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

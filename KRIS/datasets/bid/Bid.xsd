@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Bid" targetNamespace="http://tempuri.org/Bid.xsd" xmlns:mstns="http://tempuri.org/Bid.xsd" xmlns="http://tempuri.org/Bid.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=DESKTOP-UP485F2;Initial Catalog=KRIS;User ID=dbuser;Password=dbpassword" IsAppSettingsProperty="false" Modifier="Assembly" Name="desktop-up485f2.KRIS.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BidTableAdapter" GeneratorDataComponentClassName="BidTableAdapter" Name="Bid" UserDataComponentName="BidTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="desktop-up485f2.KRIS.dbo" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        b.bid_number, b.create_date, b.status_date, d1.term_name, d2.term_name AS Expr1, c.inn
+FROM            Bid AS b INNER JOIN
+                         Dictionary AS d1 ON b.status_id = d1.id INNER JOIN
+                         Dictionary AS d2 ON b.type_id = d2.id INNER JOIN
+                         Counterparty AS c ON b.counterparty_id = c.id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="bid_number" DataSetColumn="bid_number" />
+              <Mapping SourceColumn="create_date" DataSetColumn="create_date" />
+              <Mapping SourceColumn="status_date" DataSetColumn="status_date" />
+              <Mapping SourceColumn="term_name" DataSetColumn="term_name" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="inn" DataSetColumn="inn" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Bid" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Bid" msprop:Generator_UserDSName="Bid">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Bid" msprop:Generator_TableClassName="BidDataTable" msprop:Generator_TableVarName="tableBid" msprop:Generator_TablePropName="_Bid" msprop:Generator_RowDeletingName="BidRowDeleting" msprop:Generator_RowChangingName="BidRowChanging" msprop:Generator_RowEvHandlerName="BidRowChangeEventHandler" msprop:Generator_RowDeletedName="BidRowDeleted" msprop:Generator_UserTableName="Bid" msprop:Generator_RowChangedName="BidRowChanged" msprop:Generator_RowEvArgName="BidRowChangeEvent" msprop:Generator_RowClassName="BidRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="bid_number" msprop:Generator_ColumnVarNameInTable="columnbid_number" msprop:Generator_ColumnPropNameInRow="bid_number" msprop:Generator_ColumnPropNameInTable="bid_numberColumn" msprop:Generator_UserColumnName="bid_number">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="create_date" msprop:Generator_ColumnVarNameInTable="columncreate_date" msprop:Generator_ColumnPropNameInRow="create_date" msprop:Generator_ColumnPropNameInTable="create_dateColumn" msprop:Generator_UserColumnName="create_date" type="xs:dateTime" />
+              <xs:element name="status_date" msprop:Generator_ColumnVarNameInTable="columnstatus_date" msprop:Generator_ColumnPropNameInRow="status_date" msprop:Generator_ColumnPropNameInTable="status_dateColumn" msprop:Generator_UserColumnName="status_date" type="xs:dateTime" />
+              <xs:element name="term_name" msprop:Generator_ColumnVarNameInTable="columnterm_name" msprop:Generator_ColumnPropNameInRow="term_name" msprop:Generator_ColumnPropNameInTable="term_nameColumn" msprop:Generator_UserColumnName="term_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="inn" msprop:Generator_ColumnVarNameInTable="columninn" msprop:Generator_ColumnPropNameInRow="inn" msprop:Generator_ColumnPropNameInTable="innColumn" msprop:Generator_UserColumnName="inn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

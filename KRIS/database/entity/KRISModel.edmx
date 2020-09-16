@@ -45,7 +45,7 @@
           <Property Name="counterparty_id" Type="int" Nullable="false" />
           <Property Name="attr_id" Type="int" Nullable="false" />
           <Property Name="attr_value" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="deleted" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="deleted" Type="char" MaxLength="1" />
         </EntityType>
         <EntityType Name="Dictionary">
           <Key>
@@ -413,7 +413,7 @@
           <Property Name="counterparty_id" Type="Int32" Nullable="false" />
           <Property Name="attr_id" Type="Int32" Nullable="false" />
           <Property Name="attr_value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="deleted" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="deleted" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Counterparty" Relationship="Self.FK_CA_counterparty" FromRole="CounterpatryAttrs" ToRole="Counterparty" />
           <NavigationProperty Name="Dictionary" Relationship="Self.FK_CA_Dictionary" FromRole="CounterpatryAttrs" ToRole="Dictionary" />
         </EntityType>

@@ -1,4 +1,5 @@
 ﻿using KRIS.database.entity;
+using KRIS.datasets.product.ProductTableAdapters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,21 +41,80 @@ namespace KRIS
             }
         }
 
+        /******************************* REFRESH BASE BLOCK *******************************/
+        private void refreshCounterparty()
+        {
+            counterpartyTableAdapter.Fill(counterpartyDataSet.Counterparty);
+            dgvCounterparty.ClearSelection();
+        }
+
+        private void refreshCounterpartyAttrs()
+        {
+            counterpatryAttrsTableAdapter.Fill(counterpartyAttrsDataSet.CounterpatryAttrs);
+            dgvCounterpartyAttrs.ClearSelection();
+        }
+
+        private void refreshProduct()
+        {
+            productTableAdapter.Fill(productDataSet._Product);
+            dgvProduct.ClearSelection();
+        }
+
+        private void refreshProductAttrs()
+        {
+            productAttrsTableAdapter.Fill(productAttrsDataSet._ProductAttrs);
+            dgvProductAttrs.ClearSelection();
+        }
+
+        private void refreshBid()
+        {
+            bidTableAdapter.Fill(bidDataSet._Bid);
+            dgvBid.ClearSelection();
+        }
+
+        private void refreshBidProduct()
+        {
+            bidProductTableAdapter.Fill(bidProductDataSet._BidProduct);
+            dgvBidProduct.ClearSelection();
+        }
+        /****************************** REFRESH BASE BLOCK END *****************************/
+
+        /******************************* REFRESH ACTION BLOCK *******************************/
         private void refreshCounterparty(object sender, EventArgs e)
         {
             refreshCounterparty();
         }
 
-        private void refreshCounterparty()
+        private void refreshCounterpartyAttrs(object sender, EventArgs e)
         {
-            this.counterpartyTableAdapter.Fill(this.counterpartyDataSet.Counterparty);
-            dgvCounterparty.ClearSelection();
+            refreshCounterpartyAttrs();
         }
+
+        private void refreshProduct(object sender, EventArgs e)
+        {
+            refreshProduct();
+        }
+
+        private void refreshProductAttrs(object sender, EventArgs e)
+        {
+            refreshProductAttrs();
+        }
+
+        private void refreshBid(object sender, EventArgs e)
+        {
+            refreshBid();
+        }
+
+        private void refreshBidProduct(object sender, EventArgs e)
+        {
+            refreshBidProduct();
+        }
+        /****************************** REFRESH ACTION BLOCK END *****************************/
 
         private void filterCounterparty(object sender, EventArgs e)
         {
             windows.counterparty.Filter filter = new windows.counterparty.Filter(ref counterpartyBindingSource);  
-            filter.ShowDialog();     //Show secondary form, code execution stop until frm2 is closed
+            filter.ShowDialog();
 
             dgvCounterparty.ClearSelection();
             if (counterpartyBindingSource.Filter != null && counterpartyBindingSource.Filter != "")
@@ -66,7 +126,7 @@ namespace KRIS
         private void addCounterparty(object sender, EventArgs e)
         {
             windows.counterparty.Add add = new windows.counterparty.Add(username);
-            add.ShowDialog();     //Show secondary form, code execution stop until frm2 is closed
+            add.ShowDialog();
 
             refreshCounterparty();
         }
@@ -118,7 +178,7 @@ namespace KRIS
             counterparty.kpp = dgvCounterparty.Rows[rowIndex].Cells[2].Value.ToString();
 
             windows.counterparty.Delete delete = new windows.counterparty.Delete(username, counterparty);
-            delete.ShowDialog();     //Show secondary form, code execution stop until frm2 is closed
+            delete.ShowDialog();
 
             refreshCounterparty();
         }
@@ -126,6 +186,23 @@ namespace KRIS
         private void Kris_Load(object sender, EventArgs e)
         {
             refreshCounterparty(sender, e);
+            refreshCounterpartyAttrs(sender, e);
+            refreshProduct(sender, e);
+            refreshProductAttrs(sender, e);
+            refreshBid(sender, e);
+            refreshBidProduct(sender, e);
+        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TabPage selected = tabControl.SelectedTab;
+
+            if (selected == tabCounterparty) refreshCounterparty();
+            else if (selected == tabCounterpartyAttrs) refreshCounterpartyAttrs();
+            else if (selected == tabProduct) refreshProduct();
+            else if (selected == tabProductAttrs) refreshProductAttrs();
+            else if (selected == tabBid) refreshBid();
+            else if (selected == tabBidProduct) refreshBidProduct();
         }
     }
 }

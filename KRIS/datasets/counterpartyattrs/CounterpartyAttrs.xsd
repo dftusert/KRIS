@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CounterpartyAttrs" targetNamespace="http://tempuri.org/CounterpartyAttrs.xsd" xmlns:mstns="http://tempuri.org/CounterpartyAttrs.xsd" xmlns="http://tempuri.org/CounterpartyAttrs.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=DESKTOP-UP485F2;Initial Catalog=KRIS;User ID=dbuser;Password=dbpassword" IsAppSettingsProperty="false" Modifier="Assembly" Name="desktop-up485f2.KRIS.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CounterpatryAttrsTableAdapter" GeneratorDataComponentClassName="CounterpatryAttrsTableAdapter" Name="CounterpatryAttrs" UserDataComponentName="CounterpatryAttrsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="desktop-up485f2.KRIS.dbo" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Counterparty.inn, Dictionary.term_name, CounterpatryAttrs.attr_value
+FROM            Dictionary INNER JOIN
+                         CounterpatryAttrs ON Dictionary.id = CounterpatryAttrs.attr_id INNER JOIN
+                         Counterparty ON CounterpatryAttrs.counterparty_id = Counterparty.id
+WHERE        (Counterparty.deleted IS NULL) AND (CounterpatryAttrs.deleted IS NULL)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="attr_value" DataSetColumn="attr_value" />
+              <Mapping SourceColumn="inn" DataSetColumn="inn" />
+              <Mapping SourceColumn="term_name" DataSetColumn="term_name" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="CounterpartyAttrs" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="CounterpartyAttrs" msprop:Generator_UserDSName="CounterpartyAttrs">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CounterpatryAttrs" msprop:Generator_TableClassName="CounterpatryAttrsDataTable" msprop:Generator_TableVarName="tableCounterpatryAttrs" msprop:Generator_TablePropName="CounterpatryAttrs" msprop:Generator_RowDeletingName="CounterpatryAttrsRowDeleting" msprop:Generator_RowChangingName="CounterpatryAttrsRowChanging" msprop:Generator_RowEvHandlerName="CounterpatryAttrsRowChangeEventHandler" msprop:Generator_RowDeletedName="CounterpatryAttrsRowDeleted" msprop:Generator_UserTableName="CounterpatryAttrs" msprop:Generator_RowChangedName="CounterpatryAttrsRowChanged" msprop:Generator_RowEvArgName="CounterpatryAttrsRowChangeEvent" msprop:Generator_RowClassName="CounterpatryAttrsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="attr_value" msprop:Generator_ColumnVarNameInTable="columnattr_value" msprop:Generator_ColumnPropNameInRow="attr_value" msprop:Generator_ColumnPropNameInTable="attr_valueColumn" msprop:Generator_UserColumnName="attr_value">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="inn" msprop:Generator_ColumnVarNameInTable="columninn" msprop:Generator_ColumnPropNameInRow="inn" msprop:Generator_ColumnPropNameInTable="innColumn" msprop:Generator_UserColumnName="inn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="term_name" msprop:Generator_ColumnVarNameInTable="columnterm_name" msprop:Generator_ColumnPropNameInRow="term_name" msprop:Generator_ColumnPropNameInTable="term_nameColumn" msprop:Generator_UserColumnName="term_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
