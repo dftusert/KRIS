@@ -19,7 +19,7 @@ namespace KRIS.database.entity
         {
             this.Bid = new HashSet<Bid>();
             this.Bid1 = new HashSet<Bid>();
-            this.CounterpatryAttrs = new HashSet<CounterpatryAttrs>();
+            this.CounterpartyAttrs = new HashSet<CounterpartyAttrs>();
             this.ProductAttrs = new HashSet<ProductAttrs>();
             this.Product = new HashSet<Product>();
             this.Product1 = new HashSet<Product>();
@@ -36,7 +36,7 @@ namespace KRIS.database.entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bid> Bid1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CounterpatryAttrs> CounterpatryAttrs { get; set; }
+        public virtual ICollection<CounterpartyAttrs> CounterpartyAttrs { get; set; }
         public virtual Entity Entity { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductAttrs> ProductAttrs { get; set; }

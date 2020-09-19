@@ -146,9 +146,6 @@ namespace KRIS.windows.counterparty
 
         private bool fillCheck()
         {
-            string name = tbName.Text;
-            string inn = tbINN.Text;
-            string kpp = tbKPP.Text;
             if (tbName.Text == "" || tbINN.Text == "" || tbKPP.Text == "") return false;
             return true;
         }

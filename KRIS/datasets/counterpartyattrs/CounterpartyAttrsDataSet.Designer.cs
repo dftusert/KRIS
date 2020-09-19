@@ -780,11 +780,11 @@ namespace KRIS.datasets.counterpartyattrs.CounterpartyAttrsTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        Counterparty.inn, Dictionary.term_name, CounterpatryAttrs.attr_value
+            this._commandCollection[0].CommandText = @"SELECT        Counterparty.inn, Dictionary.term_name, CounterpartyAttrs.attr_value
 FROM            Dictionary INNER JOIN
-                         CounterpatryAttrs ON Dictionary.id = CounterpatryAttrs.attr_id INNER JOIN
-                         Counterparty ON CounterpatryAttrs.counterparty_id = Counterparty.id
-WHERE        (Counterparty.deleted IS NULL) AND (CounterpatryAttrs.deleted IS NULL)";
+                         CounterpartyAttrs ON Dictionary.id = CounterpartyAttrs.attr_id INNER JOIN
+                         Counterparty ON CounterpartyAttrs.counterparty_id = Counterparty.id
+WHERE        (Counterparty.deleted IS NULL) AND (CounterpartyAttrs.deleted IS NULL)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

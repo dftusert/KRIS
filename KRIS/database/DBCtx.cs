@@ -18,5 +18,9 @@ namespace KRIS.database
         public DbSet<Logs> Logs { get; set; }
 
         public DbSet<Counterparty> Counterparty { get; set; }
+        public DbSet<CounterpartyAttrs> CounterpartyAttrs { get; set; }
+        public DbSet<Dictionary> Dictionary { get; set; }
+        public DbSet<Entity> Entity { get; set; }
+
     }
 }

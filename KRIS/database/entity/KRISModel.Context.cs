@@ -28,7 +28,7 @@ namespace KRIS.database.entity
         public virtual DbSet<Bid> Bid { get; set; }
         public virtual DbSet<BidProduct> BidProduct { get; set; }
         public virtual DbSet<Counterparty> Counterparty { get; set; }
-        public virtual DbSet<CounterpatryAttrs> CounterpatryAttrs { get; set; }
+        public virtual DbSet<CounterpartyAttrs> CounterpartyAttrs { get; set; }
         public virtual DbSet<Dictionary> Dictionary { get; set; }
         public virtual DbSet<Entity> Entity { get; set; }
         public virtual DbSet<Logs> Logs { get; set; }

@@ -37,7 +37,7 @@
           <Property Name="kpp" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="deleted" Type="char" MaxLength="1" />
         </EntityType>
-        <EntityType Name="CounterpatryAttrs">
+        <EntityType Name="CounterpartyAttrs">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -184,24 +184,24 @@
         </Association>
         <Association Name="FK_CA_counterparty">
           <End Role="Counterparty" Type="Self.Counterparty" Multiplicity="1" />
-          <End Role="CounterpatryAttrs" Type="Self.CounterpatryAttrs" Multiplicity="*" />
+          <End Role="CounterpartyAttrs" Type="Self.CounterpartyAttrs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Counterparty">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="CounterpatryAttrs">
+            <Dependent Role="CounterpartyAttrs">
               <PropertyRef Name="counterparty_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CA_Dictionary">
           <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="1" />
-          <End Role="CounterpatryAttrs" Type="Self.CounterpatryAttrs" Multiplicity="*" />
+          <End Role="CounterpartyAttrs" Type="Self.CounterpartyAttrs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Dictionary">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="CounterpatryAttrs">
+            <Dependent Role="CounterpartyAttrs">
               <PropertyRef Name="attr_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -294,7 +294,7 @@
           <EntitySet Name="Bid" EntityType="Self.Bid" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BidProduct" EntityType="Self.BidProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Counterparty" EntityType="Self.Counterparty" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CounterpatryAttrs" EntityType="Self.CounterpatryAttrs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CounterpartyAttrs" EntityType="Self.CounterpartyAttrs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dictionary" EntityType="Self.Dictionary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Entity" EntityType="Self.Entity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
@@ -325,11 +325,11 @@
           </AssociationSet>
           <AssociationSet Name="FK_CA_counterparty" Association="Self.FK_CA_counterparty">
             <End Role="Counterparty" EntitySet="Counterparty" />
-            <End Role="CounterpatryAttrs" EntitySet="CounterpatryAttrs" />
+            <End Role="CounterpartyAttrs" EntitySet="CounterpartyAttrs" />
           </AssociationSet>
           <AssociationSet Name="FK_CA_Dictionary" Association="Self.FK_CA_Dictionary">
             <End Role="Dictionary" EntitySet="Dictionary" />
-            <End Role="CounterpatryAttrs" EntitySet="CounterpatryAttrs" />
+            <End Role="CounterpartyAttrs" EntitySet="CounterpartyAttrs" />
           </AssociationSet>
           <AssociationSet Name="FK_Dictionary_Entity" Association="Self.FK_Dictionary_Entity">
             <End Role="Entity" EntitySet="Entity" />
@@ -403,9 +403,9 @@
           <Property Name="kpp" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="deleted" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Bid" Relationship="Self.FK_Bid_Counterparty" FromRole="Counterparty" ToRole="Bid" />
-          <NavigationProperty Name="CounterpatryAttrs" Relationship="Self.FK_CA_counterparty" FromRole="Counterparty" ToRole="CounterpatryAttrs" />
+          <NavigationProperty Name="CounterpartyAttrs" Relationship="Self.FK_CA_counterparty" FromRole="Counterparty" ToRole="CounterpartyAttrs" />
         </EntityType>
-        <EntityType Name="CounterpatryAttrs">
+        <EntityType Name="CounterpartyAttrs">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -414,8 +414,8 @@
           <Property Name="attr_id" Type="Int32" Nullable="false" />
           <Property Name="attr_value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="deleted" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Counterparty" Relationship="Self.FK_CA_counterparty" FromRole="CounterpatryAttrs" ToRole="Counterparty" />
-          <NavigationProperty Name="Dictionary" Relationship="Self.FK_CA_Dictionary" FromRole="CounterpatryAttrs" ToRole="Dictionary" />
+          <NavigationProperty Name="Counterparty" Relationship="Self.FK_CA_counterparty" FromRole="CounterpartyAttrs" ToRole="Counterparty" />
+          <NavigationProperty Name="Dictionary" Relationship="Self.FK_CA_Dictionary" FromRole="CounterpartyAttrs" ToRole="Dictionary" />
         </EntityType>
         <EntityType Name="Dictionary">
           <Key>
@@ -428,7 +428,7 @@
           <Property Name="deleted" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Bid" Relationship="Self.FK_Bid_Dictionary" FromRole="Dictionary" ToRole="Bid" />
           <NavigationProperty Name="Bid1" Relationship="Self.FK_Bid_Status" FromRole="Dictionary" ToRole="Bid" />
-          <NavigationProperty Name="CounterpatryAttrs" Relationship="Self.FK_CA_Dictionary" FromRole="Dictionary" ToRole="CounterpatryAttrs" />
+          <NavigationProperty Name="CounterpartyAttrs" Relationship="Self.FK_CA_Dictionary" FromRole="Dictionary" ToRole="CounterpartyAttrs" />
           <NavigationProperty Name="Entity" Relationship="Self.FK_Dictionary_Entity" FromRole="Dictionary" ToRole="Entity" />
           <NavigationProperty Name="ProductAttrs" Relationship="Self.FK_PA_Dictionary" FromRole="Dictionary" ToRole="ProductAttrs" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Product_Dictionary" FromRole="Dictionary" ToRole="Product" />
@@ -572,24 +572,24 @@
         </Association>
         <Association Name="FK_CA_counterparty">
           <End Role="Counterparty" Type="Self.Counterparty" Multiplicity="1" />
-          <End Role="CounterpatryAttrs" Type="Self.CounterpatryAttrs" Multiplicity="*" />
+          <End Role="CounterpartyAttrs" Type="Self.CounterpartyAttrs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Counterparty">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="CounterpatryAttrs">
+            <Dependent Role="CounterpartyAttrs">
               <PropertyRef Name="counterparty_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CA_Dictionary">
           <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="1" />
-          <End Role="CounterpatryAttrs" Type="Self.CounterpatryAttrs" Multiplicity="*" />
+          <End Role="CounterpartyAttrs" Type="Self.CounterpartyAttrs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Dictionary">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="CounterpatryAttrs">
+            <Dependent Role="CounterpartyAttrs">
               <PropertyRef Name="attr_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -682,7 +682,7 @@
           <EntitySet Name="Bid" EntityType="Self.Bid" />
           <EntitySet Name="BidProduct" EntityType="Self.BidProduct" />
           <EntitySet Name="Counterparty" EntityType="Self.Counterparty" />
-          <EntitySet Name="CounterpatryAttrs" EntityType="Self.CounterpatryAttrs" />
+          <EntitySet Name="CounterpartyAttrs" EntityType="Self.CounterpartyAttrs" />
           <EntitySet Name="Dictionary" EntityType="Self.Dictionary" />
           <EntitySet Name="Entity" EntityType="Self.Entity" />
           <EntitySet Name="Logs" EntityType="Self.Logs" />
@@ -713,11 +713,11 @@
           </AssociationSet>
           <AssociationSet Name="FK_CA_counterparty" Association="Self.FK_CA_counterparty">
             <End Role="Counterparty" EntitySet="Counterparty" />
-            <End Role="CounterpatryAttrs" EntitySet="CounterpatryAttrs" />
+            <End Role="CounterpartyAttrs" EntitySet="CounterpartyAttrs" />
           </AssociationSet>
           <AssociationSet Name="FK_CA_Dictionary" Association="Self.FK_CA_Dictionary">
             <End Role="Dictionary" EntitySet="Dictionary" />
-            <End Role="CounterpatryAttrs" EntitySet="CounterpatryAttrs" />
+            <End Role="CounterpartyAttrs" EntitySet="CounterpartyAttrs" />
           </AssociationSet>
           <AssociationSet Name="FK_Dictionary_Entity" Association="Self.FK_Dictionary_Entity">
             <End Role="Entity" EntitySet="Entity" />
@@ -789,9 +789,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CounterpatryAttrs">
-            <EntityTypeMapping TypeName="KRISModel.CounterpatryAttrs">
-              <MappingFragment StoreEntitySet="CounterpatryAttrs">
+          <EntitySetMapping Name="CounterpartyAttrs">
+            <EntityTypeMapping TypeName="KRISModel.CounterpartyAttrs">
+              <MappingFragment StoreEntitySet="CounterpartyAttrs">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="counterparty_id" ColumnName="counterparty_id" />
                 <ScalarProperty Name="attr_id" ColumnName="attr_id" />

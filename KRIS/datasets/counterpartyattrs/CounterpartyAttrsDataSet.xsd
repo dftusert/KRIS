@@ -12,11 +12,11 @@
               <DbSource ConnectionRef="desktop-up485f2.KRIS.dbo" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Counterparty.inn, Dictionary.term_name, CounterpatryAttrs.attr_value
+                    <CommandText>SELECT        Counterparty.inn, Dictionary.term_name, CounterpartyAttrs.attr_value
 FROM            Dictionary INNER JOIN
-                         CounterpatryAttrs ON Dictionary.id = CounterpatryAttrs.attr_id INNER JOIN
-                         Counterparty ON CounterpatryAttrs.counterparty_id = Counterparty.id
-WHERE        (Counterparty.deleted IS NULL) AND (CounterpatryAttrs.deleted IS NULL)</CommandText>
+                         CounterpartyAttrs ON Dictionary.id = CounterpartyAttrs.attr_id INNER JOIN
+                         Counterparty ON CounterpartyAttrs.counterparty_id = Counterparty.id
+WHERE        (Counterparty.deleted IS NULL) AND (CounterpartyAttrs.deleted IS NULL)</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -37,7 +37,7 @@ WHERE        (Counterparty.deleted IS NULL) AND (CounterpatryAttrs.deleted IS NU
   <xs:element name="CounterpartyAttrs" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="CounterpartyAttrs" msprop:Generator_UserDSName="CounterpartyAttrs">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="CounterpatryAttrs" msprop:Generator_TableClassName="CounterpatryAttrsDataTable" msprop:Generator_TableVarName="tableCounterpatryAttrs" msprop:Generator_TablePropName="CounterpatryAttrs" msprop:Generator_RowDeletingName="CounterpatryAttrsRowDeleting" msprop:Generator_RowChangingName="CounterpatryAttrsRowChanging" msprop:Generator_RowEvHandlerName="CounterpatryAttrsRowChangeEventHandler" msprop:Generator_RowDeletedName="CounterpatryAttrsRowDeleted" msprop:Generator_UserTableName="CounterpatryAttrs" msprop:Generator_RowChangedName="CounterpatryAttrsRowChanged" msprop:Generator_RowEvArgName="CounterpatryAttrsRowChangeEvent" msprop:Generator_RowClassName="CounterpatryAttrsRow">
+        <xs:element name="CounterpatryAttrs" msprop:Generator_TableClassName="CounterpatryAttrsDataTable" msprop:Generator_TableVarName="tableCounterpatryAttrs" msprop:Generator_RowChangedName="CounterpatryAttrsRowChanged" msprop:Generator_TablePropName="CounterpatryAttrs" msprop:Generator_RowDeletingName="CounterpatryAttrsRowDeleting" msprop:Generator_RowChangingName="CounterpatryAttrsRowChanging" msprop:Generator_RowEvHandlerName="CounterpatryAttrsRowChangeEventHandler" msprop:Generator_RowDeletedName="CounterpatryAttrsRowDeleted" msprop:Generator_RowClassName="CounterpatryAttrsRow" msprop:Generator_UserTableName="CounterpatryAttrs" msprop:Generator_RowEvArgName="CounterpatryAttrsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="attr_value" msprop:Generator_ColumnVarNameInTable="columnattr_value" msprop:Generator_ColumnPropNameInRow="attr_value" msprop:Generator_ColumnPropNameInTable="attr_valueColumn" msprop:Generator_UserColumnName="attr_value">

@@ -12,7 +12,7 @@ namespace KRIS.database.entity
     using System;
     using System.Collections.Generic;
     
-    public partial class CounterpatryAttrs
+    public partial class CounterpartyAttrs
     {
         public int id { get; set; }
         public int counterparty_id { get; set; }

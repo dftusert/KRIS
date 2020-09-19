@@ -1,4 +1,5 @@
-﻿using KRIS.database.entity;
+﻿using KRIS.database;
+using KRIS.database.entity;
 using KRIS.datasets.product.ProductTableAdapters;
 using System;
 using System.Collections.Generic;
@@ -111,6 +112,7 @@ namespace KRIS
         }
         /****************************** REFRESH ACTION BLOCK END *****************************/
 
+        /****************************** COUNTERPARTY *****************************************/
         private void filterCounterparty(object sender, EventArgs e)
         {
             windows.counterparty.Filter filter = new windows.counterparty.Filter(ref counterpartyBindingSource);  
@@ -182,6 +184,111 @@ namespace KRIS
 
             refreshCounterparty();
         }
+        /****************************** COUNTERPARTY END *****************************************/
+
+        /****************************** COUNTERPARTYATTRS *****************************************/
+        private void filterCounterpartyAttrs(object sender, EventArgs e)
+        {
+            windows.counterpartyattrs.Filter filter = new windows.counterpartyattrs.Filter(ref counterpatryAttrsBindingSource);
+            filter.ShowDialog();
+
+            dgvCounterpartyAttrs.ClearSelection();
+            if (counterpatryAttrsBindingSource.Filter != null && counterpatryAttrsBindingSource.Filter != "")
+                btnFilterCA.BackColor = Color.Green;
+            else
+                btnFilterCA.BackColor = ButtonBase.DefaultBackColor;
+        }
+
+        private void addCounterpartyAttrs(object sender, EventArgs e)
+        {
+            windows.counterpartyattrs.Add add = new windows.counterpartyattrs.Add(username);
+            add.ShowDialog();
+
+            refreshCounterpartyAttrs();
+        }
+
+        private void modifyCounterpartyAttrs(object sender, EventArgs e)
+        {
+            if ((dgvCounterpartyAttrs.SelectedRows == null || dgvCounterpartyAttrs.SelectedRows.Count != 1) &&
+               (dgvCounterpartyAttrs.SelectedCells == null || dgvCounterpartyAttrs.SelectedCells.Count != 1))
+            {
+                MessageBox.Show("Не выбрана запись для редактирования или выбрано больше одной", "Информация");
+                return;
+            }
+
+            int rowIndex;
+            if (dgvCounterpartyAttrs.SelectedCells != null && dgvCounterpartyAttrs.SelectedCells.Count == 1)
+                rowIndex = dgvCounterpartyAttrs.SelectedCells[0].RowIndex;
+            else
+                rowIndex = dgvCounterpartyAttrs.SelectedRows[0].Index;
+
+            string inn = dgvCounterpartyAttrs.Rows[rowIndex].Cells[0].Value.ToString();
+            string attr_name = dgvCounterpartyAttrs.Rows[rowIndex].Cells[1].Value.ToString();
+            int attr_id = 0;
+            string val = dgvCounterpartyAttrs.Rows[rowIndex].Cells[2].Value.ToString();
+            CounterpartyAttrs cpa = new CounterpartyAttrs();
+            Counterparty counterparty;
+            using (DBCtx db = new DBCtx())
+            {
+                Dictionary dict = (from d in db.Dictionary
+                                   from en in db.Entity
+                                   where d.entity_id == en.id && en.name == "counterparty" && d.term_name == attr_name
+                                   select d).FirstOrDefault();
+                if(dict == null)
+                {
+                    MessageBox.Show("Ошибка выбора элемента списка", "Информация");
+                    return;
+                }
+
+                attr_id = dict.id;
+
+                counterparty = (from c in db.Counterparty
+                                             where c.inn == inn && c.deleted == null
+                                             select c).FirstOrDefault();
+
+                if(counterparty == null)
+                {
+                    MessageBox.Show("Поставщик или покупатель не найден, изменение невозможно");
+                    return;
+                }
+
+                cpa.counterparty_id = counterparty.id;
+            }
+            
+            cpa.attr_id = attr_id;
+            cpa.attr_value = val;
+
+            windows.counterpartyattrs.Modify modify = new windows.counterpartyattrs.Modify(username, counterparty, cpa);
+            modify.ShowDialog();     //Show secondary form, code execution stop until frm2 is closed
+
+            refreshCounterpartyAttrs();
+        }
+
+        private void deleteCounterpartyAttrs(object sender, EventArgs e)
+        {
+            if ((dgvCounterpartyAttrs.SelectedRows == null || dgvCounterpartyAttrs.SelectedRows.Count != 1) &&
+               (dgvCounterpartyAttrs.SelectedCells == null || dgvCounterpartyAttrs.SelectedCells.Count != 1))
+            {
+                MessageBox.Show("Не выбрана запись для редактирования или выбрано больше одной", "Информация");
+                return;
+            }
+
+            int rowIndex;
+            if (dgvCounterpartyAttrs.SelectedCells != null && dgvCounterpartyAttrs.SelectedCells.Count == 1)
+                rowIndex = dgvCounterpartyAttrs.SelectedCells[0].RowIndex;
+            else
+                rowIndex = dgvCounterpartyAttrs.SelectedRows[0].Index;
+
+            string inn = dgvCounterpartyAttrs.Rows[rowIndex].Cells[0].Value.ToString();
+            string attr_name = dgvCounterpartyAttrs.Rows[rowIndex].Cells[1].Value.ToString();
+            string attr_value = dgvCounterpartyAttrs.Rows[rowIndex].Cells[2].Value.ToString();
+
+            windows.counterpartyattrs.Delete delete = new windows.counterpartyattrs.Delete(username, inn, attr_name, attr_value);
+            delete.ShowDialog();
+
+            refreshCounterpartyAttrs();
+        }
+        /****************************** COUNTERPARTYATTRS END *****************************************/
 
         private void Kris_Load(object sender, EventArgs e)
         {
