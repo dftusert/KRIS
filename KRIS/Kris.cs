@@ -154,7 +154,7 @@ namespace KRIS
             counterparty.kpp = dgvCounterparty.Rows[rowIndex].Cells[2].Value.ToString();
             
             windows.counterparty.Modify modify = new windows.counterparty.Modify(username, counterparty);
-            modify.ShowDialog();     //Show secondary form, code execution stop until frm2 is closed
+            modify.ShowDialog();
             
             refreshCounterparty();
         }
@@ -259,7 +259,7 @@ namespace KRIS
             cpa.attr_value = val;
 
             windows.counterpartyattrs.Modify modify = new windows.counterpartyattrs.Modify(username, counterparty, cpa);
-            modify.ShowDialog();     //Show secondary form, code execution stop until frm2 is closed
+            modify.ShowDialog();
 
             refreshCounterpartyAttrs();
         }
@@ -289,6 +289,155 @@ namespace KRIS
             refreshCounterpartyAttrs();
         }
         /****************************** COUNTERPARTYATTRS END *****************************************/
+
+        /****************************** PRODUCT *****************************************/
+        private void filterProduct(object sender, EventArgs e)
+        {
+            windows.product.Filter filter = new windows.product.Filter(ref productBindingSource);
+            filter.ShowDialog();
+
+            dgvProduct.ClearSelection();
+            if (productBindingSource.Filter != null && productBindingSource.Filter != "")
+                btnFilterP.BackColor = Color.Green;
+            else
+                btnFilterP.BackColor = ButtonBase.DefaultBackColor;
+        }
+
+        private void addProduct(object sender, EventArgs e)
+        {
+            windows.product.Add add = new windows.product.Add(username);
+            add.ShowDialog();
+
+            refreshProduct();
+        }
+
+        private void modifyProduct(object sender, EventArgs e)
+        {
+            if ((dgvProduct.SelectedRows == null || dgvProduct.SelectedRows.Count != 1) &&
+               (dgvProduct.SelectedCells == null || dgvProduct.SelectedCells.Count != 1))
+            {
+                MessageBox.Show("Не выбрана запись для редактирования или выбрано больше одной", "Информация");
+                return;
+            }
+
+            int rowIndex;
+            if (dgvProduct.SelectedCells != null && dgvProduct.SelectedCells.Count == 1)
+                rowIndex = dgvProduct.SelectedCells[0].RowIndex;
+            else
+                rowIndex = dgvProduct.SelectedRows[0].Index;
+
+            string vendor_code = dgvProduct.Rows[rowIndex].Cells[0].Value.ToString();
+            string name = dgvProduct.Rows[rowIndex].Cells[1].Value.ToString();
+            int okei_id = 0;
+            string okei = dgvProduct.Rows[rowIndex].Cells[2].Value.ToString();
+            int type_id = 0;
+            string type = dgvProduct.Rows[rowIndex].Cells[3].Value.ToString();
+            int recPrice = 0;
+            int.TryParse(dgvProduct.Rows[rowIndex].Cells[4].Value.ToString(), out recPrice);
+            if (recPrice == 0)
+            {
+                MessageBox.Show("Рекомендованная цена не число", "Информация");
+                return;
+            }
+
+            int remainder = 0;
+            int.TryParse(dgvProduct.Rows[rowIndex].Cells[5].Value.ToString(), out remainder);
+            if (remainder == 0)
+            {
+                MessageBox.Show("Остаток на складе не число", "Информация");
+                return;
+            }
+
+            Product product;
+            using (DBCtx db = new DBCtx())
+            {
+                Dictionary dict = (from d in db.Dictionary
+                                   from en in db.Entity
+                                   where d.entity_id == en.id && en.name == "product" && d.term_name == okei
+                                   select d).FirstOrDefault();
+                if (dict == null)
+                {
+                    MessageBox.Show("Ошибка выбора элемента списка", "Информация");
+                    return;
+                }
+
+                okei_id = dict.id;
+
+                dict = (from d in db.Dictionary
+                        from en in db.Entity
+                        where d.entity_id == en.id && en.name == "product" && d.term_name == type
+                        select d).FirstOrDefault();
+
+                if (dict == null)
+                {
+                    MessageBox.Show("Ошибка выбора элемента списка", "Информация");
+                    return;
+                }
+
+                type_id = dict.id;
+
+                product = (from p in db.Product
+                           where p.vendor_code == vendor_code &&
+                                 p.name == name &&
+                                 p.okei_id == okei_id &&
+                                 p.type_id == type_id &&
+                                 p.recommended_price == recPrice &&
+                                 p.remainder == remainder &&
+                                 p.deleted == null
+                           select p).FirstOrDefault();
+
+                if (product == null)
+                {
+                    MessageBox.Show("Товар не найден, изменение невозможно");
+                    return;
+                }
+            }
+
+            windows.product.Modify modify = new windows.product.Modify(username, product);
+            modify.ShowDialog();
+
+            refreshProduct();
+        }
+
+        private void deleteProduct(object sender, EventArgs e)
+        {
+            if ((dgvProduct.SelectedRows == null || dgvProduct.SelectedRows.Count != 1) &&
+               (dgvProduct.SelectedCells == null || dgvProduct.SelectedCells.Count != 1))
+            {
+                MessageBox.Show("Не выбрана запись для редактирования или выбрано больше одной", "Информация");
+                return;
+            }
+
+            int rowIndex;
+            if (dgvProduct.SelectedCells != null && dgvProduct.SelectedCells.Count == 1)
+                rowIndex = dgvProduct.SelectedCells[0].RowIndex;
+            else
+                rowIndex = dgvProduct.SelectedRows[0].Index;
+
+            string vendor_code = dgvProduct.Rows[rowIndex].Cells[0].Value.ToString();
+            string name = dgvProduct.Rows[rowIndex].Cells[1].Value.ToString();
+            string okei = dgvProduct.Rows[rowIndex].Cells[2].Value.ToString();
+            string type = dgvProduct.Rows[rowIndex].Cells[3].Value.ToString();
+            int recPrice = 0, remainder = 0;
+            int.TryParse(dgvProduct.Rows[rowIndex].Cells[4].Value.ToString(), out recPrice);
+            int.TryParse(dgvProduct.Rows[rowIndex].Cells[5].Value.ToString(), out remainder);
+            if(recPrice == 0)
+            {
+                MessageBox.Show("Рекомендованная цена не число", "Информация");
+                return;
+            }
+            if (remainder == 0)
+            {
+                MessageBox.Show("Остаток на складе не число", "Информация");
+                return;
+            }
+
+            windows.product.Delete delete = new windows.product.Delete(username, vendor_code, name, okei, type, recPrice, remainder);
+            delete.ShowDialog();
+
+            refreshProduct();
+        }
+        /****************************** PRODUCT ENDS *****************************************/
 
         private void Kris_Load(object sender, EventArgs e)
         {

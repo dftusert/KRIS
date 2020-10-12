@@ -9,10 +9,10 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProductTableAdapter" GeneratorDataComponentClassName="ProductTableAdapter" Name="Product" UserDataComponentName="ProductTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="desktop-up485f2.KRIS.dbo" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="desktop-up485f2.KRIS.dbo" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        p.name, d1.term_name, d2.term_name AS Expr1, p.vendor_code, p.recommended_price, p.remainder
+                    <CommandText>SELECT        p.name, d1.term_name, d2.term_name AS Expr1, p.vendor_code, CONVERT(VARCHAR(MAX), p.recommended_price) AS recommended_price, '' + CONVERT(VARCHAR(MAX), p.remainder) AS remainder
 FROM            Product AS p INNER JOIN
                          Dictionary AS d1 ON p.type_id = d1.id INNER JOIN
                          Dictionary AS d2 ON p.okei_id = d2.id
@@ -40,7 +40,7 @@ WHERE        (p.deleted IS NULL)</CommandText>
   <xs:element name="Product" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Product" msprop:Generator_UserDSName="Product">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Product" msprop:Generator_TableClassName="ProductDataTable" msprop:Generator_TableVarName="tableProduct" msprop:Generator_RowChangedName="ProductRowChanged" msprop:Generator_TablePropName="_Product" msprop:Generator_RowDeletingName="ProductRowDeleting" msprop:Generator_RowChangingName="ProductRowChanging" msprop:Generator_RowEvHandlerName="ProductRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductRowDeleted" msprop:Generator_RowClassName="ProductRow" msprop:Generator_UserTableName="Product" msprop:Generator_RowEvArgName="ProductRowChangeEvent">
+        <xs:element name="Product" msprop:Generator_TableClassName="ProductDataTable" msprop:Generator_TableVarName="tableProduct" msprop:Generator_TablePropName="_Product" msprop:Generator_RowDeletingName="ProductRowDeleting" msprop:Generator_RowChangingName="ProductRowChanging" msprop:Generator_RowEvHandlerName="ProductRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductRowDeleted" msprop:Generator_UserTableName="Product" msprop:Generator_RowChangedName="ProductRowChanged" msprop:Generator_RowEvArgName="ProductRowChangeEvent" msprop:Generator_RowClassName="ProductRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name">
@@ -71,8 +71,20 @@ WHERE        (p.deleted IS NULL)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="recommended_price" msprop:Generator_ColumnVarNameInTable="columnrecommended_price" msprop:Generator_ColumnPropNameInRow="recommended_price" msprop:Generator_ColumnPropNameInTable="recommended_priceColumn" msprop:Generator_UserColumnName="recommended_price" type="xs:int" />
-              <xs:element name="remainder" msprop:Generator_ColumnVarNameInTable="columnremainder" msprop:Generator_ColumnPropNameInRow="remainder" msprop:Generator_ColumnPropNameInTable="remainderColumn" msprop:Generator_UserColumnName="remainder" type="xs:int" />
+              <xs:element name="recommended_price" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnrecommended_price" msprop:Generator_ColumnPropNameInRow="recommended_price" msprop:Generator_ColumnPropNameInTable="recommended_priceColumn" msprop:Generator_UserColumnName="recommended_price" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="remainder" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnremainder" msprop:Generator_ColumnPropNameInRow="remainder" msprop:Generator_ColumnPropNameInTable="remainderColumn" msprop:Generator_UserColumnName="remainder" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

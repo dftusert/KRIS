@@ -49,6 +49,11 @@ namespace KRIS
             this.btnAddC = new System.Windows.Forms.Button();
             this.tabCounterpartyAttrs = new System.Windows.Forms.TabPage();
             this.dgvCounterpartyAttrs = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.termnameDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.counterpatryAttrsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.counterpartyAttrsDataSet = new KRIS.datasets.counterpartyattrs.CounterpartyAttrs();
             this.btnFilterCA = new System.Windows.Forms.Button();
             this.btnRefreshCA = new System.Windows.Forms.Button();
             this.btnDeleteCA = new System.Windows.Forms.Button();
@@ -109,7 +114,6 @@ namespace KRIS
             this.btnDeleteBP = new System.Windows.Forms.Button();
             this.btnEditBP = new System.Windows.Forms.Button();
             this.btnAddBP = new System.Windows.Forms.Button();
-            this.counterpartyTableAdapter = new KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters.CounterpartyTableAdapter();
             this.productTableAdapter = new KRIS.datasets.product.ProductTableAdapters.ProductTableAdapter();
             this.productAttrsTableAdapter = new KRIS.datasets.productattrs.ProductAttrsTableAdapters.ProductAttrsTableAdapter();
             this.bidTableAdapter = new KRIS.datasets.bid.BidTableAdapters.BidTableAdapter();
@@ -117,12 +121,8 @@ namespace KRIS
             this.inn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.term_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.attr_value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.counterpatryAttrsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.counterpartyAttrsDataSet = new KRIS.datasets.counterpartyattrs.CounterpartyAttrs();
             this.counterpatryAttrsTableAdapter = new KRIS.datasets.counterpartyattrs.CounterpartyAttrsTableAdapters.CounterpatryAttrsTableAdapter();
-            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.termnameDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.counterpartyTableAdapter = new KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters.CounterpartyTableAdapter();
             this.tabControl.SuspendLayout();
             this.tabCounterparty.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCounterparty)).BeginInit();
@@ -130,6 +130,8 @@ namespace KRIS
             ((System.ComponentModel.ISupportInitialize)(this.counterpartyDataSet)).BeginInit();
             this.tabCounterpartyAttrs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCounterpartyAttrs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counterpatryAttrsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counterpartyAttrsDataSet)).BeginInit();
             this.tabProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
@@ -146,8 +148,6 @@ namespace KRIS
             ((System.ComponentModel.ISupportInitialize)(this.dgvBidProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BidProductBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bidProductDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.counterpatryAttrsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.counterpartyAttrsDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -219,7 +219,7 @@ namespace KRIS
             this.dgvCounterparty.Location = new System.Drawing.Point(0, 0);
             this.dgvCounterparty.Name = "dgvCounterparty";
             this.dgvCounterparty.ReadOnly = true;
-            this.dgvCounterparty.Size = new System.Drawing.Size(791, 371);
+            this.dgvCounterparty.Size = new System.Drawing.Size(794, 375);
             this.dgvCounterparty.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn21
@@ -315,6 +315,37 @@ namespace KRIS
             this.dgvCounterpartyAttrs.ReadOnly = true;
             this.dgvCounterpartyAttrs.Size = new System.Drawing.Size(794, 375);
             this.dgvCounterpartyAttrs.TabIndex = 12;
+            // 
+            // dataGridViewTextBoxColumn27
+            // 
+            this.dataGridViewTextBoxColumn27.DataPropertyName = "inn";
+            this.dataGridViewTextBoxColumn27.HeaderText = "ИНН";
+            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
+            this.dataGridViewTextBoxColumn27.ReadOnly = true;
+            // 
+            // termnameDataGridViewTextBoxColumn3
+            // 
+            this.termnameDataGridViewTextBoxColumn3.DataPropertyName = "term_name";
+            this.termnameDataGridViewTextBoxColumn3.HeaderText = "Атрибут";
+            this.termnameDataGridViewTextBoxColumn3.Name = "termnameDataGridViewTextBoxColumn3";
+            this.termnameDataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "attr_value";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Значение";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // counterpatryAttrsBindingSource
+            // 
+            this.counterpatryAttrsBindingSource.DataMember = "CounterpatryAttrs";
+            this.counterpatryAttrsBindingSource.DataSource = this.counterpartyAttrsDataSet;
+            // 
+            // counterpartyAttrsDataSet
+            // 
+            this.counterpartyAttrsDataSet.DataSetName = "CounterpartyAttrsDataSet";
+            this.counterpartyAttrsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnFilterCA
             // 
@@ -465,6 +496,7 @@ namespace KRIS
             this.btnFilterP.TabIndex = 16;
             this.btnFilterP.Text = "Фильтр";
             this.btnFilterP.UseVisualStyleBackColor = true;
+            this.btnFilterP.Click += new System.EventHandler(this.filterProduct);
             // 
             // btnRefreshP
             // 
@@ -486,6 +518,7 @@ namespace KRIS
             this.btnDeleteP.TabIndex = 14;
             this.btnDeleteP.Text = "Удалить";
             this.btnDeleteP.UseVisualStyleBackColor = true;
+            this.btnDeleteP.Click += new System.EventHandler(this.deleteProduct);
             // 
             // btnEditP
             // 
@@ -495,6 +528,7 @@ namespace KRIS
             this.btnEditP.TabIndex = 13;
             this.btnEditP.Text = "Изменить";
             this.btnEditP.UseVisualStyleBackColor = true;
+            this.btnEditP.Click += new System.EventHandler(this.modifyProduct);
             // 
             // btnAddP
             // 
@@ -504,6 +538,7 @@ namespace KRIS
             this.btnAddP.TabIndex = 12;
             this.btnAddP.Text = "Добавить";
             this.btnAddP.UseVisualStyleBackColor = true;
+            this.btnAddP.Click += new System.EventHandler(this.addProduct);
             // 
             // tabProductAttrs
             // 
@@ -876,10 +911,6 @@ namespace KRIS
             this.btnAddBP.Text = "Добавить";
             this.btnAddBP.UseVisualStyleBackColor = true;
             // 
-            // counterpartyTableAdapter
-            // 
-            this.counterpartyTableAdapter.ClearBeforeFill = true;
-            // 
             // productTableAdapter
             // 
             this.productTableAdapter.ClearBeforeFill = true;
@@ -917,40 +948,13 @@ namespace KRIS
             this.attr_value.Name = "attr_value";
             this.attr_value.ReadOnly = true;
             // 
-            // counterpatryAttrsBindingSource
-            // 
-            this.counterpatryAttrsBindingSource.DataMember = "CounterpatryAttrs";
-            this.counterpatryAttrsBindingSource.DataSource = this.counterpartyAttrsDataSet;
-            // 
-            // counterpartyAttrsDataSet
-            // 
-            this.counterpartyAttrsDataSet.DataSetName = "CounterpartyAttrsDataSet";
-            this.counterpartyAttrsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // counterpatryAttrsTableAdapter
             // 
             this.counterpatryAttrsTableAdapter.ClearBeforeFill = true;
             // 
-            // dataGridViewTextBoxColumn27
+            // counterpartyTableAdapter
             // 
-            this.dataGridViewTextBoxColumn27.DataPropertyName = "inn";
-            this.dataGridViewTextBoxColumn27.HeaderText = "ИНН";
-            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
-            this.dataGridViewTextBoxColumn27.ReadOnly = true;
-            // 
-            // termnameDataGridViewTextBoxColumn3
-            // 
-            this.termnameDataGridViewTextBoxColumn3.DataPropertyName = "term_name";
-            this.termnameDataGridViewTextBoxColumn3.HeaderText = "Атрибут";
-            this.termnameDataGridViewTextBoxColumn3.Name = "termnameDataGridViewTextBoxColumn3";
-            this.termnameDataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "attr_value";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Значение";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.counterpartyTableAdapter.ClearBeforeFill = true;
             // 
             // Kris
             // 
@@ -971,6 +975,8 @@ namespace KRIS
             ((System.ComponentModel.ISupportInitialize)(this.counterpartyDataSet)).EndInit();
             this.tabCounterpartyAttrs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCounterpartyAttrs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counterpatryAttrsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counterpartyAttrsDataSet)).EndInit();
             this.tabProduct.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
@@ -987,8 +993,6 @@ namespace KRIS
             ((System.ComponentModel.ISupportInitialize)(this.dgvBidProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BidProductBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bidProductDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.counterpatryAttrsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.counterpartyAttrsDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

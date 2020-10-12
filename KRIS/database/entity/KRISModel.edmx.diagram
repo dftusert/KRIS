@@ -4,24 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="71310ed4df094c84afbd332561fd7f4d" Name="Diagram1">
-        <EntityTypeShape EntityType="KRISModel.Bid" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="KRISModel.BidProduct" Width="1.5" PointX="10.5" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="KRISModel.Counterparty" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="KRISModel.CounterpartyAttrs" Width="1.5" PointX="8.25" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="KRISModel.Dictionary" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="KRISModel.Entity" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KRISModel.Logs" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KRISModel.Product" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="KRISModel.ProductAttrs" Width="1.5" PointX="7.5" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="KRISModel.Role" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="KRISModel.UserRole" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="KRISModel.Users" Width="1.5" PointX="5.75" PointY="18" IsExpanded="true" />
+      <Diagram DiagramId="71310ed4df094c84afbd332561fd7f4d" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="KRISModel.Bid" Width="1.5" PointX="0.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KRISModel.BidProduct" Width="1.5" PointX="0.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="KRISModel.Counterparty" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KRISModel.CounterpartyAttrs" Width="1.5" PointX="2.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KRISModel.Dictionary" Width="1.5" PointX="2.375" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KRISModel.Entity" Width="1.5" PointX="4.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KRISModel.Logs" Width="1.5" PointX="8" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KRISModel.Product" Width="1.5" PointX="4.375" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KRISModel.ProductAttrs" Width="1.5" PointX="6.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KRISModel.Role" Width="1.5" PointX="8" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KRISModel.UserRole" Width="1.5" PointX="6" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KRISModel.Users" Width="1.5" PointX="4.125" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="KRISModel.FK_Bid_Counterparty" ManuallyRouted="false" />
         <AssociationConnector Association="KRISModel.FK_Bid_Dictionary" ManuallyRouted="false" />
         <AssociationConnector Association="KRISModel.FK_Bid_Status" ManuallyRouted="false" />
         <AssociationConnector Association="KRISModel.FK_BP_Bid" ManuallyRouted="false" />
-        <AssociationConnector Association="KRISModel.FK_BP_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="KRISModel.FK_BP_Product" ManuallyRouted="false" ></AssociationConnector>
         <AssociationConnector Association="KRISModel.FK_CA_counterparty" ManuallyRouted="false" />
         <AssociationConnector Association="KRISModel.FK_CA_Dictionary" ManuallyRouted="false" />
         <AssociationConnector Association="KRISModel.FK_Dictionary_Entity" ManuallyRouted="false" />

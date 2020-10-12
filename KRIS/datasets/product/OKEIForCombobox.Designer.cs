@@ -20,17 +20,17 @@ namespace KRIS.datasets.product {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("Product")]
+    [global::System.Xml.Serialization.XmlRootAttribute("OKEIForCombobox")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class Product : global::System.Data.DataSet {
+    public partial class OKEIForCombobox : global::System.Data.DataSet {
         
-        private ProductDataTable tableProduct;
+        private DictionaryDataTable tableDictionary;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public Product() {
+        public OKEIForCombobox() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace KRIS.datasets.product {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected Product(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected OKEIForCombobox(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace KRIS.datasets.product {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Product"] != null)) {
-                    base.Tables.Add(new ProductDataTable(ds.Tables["Product"]));
+                if ((ds.Tables["Dictionary"] != null)) {
+                    base.Tables.Add(new DictionaryDataTable(ds.Tables["Dictionary"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace KRIS.datasets.product {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ProductDataTable _Product {
+        public DictionaryDataTable Dictionary {
             get {
-                return this.tableProduct;
+                return this.tableDictionary;
             }
         }
         
@@ -127,7 +127,7 @@ namespace KRIS.datasets.product {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            Product cln = ((Product)(base.Clone()));
+            OKEIForCombobox cln = ((OKEIForCombobox)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace KRIS.datasets.product {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Product"] != null)) {
-                    base.Tables.Add(new ProductDataTable(ds.Tables["Product"]));
+                if ((ds.Tables["Dictionary"] != null)) {
+                    base.Tables.Add(new DictionaryDataTable(ds.Tables["Dictionary"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace KRIS.datasets.product {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableProduct = ((ProductDataTable)(base.Tables["Product"]));
+            this.tableDictionary = ((DictionaryDataTable)(base.Tables["Dictionary"]));
             if ((initTable == true)) {
-                if ((this.tableProduct != null)) {
-                    this.tableProduct.InitVars();
+                if ((this.tableDictionary != null)) {
+                    this.tableDictionary.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace KRIS.datasets.product {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "Product";
+            this.DataSetName = "OKEIForCombobox";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/Product.xsd";
+            this.Namespace = "http://tempuri.org/OKEIForCombobox.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableProduct = new ProductDataTable();
-            base.Tables.Add(this.tableProduct);
+            this.tableDictionary = new DictionaryDataTable();
+            base.Tables.Add(this.tableDictionary);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerialize_Product() {
+        private bool ShouldSerializeDictionary() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace KRIS.datasets.product {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            Product ds = new Product();
+            OKEIForCombobox ds = new OKEIForCombobox();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,31 +270,23 @@ namespace KRIS.datasets.product {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void ProductRowChangeEventHandler(object sender, ProductRowChangeEvent e);
+        public delegate void DictionaryRowChangeEventHandler(object sender, DictionaryRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ProductDataTable : global::System.Data.TypedTableBase<ProductRow> {
-            
-            private global::System.Data.DataColumn columnname;
+        public partial class DictionaryDataTable : global::System.Data.TypedTableBase<DictionaryRow> {
             
             private global::System.Data.DataColumn columnterm_name;
             
-            private global::System.Data.DataColumn columnExpr1;
-            
-            private global::System.Data.DataColumn columnvendor_code;
-            
-            private global::System.Data.DataColumn columnrecommended_price;
-            
-            private global::System.Data.DataColumn columnremainder;
+            private global::System.Data.DataColumn columnid;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ProductDataTable() {
-                this.TableName = "Product";
+            public DictionaryDataTable() {
+                this.TableName = "Dictionary";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -302,7 +294,7 @@ namespace KRIS.datasets.product {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal ProductDataTable(global::System.Data.DataTable table) {
+            internal DictionaryDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -319,17 +311,9 @@ namespace KRIS.datasets.product {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected ProductDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected DictionaryDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn nameColumn {
-                get {
-                    return this.columnname;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -342,33 +326,9 @@ namespace KRIS.datasets.product {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Expr1Column {
+            public global::System.Data.DataColumn idColumn {
                 get {
-                    return this.columnExpr1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn vendor_codeColumn {
-                get {
-                    return this.columnvendor_code;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn recommended_priceColumn {
-                get {
-                    return this.columnrecommended_price;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn remainderColumn {
-                get {
-                    return this.columnremainder;
+                    return this.columnid;
                 }
             }
             
@@ -383,50 +343,53 @@ namespace KRIS.datasets.product {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ProductRow this[int index] {
+            public DictionaryRow this[int index] {
                 get {
-                    return ((ProductRow)(this.Rows[index]));
+                    return ((DictionaryRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event ProductRowChangeEventHandler ProductRowChanging;
+            public event DictionaryRowChangeEventHandler DictionaryRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event ProductRowChangeEventHandler ProductRowChanged;
+            public event DictionaryRowChangeEventHandler DictionaryRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event ProductRowChangeEventHandler ProductRowDeleting;
+            public event DictionaryRowChangeEventHandler DictionaryRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event ProductRowChangeEventHandler ProductRowDeleted;
+            public event DictionaryRowChangeEventHandler DictionaryRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddProductRow(ProductRow row) {
+            public void AddDictionaryRow(DictionaryRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ProductRow AddProductRow(string name, string term_name, string Expr1, string vendor_code, string recommended_price, string remainder) {
-                ProductRow rowProductRow = ((ProductRow)(this.NewRow()));
+            public DictionaryRow AddDictionaryRow(string term_name) {
+                DictionaryRow rowDictionaryRow = ((DictionaryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        name,
                         term_name,
-                        Expr1,
-                        vendor_code,
-                        recommended_price,
-                        remainder};
-                rowProductRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowProductRow);
-                return rowProductRow;
+                        null};
+                rowDictionaryRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDictionaryRow);
+                return rowDictionaryRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DictionaryRow FindByid(int id) {
+                return ((DictionaryRow)(this.Rows.Find(new object[] {
+                            id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ProductDataTable cln = ((ProductDataTable)(base.Clone()));
+                DictionaryDataTable cln = ((DictionaryDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -434,75 +397,59 @@ namespace KRIS.datasets.product {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ProductDataTable();
+                return new DictionaryDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnname = base.Columns["name"];
                 this.columnterm_name = base.Columns["term_name"];
-                this.columnExpr1 = base.Columns["Expr1"];
-                this.columnvendor_code = base.Columns["vendor_code"];
-                this.columnrecommended_price = base.Columns["recommended_price"];
-                this.columnremainder = base.Columns["remainder"];
+                this.columnid = base.Columns["id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnname = new global::System.Data.DataColumn("name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnname);
                 this.columnterm_name = new global::System.Data.DataColumn("term_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnterm_name);
-                this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnExpr1);
-                this.columnvendor_code = new global::System.Data.DataColumn("vendor_code", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnvendor_code);
-                this.columnrecommended_price = new global::System.Data.DataColumn("recommended_price", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnrecommended_price);
-                this.columnremainder = new global::System.Data.DataColumn("remainder", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnremainder);
-                this.columnname.AllowDBNull = false;
-                this.columnname.MaxLength = 50;
+                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnid}, true));
                 this.columnterm_name.AllowDBNull = false;
                 this.columnterm_name.MaxLength = 50;
-                this.columnExpr1.AllowDBNull = false;
-                this.columnExpr1.MaxLength = 50;
-                this.columnvendor_code.AllowDBNull = false;
-                this.columnvendor_code.MaxLength = 50;
-                this.columnrecommended_price.ReadOnly = true;
-                this.columnrecommended_price.MaxLength = 2147483647;
-                this.columnremainder.ReadOnly = true;
-                this.columnremainder.MaxLength = 2147483647;
-                this.ExtendedProperties.Add("Generator_TablePropName", "_Product");
-                this.ExtendedProperties.Add("Generator_UserTableName", "Product");
+                this.columnid.AutoIncrement = true;
+                this.columnid.AutoIncrementSeed = -1;
+                this.columnid.AutoIncrementStep = -1;
+                this.columnid.AllowDBNull = false;
+                this.columnid.ReadOnly = true;
+                this.columnid.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ProductRow NewProductRow() {
-                return ((ProductRow)(this.NewRow()));
+            public DictionaryRow NewDictionaryRow() {
+                return ((DictionaryRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ProductRow(builder);
+                return new DictionaryRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ProductRow);
+                return typeof(DictionaryRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ProductRowChanged != null)) {
-                    this.ProductRowChanged(this, new ProductRowChangeEvent(((ProductRow)(e.Row)), e.Action));
+                if ((this.DictionaryRowChanged != null)) {
+                    this.DictionaryRowChanged(this, new DictionaryRowChangeEvent(((DictionaryRow)(e.Row)), e.Action));
                 }
             }
             
@@ -510,8 +457,8 @@ namespace KRIS.datasets.product {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ProductRowChanging != null)) {
-                    this.ProductRowChanging(this, new ProductRowChangeEvent(((ProductRow)(e.Row)), e.Action));
+                if ((this.DictionaryRowChanging != null)) {
+                    this.DictionaryRowChanging(this, new DictionaryRowChangeEvent(((DictionaryRow)(e.Row)), e.Action));
                 }
             }
             
@@ -519,8 +466,8 @@ namespace KRIS.datasets.product {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ProductRowDeleted != null)) {
-                    this.ProductRowDeleted(this, new ProductRowChangeEvent(((ProductRow)(e.Row)), e.Action));
+                if ((this.DictionaryRowDeleted != null)) {
+                    this.DictionaryRowDeleted(this, new DictionaryRowChangeEvent(((DictionaryRow)(e.Row)), e.Action));
                 }
             }
             
@@ -528,14 +475,14 @@ namespace KRIS.datasets.product {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ProductRowDeleting != null)) {
-                    this.ProductRowDeleting(this, new ProductRowChangeEvent(((ProductRow)(e.Row)), e.Action));
+                if ((this.DictionaryRowDeleting != null)) {
+                    this.DictionaryRowDeleting(this, new DictionaryRowChangeEvent(((DictionaryRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveProductRow(ProductRow row) {
+            public void RemoveDictionaryRow(DictionaryRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -544,7 +491,7 @@ namespace KRIS.datasets.product {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                Product ds = new Product();
+                OKEIForCombobox ds = new OKEIForCombobox();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -562,7 +509,7 @@ namespace KRIS.datasets.product {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ProductDataTable";
+                attribute2.FixedValue = "DictionaryDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -606,115 +553,37 @@ namespace KRIS.datasets.product {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ProductRow : global::System.Data.DataRow {
+        public partial class DictionaryRow : global::System.Data.DataRow {
             
-            private ProductDataTable tableProduct;
+            private DictionaryDataTable tableDictionary;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal ProductRow(global::System.Data.DataRowBuilder rb) : 
+            internal DictionaryRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableProduct = ((ProductDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string name {
-                get {
-                    return ((string)(this[this.tableProduct.nameColumn]));
-                }
-                set {
-                    this[this.tableProduct.nameColumn] = value;
-                }
+                this.tableDictionary = ((DictionaryDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string term_name {
                 get {
-                    return ((string)(this[this.tableProduct.term_nameColumn]));
+                    return ((string)(this[this.tableDictionary.term_nameColumn]));
                 }
                 set {
-                    this[this.tableProduct.term_nameColumn] = value;
+                    this[this.tableDictionary.term_nameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Expr1 {
+            public int id {
                 get {
-                    return ((string)(this[this.tableProduct.Expr1Column]));
+                    return ((int)(this[this.tableDictionary.idColumn]));
                 }
                 set {
-                    this[this.tableProduct.Expr1Column] = value;
+                    this[this.tableDictionary.idColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string vendor_code {
-                get {
-                    return ((string)(this[this.tableProduct.vendor_codeColumn]));
-                }
-                set {
-                    this[this.tableProduct.vendor_codeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string recommended_price {
-                get {
-                    try {
-                        return ((string)(this[this.tableProduct.recommended_priceColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'recommended_price\' в таблице \'Product\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableProduct.recommended_priceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string remainder {
-                get {
-                    try {
-                        return ((string)(this[this.tableProduct.remainderColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'remainder\' в таблице \'Product\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableProduct.remainderColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Isrecommended_priceNull() {
-                return this.IsNull(this.tableProduct.recommended_priceColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Setrecommended_priceNull() {
-                this[this.tableProduct.recommended_priceColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsremainderNull() {
-                return this.IsNull(this.tableProduct.remainderColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetremainderNull() {
-                this[this.tableProduct.remainderColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -722,22 +591,22 @@ namespace KRIS.datasets.product {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class ProductRowChangeEvent : global::System.EventArgs {
+        public class DictionaryRowChangeEvent : global::System.EventArgs {
             
-            private ProductRow eventRow;
+            private DictionaryRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ProductRowChangeEvent(ProductRow row, global::System.Data.DataRowAction action) {
+            public DictionaryRowChangeEvent(DictionaryRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ProductRow Row {
+            public DictionaryRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -753,7 +622,7 @@ namespace KRIS.datasets.product {
         }
     }
 }
-namespace KRIS.datasets.product.ProductTableAdapters {
+namespace KRIS.datasets.product.OKEIForComboboxTableAdapters {
     
     
     /// <summary>
@@ -765,7 +634,7 @@ namespace KRIS.datasets.product.ProductTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ProductTableAdapter : global::System.ComponentModel.Component {
+    public partial class DictionaryTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -779,7 +648,7 @@ namespace KRIS.datasets.product.ProductTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public ProductTableAdapter() {
+        public DictionaryTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -876,13 +745,9 @@ namespace KRIS.datasets.product.ProductTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Product";
-            tableMapping.ColumnMappings.Add("name", "name");
+            tableMapping.DataSetTable = "Dictionary";
             tableMapping.ColumnMappings.Add("term_name", "term_name");
-            tableMapping.ColumnMappings.Add("Expr1", "Expr1");
-            tableMapping.ColumnMappings.Add("vendor_code", "vendor_code");
-            tableMapping.ColumnMappings.Add("recommended_price", "recommended_price");
-            tableMapping.ColumnMappings.Add("remainder", "remainder");
+            tableMapping.ColumnMappings.Add("id", "id");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -900,11 +765,9 @@ namespace KRIS.datasets.product.ProductTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        p.name, d1.term_name, d2.term_name AS Expr1, p.vendor_code, CONVERT(VARCHAR(MAX), p.recommended_price) AS recommended_price, '' + CONVERT(VARCHAR(MAX), p.remainder) AS remainder
-FROM            Product AS p INNER JOIN
-                         Dictionary AS d1 ON p.type_id = d1.id INNER JOIN
-                         Dictionary AS d2 ON p.okei_id = d2.id
-WHERE        (p.deleted IS NULL)";
+            this._commandCollection[0].CommandText = "SELECT Dictionary.term_name, Dictionary.id FROM Dictionary INNER JOIN Entity ON D" +
+                "ictionary.entity_id = Entity.id WHERE (Entity.name = \'product\') AND (Dictionary." +
+                "target = \'OKEI\') AND (Dictionary.deleted IS NULL)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -912,7 +775,7 @@ WHERE        (p.deleted IS NULL)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(Product.ProductDataTable dataTable) {
+        public virtual int Fill(OKEIForCombobox.DictionaryDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -925,9 +788,9 @@ WHERE        (p.deleted IS NULL)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual Product.ProductDataTable GetData() {
+        public virtual OKEIForCombobox.DictionaryDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            Product.ProductDataTable dataTable = new Product.ProductDataTable();
+            OKEIForCombobox.DictionaryDataTable dataTable = new OKEIForCombobox.DictionaryDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1001,7 +864,7 @@ WHERE        (p.deleted IS NULL)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(Product dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(OKEIForCombobox dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1011,7 +874,7 @@ WHERE        (p.deleted IS NULL)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(Product dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(OKEIForCombobox dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1021,7 +884,7 @@ WHERE        (p.deleted IS NULL)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(Product dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(OKEIForCombobox dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -1055,7 +918,7 @@ WHERE        (p.deleted IS NULL)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(Product dataSet) {
+        public virtual int UpdateAll(OKEIForCombobox dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

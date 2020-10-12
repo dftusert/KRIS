@@ -168,6 +168,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProductAttrs.xsd</DependentUpon>
     </Compile>
+    <Compile Include="datasets\product\OKEIForCombobox.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OKEIForCombobox.xsd</DependentUpon>
+    </Compile>
     <Compile Include="datasets\product\Product.cs">
       <DependentUpon>Product.xsd</DependentUpon>
     </Compile>
@@ -175,6 +180,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Product.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="datasets\product\TypeForCombobox.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TypeForCombobox.xsd</DependentUpon>
     </Compile>
     <Compile Include="Kris.cs">
       <SubType>Form</SubType>
@@ -238,6 +248,30 @@
     <Compile Include="windows\counterparty\Modify.Designer.cs">
       <DependentUpon>Modify.cs</DependentUpon>
     </Compile>
+    <Compile Include="windows\product\Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="windows\product\Add.Designer.cs">
+      <DependentUpon>Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="windows\product\Delete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="windows\product\Delete.Designer.cs">
+      <DependentUpon>Delete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="windows\product\Filter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="windows\product\Filter.Designer.cs">
+      <DependentUpon>Filter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="windows\product\Modify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="windows\product\Modify.Designer.cs">
+      <DependentUpon>Modify.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Kris.resx">
       <DependentUpon>Kris.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,6 +309,18 @@
       <DependentUpon>Filter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="windows\counterparty\Modify.resx">
+      <DependentUpon>Modify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="windows\product\Add.resx">
+      <DependentUpon>Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="windows\product\Delete.resx">
+      <DependentUpon>Delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="windows\product\Filter.resx">
+      <DependentUpon>Filter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="windows\product\Modify.resx">
       <DependentUpon>Modify.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="database\entity\KRISModel.edmx">
@@ -350,6 +396,17 @@
     <None Include="datasets\productattrs\ProductAttrs.xss">
       <DependentUpon>ProductAttrs.xsd</DependentUpon>
     </None>
+    <None Include="datasets\product\OKEIForCombobox.xsc">
+      <DependentUpon>OKEIForCombobox.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\product\OKEIForCombobox.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OKEIForCombobox.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="datasets\product\OKEIForCombobox.xss">
+      <DependentUpon>OKEIForCombobox.xsd</DependentUpon>
+    </None>
     <None Include="datasets\product\Product.xsc">
       <DependentUpon>Product.xsd</DependentUpon>
     </None>
@@ -360,6 +417,17 @@
     </None>
     <None Include="datasets\product\Product.xss">
       <DependentUpon>Product.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\product\TypeForCombobox.xsc">
+      <DependentUpon>TypeForCombobox.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\product\TypeForCombobox.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TypeForCombobox.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="datasets\product\TypeForCombobox.xss">
+      <DependentUpon>TypeForCombobox.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
