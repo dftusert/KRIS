@@ -163,6 +163,11 @@
       <DependentUpon>CounterpartyDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="database\DBCtx.cs" />
+    <Compile Include="datasets\productattrs\AttrsForCombobox.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AttrsForCombobox.xsd</DependentUpon>
+    </Compile>
     <Compile Include="datasets\productattrs\ProductAttrs.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -248,6 +253,30 @@
     <Compile Include="windows\counterparty\Modify.Designer.cs">
       <DependentUpon>Modify.cs</DependentUpon>
     </Compile>
+    <Compile Include="windows\productattrs\Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="windows\productattrs\Add.Designer.cs">
+      <DependentUpon>Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="windows\productattrs\Delete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="windows\productattrs\Delete.Designer.cs">
+      <DependentUpon>Delete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="windows\productattrs\Filter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="windows\productattrs\Filter.Designer.cs">
+      <DependentUpon>Filter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="windows\productattrs\Modify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="windows\productattrs\Modify.Designer.cs">
+      <DependentUpon>Modify.cs</DependentUpon>
+    </Compile>
     <Compile Include="windows\product\Add.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -309,6 +338,18 @@
       <DependentUpon>Filter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="windows\counterparty\Modify.resx">
+      <DependentUpon>Modify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="windows\productattrs\Add.resx">
+      <DependentUpon>Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="windows\productattrs\Delete.resx">
+      <DependentUpon>Delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="windows\productattrs\Filter.resx">
+      <DependentUpon>Filter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="windows\productattrs\Modify.resx">
       <DependentUpon>Modify.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="windows\product\Add.resx">
@@ -384,6 +425,17 @@
     </None>
     <None Include="datasets\counterparty\CounterpartyDataSet.xss">
       <DependentUpon>CounterpartyDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\productattrs\AttrsForCombobox.xsc">
+      <DependentUpon>AttrsForCombobox.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\productattrs\AttrsForCombobox.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AttrsForCombobox.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="datasets\productattrs\AttrsForCombobox.xss">
+      <DependentUpon>AttrsForCombobox.xsd</DependentUpon>
     </None>
     <None Include="datasets\productattrs\ProductAttrs.xsc">
       <DependentUpon>ProductAttrs.xsd</DependentUpon>

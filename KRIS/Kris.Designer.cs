@@ -88,12 +88,6 @@ namespace KRIS
             this.btnAddPA = new System.Windows.Forms.Button();
             this.tabBid = new System.Windows.Forms.TabPage();
             this.dgvBid = new System.Windows.Forms.DataGridView();
-            this.bidnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.termnameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Expr1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expr1DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BidBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bidDataSet = new KRIS.datasets.bid.Bid();
             this.btnFilterB = new System.Windows.Forms.Button();
@@ -123,6 +117,12 @@ namespace KRIS
             this.attr_value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.counterpatryAttrsTableAdapter = new KRIS.datasets.counterpartyattrs.CounterpartyAttrsTableAdapters.CounterpatryAttrsTableAdapter();
             this.counterpartyTableAdapter = new KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters.CounterpartyTableAdapter();
+            this.bidnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.termnameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Expr1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expr1DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.tabCounterparty.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCounterparty)).BeginInit();
@@ -612,6 +612,7 @@ namespace KRIS
             this.btnFilterPA.TabIndex = 21;
             this.btnFilterPA.Text = "Фильтр";
             this.btnFilterPA.UseVisualStyleBackColor = true;
+            this.btnFilterPA.Click += new System.EventHandler(this.filterProductAttrs);
             // 
             // btnRefreshPA
             // 
@@ -634,6 +635,7 @@ namespace KRIS
             this.btnDeletePA.TabIndex = 19;
             this.btnDeletePA.Text = "Удалить";
             this.btnDeletePA.UseVisualStyleBackColor = true;
+            this.btnDeletePA.Click += new System.EventHandler(this.deleteProductAttrs);
             // 
             // btnEditPA
             // 
@@ -643,6 +645,7 @@ namespace KRIS
             this.btnEditPA.TabIndex = 18;
             this.btnEditPA.Text = "Изменить";
             this.btnEditPA.UseVisualStyleBackColor = true;
+            this.btnEditPA.Click += new System.EventHandler(this.modifyProductAttrs);
             // 
             // btnAddPA
             // 
@@ -652,6 +655,7 @@ namespace KRIS
             this.btnAddPA.TabIndex = 17;
             this.btnAddPA.Text = "Добавить";
             this.btnAddPA.UseVisualStyleBackColor = true;
+            this.btnAddPA.Click += new System.EventHandler(this.addProductAttrs);
             // 
             // tabBid
             // 
@@ -688,48 +692,6 @@ namespace KRIS
             this.dgvBid.ReadOnly = true;
             this.dgvBid.Size = new System.Drawing.Size(794, 375);
             this.dgvBid.TabIndex = 27;
-            // 
-            // bidnumberDataGridViewTextBoxColumn
-            // 
-            this.bidnumberDataGridViewTextBoxColumn.DataPropertyName = "bid_number";
-            this.bidnumberDataGridViewTextBoxColumn.HeaderText = "Номер заявки";
-            this.bidnumberDataGridViewTextBoxColumn.Name = "bidnumberDataGridViewTextBoxColumn";
-            this.bidnumberDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // createdateDataGridViewTextBoxColumn
-            // 
-            this.createdateDataGridViewTextBoxColumn.DataPropertyName = "create_date";
-            this.createdateDataGridViewTextBoxColumn.HeaderText = "Дата создания";
-            this.createdateDataGridViewTextBoxColumn.Name = "createdateDataGridViewTextBoxColumn";
-            this.createdateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // termnameDataGridViewTextBoxColumn2
-            // 
-            this.termnameDataGridViewTextBoxColumn2.DataPropertyName = "term_name";
-            this.termnameDataGridViewTextBoxColumn2.HeaderText = "Статус";
-            this.termnameDataGridViewTextBoxColumn2.Name = "termnameDataGridViewTextBoxColumn2";
-            this.termnameDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // statusdateDataGridViewTextBoxColumn
-            // 
-            this.statusdateDataGridViewTextBoxColumn.DataPropertyName = "status_date";
-            this.statusdateDataGridViewTextBoxColumn.HeaderText = "Дата статуса";
-            this.statusdateDataGridViewTextBoxColumn.Name = "statusdateDataGridViewTextBoxColumn";
-            this.statusdateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Expr1
-            // 
-            this.Expr1.DataPropertyName = "Expr1";
-            this.Expr1.HeaderText = "Тип заявки";
-            this.Expr1.Name = "Expr1";
-            this.Expr1.ReadOnly = true;
-            // 
-            // expr1DataGridViewTextBoxColumn1
-            // 
-            this.expr1DataGridViewTextBoxColumn1.DataPropertyName = "Expr1";
-            this.expr1DataGridViewTextBoxColumn1.HeaderText = "ИНН пок. или пост.";
-            this.expr1DataGridViewTextBoxColumn1.Name = "expr1DataGridViewTextBoxColumn1";
-            this.expr1DataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // BidBindingSource
             // 
@@ -956,6 +918,48 @@ namespace KRIS
             // 
             this.counterpartyTableAdapter.ClearBeforeFill = true;
             // 
+            // bidnumberDataGridViewTextBoxColumn
+            // 
+            this.bidnumberDataGridViewTextBoxColumn.DataPropertyName = "bid_number";
+            this.bidnumberDataGridViewTextBoxColumn.HeaderText = "Номер заявки";
+            this.bidnumberDataGridViewTextBoxColumn.Name = "bidnumberDataGridViewTextBoxColumn";
+            this.bidnumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // createdateDataGridViewTextBoxColumn
+            // 
+            this.createdateDataGridViewTextBoxColumn.DataPropertyName = "create_date";
+            this.createdateDataGridViewTextBoxColumn.HeaderText = "Дата создания";
+            this.createdateDataGridViewTextBoxColumn.Name = "createdateDataGridViewTextBoxColumn";
+            this.createdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // termnameDataGridViewTextBoxColumn2
+            // 
+            this.termnameDataGridViewTextBoxColumn2.DataPropertyName = "term_name";
+            this.termnameDataGridViewTextBoxColumn2.HeaderText = "Статус";
+            this.termnameDataGridViewTextBoxColumn2.Name = "termnameDataGridViewTextBoxColumn2";
+            this.termnameDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // statusdateDataGridViewTextBoxColumn
+            // 
+            this.statusdateDataGridViewTextBoxColumn.DataPropertyName = "status_date";
+            this.statusdateDataGridViewTextBoxColumn.HeaderText = "Дата статуса";
+            this.statusdateDataGridViewTextBoxColumn.Name = "statusdateDataGridViewTextBoxColumn";
+            this.statusdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Expr1
+            // 
+            this.Expr1.DataPropertyName = "Expr1";
+            this.Expr1.HeaderText = "Тип заявки";
+            this.Expr1.Name = "Expr1";
+            this.Expr1.ReadOnly = true;
+            // 
+            // expr1DataGridViewTextBoxColumn1
+            // 
+            this.expr1DataGridViewTextBoxColumn1.DataPropertyName = "inn";
+            this.expr1DataGridViewTextBoxColumn1.HeaderText = "ИНН пок. или пост.";
+            this.expr1DataGridViewTextBoxColumn1.Name = "expr1DataGridViewTextBoxColumn1";
+            this.expr1DataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
             // Kris
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1096,12 +1100,6 @@ namespace KRIS
         private System.Windows.Forms.BindingSource BidBindingSource;
         private datasets.bid.Bid bidDataSet;
         private datasets.bid.BidTableAdapters.BidTableAdapter bidTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bidnumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createdateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn termnameDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusdateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Expr1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn expr1DataGridViewTextBoxColumn1;
         private System.Windows.Forms.BindingSource BidProductBindingSource;
         private datasets.bidproduct.BidProduct bidProductDataSet;
         private datasets.bidproduct.BidProductTableAdapters.BidProductTableAdapter bidProductTableAdapter;
@@ -1116,5 +1114,11 @@ namespace KRIS
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
         private System.Windows.Forms.DataGridViewTextBoxColumn termnameDataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bidnumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createdateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn termnameDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusdateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Expr1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn expr1DataGridViewTextBoxColumn1;
     }
 }

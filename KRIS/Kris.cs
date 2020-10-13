@@ -439,6 +439,110 @@ namespace KRIS
         }
         /****************************** PRODUCT ENDS *****************************************/
 
+        /****************************** PRODUCTATTRS *****************************************/
+        private void filterProductAttrs(object sender, EventArgs e)
+        {
+            windows.productattrs.Filter filter = new windows.productattrs.Filter(ref productAttrsBindingSource);
+            filter.ShowDialog();
+
+            dgvProductAttrs.ClearSelection();
+            if (productAttrsBindingSource.Filter != null && productAttrsBindingSource.Filter != "")
+                btnFilterPA.BackColor = Color.Green;
+            else
+                btnFilterPA.BackColor = ButtonBase.DefaultBackColor;
+        }
+
+        private void addProductAttrs(object sender, EventArgs e)
+        {
+            windows.productattrs.Add add = new windows.productattrs.Add(username);
+            add.ShowDialog();
+
+            refreshProductAttrs();
+        }
+
+        private void modifyProductAttrs(object sender, EventArgs e)
+        {
+            if ((dgvProductAttrs.SelectedRows == null || dgvProductAttrs.SelectedRows.Count != 1) &&
+               (dgvProductAttrs.SelectedCells == null || dgvProductAttrs.SelectedCells.Count != 1))
+            {
+                MessageBox.Show("Не выбрана запись для редактирования или выбрано больше одной", "Информация");
+                return;
+            }
+
+            int rowIndex;
+            if (dgvProductAttrs.SelectedCells != null && dgvProductAttrs.SelectedCells.Count == 1)
+                rowIndex = dgvProductAttrs.SelectedCells[0].RowIndex;
+            else
+                rowIndex = dgvProductAttrs.SelectedRows[0].Index;
+
+            string vendorCode = dgvProductAttrs.Rows[rowIndex].Cells[0].Value.ToString();
+            string attr_name = dgvProductAttrs.Rows[rowIndex].Cells[1].Value.ToString();
+            int attr_id = 0;
+            string val = dgvProductAttrs.Rows[rowIndex].Cells[2].Value.ToString();
+            ProductAttrs pa = new ProductAttrs();
+            Product product;
+            using (DBCtx db = new DBCtx())
+            {
+                Dictionary dict = (from d in db.Dictionary
+                                   from en in db.Entity
+                                   where d.entity_id == en.id && en.name == "product" && d.term_name == attr_name
+                                   select d).FirstOrDefault();
+                if (dict == null)
+                {
+                    MessageBox.Show("Ошибка выбора элемента списка", "Информация");
+                    return;
+                }
+
+                attr_id = dict.id;
+
+                product = (from p in db.Product
+                                where p.vendor_code == vendorCode && p.deleted == null
+                                select p).FirstOrDefault();
+
+                if (product == null)
+                {
+                    MessageBox.Show("Товар не найден, изменение невозможно");
+                    return;
+                }
+
+                pa.product_id = product.id;
+            }
+
+            pa.attr_id = attr_id;
+            pa.attr_value = val;
+
+            windows.productattrs.Modify modify = new windows.productattrs.Modify(username, product, pa);
+            modify.ShowDialog();
+
+            refreshProductAttrs();
+        }
+
+        private void deleteProductAttrs(object sender, EventArgs e)
+        {
+            if ((dgvProductAttrs.SelectedRows == null || dgvProductAttrs.SelectedRows.Count != 1) &&
+               (dgvProductAttrs.SelectedCells == null || dgvProductAttrs.SelectedCells.Count != 1))
+            {
+                MessageBox.Show("Не выбрана запись для редактирования или выбрано больше одной", "Информация");
+                return;
+            }
+
+            int rowIndex;
+            if (dgvProductAttrs.SelectedCells != null && dgvProductAttrs.SelectedCells.Count == 1)
+                rowIndex = dgvProductAttrs.SelectedCells[0].RowIndex;
+            else
+                rowIndex = dgvProductAttrs.SelectedRows[0].Index;
+
+            string vendorCode = dgvProductAttrs.Rows[rowIndex].Cells[0].Value.ToString();
+            string attr_name = dgvProductAttrs.Rows[rowIndex].Cells[1].Value.ToString();
+            string attr_value = dgvProductAttrs.Rows[rowIndex].Cells[2].Value.ToString();
+
+            windows.productattrs.Delete delete = new windows.productattrs.Delete(username, vendorCode, attr_name, attr_value);
+            delete.ShowDialog();
+
+            refreshProductAttrs();
+        }
+        /****************************** PRODUCTATTRS END *****************************************/
+
         private void Kris_Load(object sender, EventArgs e)
         {
             refreshCounterparty(sender, e);
