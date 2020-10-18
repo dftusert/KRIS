@@ -75,55 +75,58 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="database\entity\Bid.cs">
-      <DependentUpon>KRISModel.tt</DependentUpon>
+      <DependentUpon>KrisModel.tt</DependentUpon>
     </Compile>
     <Compile Include="database\entity\BidProduct.cs">
-      <DependentUpon>KRISModel.tt</DependentUpon>
+      <DependentUpon>KrisModel.tt</DependentUpon>
     </Compile>
     <Compile Include="database\entity\Counterparty.cs">
-      <DependentUpon>KRISModel.tt</DependentUpon>
+      <DependentUpon>KrisModel.tt</DependentUpon>
     </Compile>
     <Compile Include="database\entity\CounterpartyAttrs.cs">
-      <DependentUpon>KRISModel.tt</DependentUpon>
+      <DependentUpon>KrisModel.tt</DependentUpon>
     </Compile>
     <Compile Include="database\entity\Dictionary.cs">
-      <DependentUpon>KRISModel.tt</DependentUpon>
+      <DependentUpon>KrisModel.tt</DependentUpon>
     </Compile>
     <Compile Include="database\entity\Entity.cs">
-      <DependentUpon>KRISModel.tt</DependentUpon>
+      <DependentUpon>KrisModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="database\entity\KRISModel.Context.cs">
+    <Compile Include="database\entity\KrisModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KRISModel.Context.tt</DependentUpon>
+      <DependentUpon>KrisModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="database\entity\KRISModel.cs">
+    <Compile Include="database\entity\KrisModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KRISModel.tt</DependentUpon>
+      <DependentUpon>KrisModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="database\entity\KRISModel.Designer.cs">
+    <Compile Include="database\entity\KrisModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KRISModel.edmx</DependentUpon>
+      <DependentUpon>KrisModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="database\entity\Logs.cs">
-      <DependentUpon>KRISModel.tt</DependentUpon>
+      <DependentUpon>KrisModel.tt</DependentUpon>
     </Compile>
     <Compile Include="database\entity\Product.cs">
-      <DependentUpon>KRISModel.tt</DependentUpon>
+      <DependentUpon>KrisModel.tt</DependentUpon>
     </Compile>
     <Compile Include="database\entity\ProductAttrs.cs">
-      <DependentUpon>KRISModel.tt</DependentUpon>
+      <DependentUpon>KrisModel.tt</DependentUpon>
     </Compile>
     <Compile Include="database\entity\Role.cs">
-      <DependentUpon>KRISModel.tt</DependentUpon>
+      <DependentUpon>KrisModel.tt</DependentUpon>
     </Compile>
     <Compile Include="database\entity\UserRole.cs">
-      <DependentUpon>KRISModel.tt</DependentUpon>
+      <DependentUpon>KrisModel.tt</DependentUpon>
     </Compile>
     <Compile Include="database\entity\Users.cs">
-      <DependentUpon>KRISModel.tt</DependentUpon>
+      <DependentUpon>KrisModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="datasets\bidproduct\BidProduct.cs">
+      <DependentUpon>BidProduct.xsd</DependentUpon>
     </Compile>
     <Compile Include="datasets\bidproduct\BidProduct.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -137,6 +140,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Bid.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="datasets\bid\StatusForCombobox.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StatusForCombobox.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="datasets\bid\TypeForCombobox.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TypeForCombobox.xsd</DependentUpon>
     </Compile>
     <Compile Include="datasets\counterpartyattrs\AttrsForComboBox.cs">
       <DependentUpon>AttrsForComboBox.xsd</DependentUpon>
@@ -205,6 +218,48 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="windows\bidproduct\Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="windows\bidproduct\Add.Designer.cs">
+      <DependentUpon>Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="windows\bidproduct\Delete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="windows\bidproduct\Delete.Designer.cs">
+      <DependentUpon>Delete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="windows\bidproduct\Filter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="windows\bidproduct\Filter.Designer.cs">
+      <DependentUpon>Filter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="windows\bidproduct\Modify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="windows\bidproduct\Modify.Designer.cs">
+      <DependentUpon>Modify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="windows\bid\Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="windows\bid\Add.Designer.cs">
+      <DependentUpon>Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="windows\bid\Filter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="windows\bid\Filter.Designer.cs">
+      <DependentUpon>Filter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="windows\bid\Modify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="windows\bid\Modify.Designer.cs">
+      <DependentUpon>Modify.cs</DependentUpon>
+    </Compile>
     <Compile Include="windows\counterpartyattrs\Add.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -316,6 +371,27 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="windows\bidproduct\Add.resx">
+      <DependentUpon>Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="windows\bidproduct\Delete.resx">
+      <DependentUpon>Delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="windows\bidproduct\Filter.resx">
+      <DependentUpon>Filter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="windows\bidproduct\Modify.resx">
+      <DependentUpon>Modify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="windows\bid\Add.resx">
+      <DependentUpon>Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="windows\bid\Filter.resx">
+      <DependentUpon>Filter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="windows\bid\Modify.resx">
+      <DependentUpon>Modify.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="windows\counterpartyattrs\Add.resx">
       <DependentUpon>Add.cs</DependentUpon>
     </EmbeddedResource>
@@ -364,12 +440,12 @@
     <EmbeddedResource Include="windows\product\Modify.resx">
       <DependentUpon>Modify.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="database\entity\KRISModel.edmx">
+    <EntityDeploy Include="database\entity\KrisModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>KRISModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>KrisModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="database\entity\KRISModel.edmx.diagram">
-      <DependentUpon>KRISModel.edmx</DependentUpon>
+    <None Include="database\entity\KrisModel.edmx.diagram">
+      <DependentUpon>KrisModel.edmx</DependentUpon>
     </None>
     <None Include="datasets\bidproduct\BidProduct.xsc">
       <DependentUpon>BidProduct.xsd</DependentUpon>
@@ -392,6 +468,28 @@
     </None>
     <None Include="datasets\bid\Bid.xss">
       <DependentUpon>Bid.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\bid\StatusForCombobox.xsc">
+      <DependentUpon>StatusForCombobox.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\bid\StatusForCombobox.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>StatusForCombobox.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="datasets\bid\StatusForCombobox.xss">
+      <DependentUpon>StatusForCombobox.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\bid\TypeForCombobox.xsc">
+      <DependentUpon>TypeForCombobox.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\bid\TypeForCombobox.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TypeForCombobox.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="datasets\bid\TypeForCombobox.xss">
+      <DependentUpon>TypeForCombobox.xsd</DependentUpon>
     </None>
     <None Include="datasets\counterpartyattrs\AttrsForComboBox.xsc">
       <DependentUpon>AttrsForComboBox.xsd</DependentUpon>
@@ -496,15 +594,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="database\entity\KRISModel.Context.tt">
+    <Content Include="database\entity\KrisModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KRISModel.edmx</DependentUpon>
-      <LastGenOutput>KRISModel.Context.cs</LastGenOutput>
+      <DependentUpon>KrisModel.edmx</DependentUpon>
+      <LastGenOutput>KrisModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="database\entity\KRISModel.tt">
+    <Content Include="database\entity\KrisModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KRISModel.edmx</DependentUpon>
-      <LastGenOutput>KRISModel.cs</LastGenOutput>
+      <DependentUpon>KrisModel.edmx</DependentUpon>
+      <LastGenOutput>KrisModel.cs</LastGenOutput>
     </Content>
     <Content Include="dbsetupsql\create.sql" />
   </ItemGroup>

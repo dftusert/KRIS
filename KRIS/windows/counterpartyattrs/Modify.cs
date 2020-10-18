@@ -1,13 +1,8 @@
 ﻿using KRIS.database;
 using KRIS.database.entity;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KRIS.windows.counterpartyattrs
@@ -21,7 +16,6 @@ namespace KRIS.windows.counterpartyattrs
         {
             InitializeComponent();
 
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "attrsForComboBox.Dictionary". При необходимости она может быть перемещена или удалена.
             this.dictionaryTableAdapter.Fill(this.attrsForComboBox.Dictionary);
 
             this.username = username;
@@ -59,12 +53,6 @@ namespace KRIS.windows.counterpartyattrs
                     }
                 }
             }
-        }
-
-        private void Modify_Load(object sender, EventArgs e)
-        {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "attrsForComboBox.Dictionary". При необходимости она может быть перемещена или удалена.
-            // this.dictionaryTableAdapter.Fill(this.attrsForComboBox.Dictionary);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -113,6 +101,7 @@ namespace KRIS.windows.counterpartyattrs
                 }
 
                 MessageBox.Show("Атрибут покупателя или поставщика успешно обновлен в системе", "Информация");
+                this.Close();
             }
         }
     }

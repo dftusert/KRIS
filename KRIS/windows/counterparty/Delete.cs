@@ -1,13 +1,8 @@
 ﻿using KRIS.database;
 using KRIS.database.entity;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KRIS.windows.counterparty
@@ -58,6 +53,7 @@ namespace KRIS.windows.counterparty
                 }
 
                 MessageBox.Show("Покупатель или поставщик успешно удален из системы", "Информация");
+                this.Close();
             }
         }
     }

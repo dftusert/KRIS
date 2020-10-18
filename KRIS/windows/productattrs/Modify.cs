@@ -1,13 +1,8 @@
 ﻿using KRIS.database;
 using KRIS.database.entity;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KRIS.windows.productattrs
@@ -21,7 +16,6 @@ namespace KRIS.windows.productattrs
         {
             InitializeComponent();
 
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "attrsForCombobox.Dictionary". При необходимости она может быть перемещена или удалена.
             this.dictionaryTableAdapter.Fill(this.attrsForCombobox.Dictionary);
 
             this.username = username;
@@ -109,12 +103,12 @@ namespace KRIS.windows.productattrs
                 }
 
                 MessageBox.Show("Атрибут товара успешно обновлен в системе", "Информация");
+                this.Close();
             }
         }
 
         private void Modify_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "attrsForCombobox.Dictionary". При необходимости она может быть перемещена или удалена.
             this.dictionaryTableAdapter.Fill(this.attrsForCombobox.Dictionary);
         }
     }

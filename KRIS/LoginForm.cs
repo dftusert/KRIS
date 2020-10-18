@@ -2,13 +2,10 @@
 using KRIS.database.entity;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KRIS
@@ -103,9 +100,9 @@ namespace KRIS
             }
 
             Kris kris = new Kris(username, rolenames);
-            this.Hide();           //Hide the main form before showing the secondary
-            kris.ShowDialog();     //Show secondary form, code execution stop until frm2 is closed
-            this.Close();           //When frm2 is closed, continue with the code (show main form)
+            this.Hide();
+            kris.ShowDialog();
+            this.Close();
         }
 
         private string getHash(string text)

@@ -1,9 +1,4 @@
-﻿using KRIS.database.entity;
-using KRIS.datasets;
-using KRIS.datasets.counterparty;
-using KRIS.datasets.counterpartyattrs.CounterpartyAttrsTableAdapters;
-
-namespace KRIS
+﻿namespace KRIS
 {
     partial class Kris
     {
@@ -61,12 +56,6 @@ namespace KRIS
             this.btnAddCA = new System.Windows.Forms.Button();
             this.tabProduct = new System.Windows.Forms.TabPage();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expr1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.termnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productDataSet = new KRIS.datasets.product.Product();
             this.btnFilterP = new System.Windows.Forms.Button();
@@ -88,11 +77,16 @@ namespace KRIS
             this.btnAddPA = new System.Windows.Forms.Button();
             this.tabBid = new System.Windows.Forms.TabPage();
             this.dgvBid = new System.Windows.Forms.DataGridView();
+            this.bidnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.termnameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Expr1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expr1DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BidBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bidDataSet = new KRIS.datasets.bid.Bid();
             this.btnFilterB = new System.Windows.Forms.Button();
             this.btnRefreshB = new System.Windows.Forms.Button();
-            this.btnDeleteB = new System.Windows.Forms.Button();
             this.btnEditB = new System.Windows.Forms.Button();
             this.btnAddB = new System.Windows.Forms.Button();
             this.tabBidProduct = new System.Windows.Forms.TabPage();
@@ -110,19 +104,19 @@ namespace KRIS
             this.btnAddBP = new System.Windows.Forms.Button();
             this.productTableAdapter = new KRIS.datasets.product.ProductTableAdapters.ProductTableAdapter();
             this.productAttrsTableAdapter = new KRIS.datasets.productattrs.ProductAttrsTableAdapters.ProductAttrsTableAdapter();
-            this.bidTableAdapter = new KRIS.datasets.bid.BidTableAdapters.BidTableAdapter();
             this.bidProductTableAdapter = new KRIS.datasets.bidproduct.BidProductTableAdapters.BidProductTableAdapter();
             this.inn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.term_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.attr_value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.counterpatryAttrsTableAdapter = new KRIS.datasets.counterpartyattrs.CounterpartyAttrsTableAdapters.CounterpatryAttrsTableAdapter();
             this.counterpartyTableAdapter = new KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters.CounterpartyTableAdapter();
-            this.bidnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.termnameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Expr1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expr1DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bidTableAdapter = new KRIS.datasets.bid.BidTableAdapters.BidTableAdapter();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expr1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.termnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.tabCounterparty.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCounterparty)).BeginInit();
@@ -161,7 +155,7 @@ namespace KRIS
             this.tabControl.Location = new System.Drawing.Point(1, 2);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(802, 447);
+            this.tabControl.Size = new System.Drawing.Size(797, 447);
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             this.tabControl.Click += new System.EventHandler(this.refreshProduct);
@@ -177,7 +171,7 @@ namespace KRIS
             this.tabCounterparty.Location = new System.Drawing.Point(4, 22);
             this.tabCounterparty.Name = "tabCounterparty";
             this.tabCounterparty.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCounterparty.Size = new System.Drawing.Size(794, 421);
+            this.tabCounterparty.Size = new System.Drawing.Size(789, 421);
             this.tabCounterparty.TabIndex = 0;
             this.tabCounterparty.Text = "Покупатели и поставщики";
             this.tabCounterparty.UseVisualStyleBackColor = true;
@@ -294,7 +288,7 @@ namespace KRIS
             this.tabCounterpartyAttrs.Location = new System.Drawing.Point(4, 22);
             this.tabCounterpartyAttrs.Name = "tabCounterpartyAttrs";
             this.tabCounterpartyAttrs.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCounterpartyAttrs.Size = new System.Drawing.Size(794, 421);
+            this.tabCounterpartyAttrs.Size = new System.Drawing.Size(789, 421);
             this.tabCounterpartyAttrs.TabIndex = 1;
             this.tabCounterpartyAttrs.Text = "Характеристики пок. и пост.";
             this.tabCounterpartyAttrs.UseVisualStyleBackColor = true;
@@ -411,7 +405,7 @@ namespace KRIS
             this.tabProduct.Location = new System.Drawing.Point(4, 22);
             this.tabProduct.Name = "tabProduct";
             this.tabProduct.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProduct.Size = new System.Drawing.Size(794, 421);
+            this.tabProduct.Size = new System.Drawing.Size(789, 421);
             this.tabProduct.TabIndex = 2;
             this.tabProduct.Text = "Товары";
             this.tabProduct.UseVisualStyleBackColor = true;
@@ -435,48 +429,6 @@ namespace KRIS
             this.dgvProduct.ReadOnly = true;
             this.dgvProduct.Size = new System.Drawing.Size(803, 375);
             this.dgvProduct.TabIndex = 17;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "vendor_code";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Артикул";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "name";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Наименование";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // expr1DataGridViewTextBoxColumn
-            // 
-            this.expr1DataGridViewTextBoxColumn.DataPropertyName = "Expr1";
-            this.expr1DataGridViewTextBoxColumn.HeaderText = "ОКЕИ";
-            this.expr1DataGridViewTextBoxColumn.Name = "expr1DataGridViewTextBoxColumn";
-            this.expr1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // termnameDataGridViewTextBoxColumn
-            // 
-            this.termnameDataGridViewTextBoxColumn.DataPropertyName = "term_name";
-            this.termnameDataGridViewTextBoxColumn.HeaderText = "Тип";
-            this.termnameDataGridViewTextBoxColumn.Name = "termnameDataGridViewTextBoxColumn";
-            this.termnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "recommended_price";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Рекомендованная цена";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.DataPropertyName = "remainder";
-            this.dataGridViewTextBoxColumn20.HeaderText = "Остаток на складе";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            this.dataGridViewTextBoxColumn20.ReadOnly = true;
             // 
             // productBindingSource
             // 
@@ -551,7 +503,7 @@ namespace KRIS
             this.tabProductAttrs.Location = new System.Drawing.Point(4, 22);
             this.tabProductAttrs.Name = "tabProductAttrs";
             this.tabProductAttrs.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProductAttrs.Size = new System.Drawing.Size(794, 421);
+            this.tabProductAttrs.Size = new System.Drawing.Size(789, 421);
             this.tabProductAttrs.TabIndex = 3;
             this.tabProductAttrs.Text = "Характеристики товара";
             this.tabProductAttrs.UseVisualStyleBackColor = true;
@@ -662,13 +614,12 @@ namespace KRIS
             this.tabBid.Controls.Add(this.dgvBid);
             this.tabBid.Controls.Add(this.btnFilterB);
             this.tabBid.Controls.Add(this.btnRefreshB);
-            this.tabBid.Controls.Add(this.btnDeleteB);
             this.tabBid.Controls.Add(this.btnEditB);
             this.tabBid.Controls.Add(this.btnAddB);
             this.tabBid.Location = new System.Drawing.Point(4, 22);
             this.tabBid.Name = "tabBid";
             this.tabBid.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBid.Size = new System.Drawing.Size(794, 421);
+            this.tabBid.Size = new System.Drawing.Size(789, 421);
             this.tabBid.TabIndex = 4;
             this.tabBid.Text = "Заявки";
             this.tabBid.UseVisualStyleBackColor = true;
@@ -693,6 +644,48 @@ namespace KRIS
             this.dgvBid.Size = new System.Drawing.Size(794, 375);
             this.dgvBid.TabIndex = 27;
             // 
+            // bidnumberDataGridViewTextBoxColumn
+            // 
+            this.bidnumberDataGridViewTextBoxColumn.DataPropertyName = "bid_number";
+            this.bidnumberDataGridViewTextBoxColumn.HeaderText = "Номер заявки";
+            this.bidnumberDataGridViewTextBoxColumn.Name = "bidnumberDataGridViewTextBoxColumn";
+            this.bidnumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // createdateDataGridViewTextBoxColumn
+            // 
+            this.createdateDataGridViewTextBoxColumn.DataPropertyName = "create_date";
+            this.createdateDataGridViewTextBoxColumn.HeaderText = "Дата создания";
+            this.createdateDataGridViewTextBoxColumn.Name = "createdateDataGridViewTextBoxColumn";
+            this.createdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // termnameDataGridViewTextBoxColumn2
+            // 
+            this.termnameDataGridViewTextBoxColumn2.DataPropertyName = "term_name";
+            this.termnameDataGridViewTextBoxColumn2.HeaderText = "Статус";
+            this.termnameDataGridViewTextBoxColumn2.Name = "termnameDataGridViewTextBoxColumn2";
+            this.termnameDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // statusdateDataGridViewTextBoxColumn
+            // 
+            this.statusdateDataGridViewTextBoxColumn.DataPropertyName = "status_date";
+            this.statusdateDataGridViewTextBoxColumn.HeaderText = "Дата статуса";
+            this.statusdateDataGridViewTextBoxColumn.Name = "statusdateDataGridViewTextBoxColumn";
+            this.statusdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Expr1
+            // 
+            this.Expr1.DataPropertyName = "Expr1";
+            this.Expr1.HeaderText = "Тип заявки";
+            this.Expr1.Name = "Expr1";
+            this.Expr1.ReadOnly = true;
+            // 
+            // expr1DataGridViewTextBoxColumn1
+            // 
+            this.expr1DataGridViewTextBoxColumn1.DataPropertyName = "inn";
+            this.expr1DataGridViewTextBoxColumn1.HeaderText = "ИНН пок. или пост.";
+            this.expr1DataGridViewTextBoxColumn1.Name = "expr1DataGridViewTextBoxColumn1";
+            this.expr1DataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
             // BidBindingSource
             // 
             this.BidBindingSource.DataMember = "Bid";
@@ -711,6 +704,7 @@ namespace KRIS
             this.btnFilterB.TabIndex = 26;
             this.btnFilterB.Text = "Фильтр";
             this.btnFilterB.UseVisualStyleBackColor = true;
+            this.btnFilterB.Click += new System.EventHandler(this.filterBid);
             // 
             // btnRefreshB
             // 
@@ -725,15 +719,6 @@ namespace KRIS
             this.btnRefreshB.UseVisualStyleBackColor = true;
             this.btnRefreshB.Click += new System.EventHandler(this.refreshBid);
             // 
-            // btnDeleteB
-            // 
-            this.btnDeleteB.Location = new System.Drawing.Point(471, 381);
-            this.btnDeleteB.Name = "btnDeleteB";
-            this.btnDeleteB.Size = new System.Drawing.Size(131, 33);
-            this.btnDeleteB.TabIndex = 24;
-            this.btnDeleteB.Text = "Удалить";
-            this.btnDeleteB.UseVisualStyleBackColor = true;
-            // 
             // btnEditB
             // 
             this.btnEditB.Location = new System.Drawing.Point(312, 381);
@@ -742,6 +727,7 @@ namespace KRIS
             this.btnEditB.TabIndex = 23;
             this.btnEditB.Text = "Изменить";
             this.btnEditB.UseVisualStyleBackColor = true;
+            this.btnEditB.Click += new System.EventHandler(this.modifyBid);
             // 
             // btnAddB
             // 
@@ -751,6 +737,7 @@ namespace KRIS
             this.btnAddB.TabIndex = 22;
             this.btnAddB.Text = "Добавить";
             this.btnAddB.UseVisualStyleBackColor = true;
+            this.btnAddB.Click += new System.EventHandler(this.addBid);
             // 
             // tabBidProduct
             // 
@@ -763,7 +750,7 @@ namespace KRIS
             this.tabBidProduct.Location = new System.Drawing.Point(4, 22);
             this.tabBidProduct.Name = "tabBidProduct";
             this.tabBidProduct.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBidProduct.Size = new System.Drawing.Size(794, 421);
+            this.tabBidProduct.Size = new System.Drawing.Size(789, 421);
             this.tabBidProduct.TabIndex = 5;
             this.tabBidProduct.Text = "Товары в заявке";
             this.tabBidProduct.UseVisualStyleBackColor = true;
@@ -810,7 +797,7 @@ namespace KRIS
             // productpriceDataGridViewTextBoxColumn
             // 
             this.productpriceDataGridViewTextBoxColumn.DataPropertyName = "product_price";
-            this.productpriceDataGridViewTextBoxColumn.HeaderText = "Цена";
+            this.productpriceDataGridViewTextBoxColumn.HeaderText = "Цена за ед.";
             this.productpriceDataGridViewTextBoxColumn.Name = "productpriceDataGridViewTextBoxColumn";
             this.productpriceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -832,6 +819,7 @@ namespace KRIS
             this.btnFilterBP.TabIndex = 31;
             this.btnFilterBP.Text = "Фильтр";
             this.btnFilterBP.UseVisualStyleBackColor = true;
+            this.btnFilterBP.Click += new System.EventHandler(this.filterBidProduct);
             // 
             // btnRefreshBP
             // 
@@ -854,6 +842,7 @@ namespace KRIS
             this.btnDeleteBP.TabIndex = 29;
             this.btnDeleteBP.Text = "Удалить";
             this.btnDeleteBP.UseVisualStyleBackColor = true;
+            this.btnDeleteBP.Click += new System.EventHandler(this.deleteBidProduct);
             // 
             // btnEditBP
             // 
@@ -863,6 +852,7 @@ namespace KRIS
             this.btnEditBP.TabIndex = 28;
             this.btnEditBP.Text = "Изменить";
             this.btnEditBP.UseVisualStyleBackColor = true;
+            this.btnEditBP.Click += new System.EventHandler(this.modifyBidProduct);
             // 
             // btnAddBP
             // 
@@ -872,6 +862,7 @@ namespace KRIS
             this.btnAddBP.TabIndex = 27;
             this.btnAddBP.Text = "Добавить";
             this.btnAddBP.UseVisualStyleBackColor = true;
+            this.btnAddBP.Click += new System.EventHandler(this.addBidProduct);
             // 
             // productTableAdapter
             // 
@@ -880,10 +871,6 @@ namespace KRIS
             // productAttrsTableAdapter
             // 
             this.productAttrsTableAdapter.ClearBeforeFill = true;
-            // 
-            // bidTableAdapter
-            // 
-            this.bidTableAdapter.ClearBeforeFill = true;
             // 
             // bidProductTableAdapter
             // 
@@ -918,47 +905,51 @@ namespace KRIS
             // 
             this.counterpartyTableAdapter.ClearBeforeFill = true;
             // 
-            // bidnumberDataGridViewTextBoxColumn
+            // bidTableAdapter
             // 
-            this.bidnumberDataGridViewTextBoxColumn.DataPropertyName = "bid_number";
-            this.bidnumberDataGridViewTextBoxColumn.HeaderText = "Номер заявки";
-            this.bidnumberDataGridViewTextBoxColumn.Name = "bidnumberDataGridViewTextBoxColumn";
-            this.bidnumberDataGridViewTextBoxColumn.ReadOnly = true;
+            this.bidTableAdapter.ClearBeforeFill = true;
             // 
-            // createdateDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn4
             // 
-            this.createdateDataGridViewTextBoxColumn.DataPropertyName = "create_date";
-            this.createdateDataGridViewTextBoxColumn.HeaderText = "Дата создания";
-            this.createdateDataGridViewTextBoxColumn.Name = "createdateDataGridViewTextBoxColumn";
-            this.createdateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "vendor_code";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Артикул";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // termnameDataGridViewTextBoxColumn2
+            // dataGridViewTextBoxColumn3
             // 
-            this.termnameDataGridViewTextBoxColumn2.DataPropertyName = "term_name";
-            this.termnameDataGridViewTextBoxColumn2.HeaderText = "Статус";
-            this.termnameDataGridViewTextBoxColumn2.Name = "termnameDataGridViewTextBoxColumn2";
-            this.termnameDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "name";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Наименование";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
-            // statusdateDataGridViewTextBoxColumn
+            // expr1DataGridViewTextBoxColumn
             // 
-            this.statusdateDataGridViewTextBoxColumn.DataPropertyName = "status_date";
-            this.statusdateDataGridViewTextBoxColumn.HeaderText = "Дата статуса";
-            this.statusdateDataGridViewTextBoxColumn.Name = "statusdateDataGridViewTextBoxColumn";
-            this.statusdateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.expr1DataGridViewTextBoxColumn.DataPropertyName = "Expr1";
+            this.expr1DataGridViewTextBoxColumn.HeaderText = "ОКЕИ";
+            this.expr1DataGridViewTextBoxColumn.Name = "expr1DataGridViewTextBoxColumn";
+            this.expr1DataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // Expr1
+            // termnameDataGridViewTextBoxColumn
             // 
-            this.Expr1.DataPropertyName = "Expr1";
-            this.Expr1.HeaderText = "Тип заявки";
-            this.Expr1.Name = "Expr1";
-            this.Expr1.ReadOnly = true;
+            this.termnameDataGridViewTextBoxColumn.DataPropertyName = "term_name";
+            this.termnameDataGridViewTextBoxColumn.HeaderText = "Тип";
+            this.termnameDataGridViewTextBoxColumn.Name = "termnameDataGridViewTextBoxColumn";
+            this.termnameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // expr1DataGridViewTextBoxColumn1
+            // dataGridViewTextBoxColumn6
             // 
-            this.expr1DataGridViewTextBoxColumn1.DataPropertyName = "inn";
-            this.expr1DataGridViewTextBoxColumn1.HeaderText = "ИНН пок. или пост.";
-            this.expr1DataGridViewTextBoxColumn1.Name = "expr1DataGridViewTextBoxColumn1";
-            this.expr1DataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "recommended_price";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Рекомендованная цена";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            this.dataGridViewTextBoxColumn20.DataPropertyName = "remainder";
+            this.dataGridViewTextBoxColumn20.HeaderText = "Остаток на складе";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            this.dataGridViewTextBoxColumn20.ReadOnly = true;
             // 
             // Kris
             // 
@@ -1019,7 +1010,7 @@ namespace KRIS
         private System.Windows.Forms.DataGridViewTextBoxColumn kppDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnRefreshC;
         private System.Windows.Forms.Button btnFilterC;
-        private CounterpartyDataSet counterpartyDataSet;
+        private datasets.counterparty.CounterpartyDataSet counterpartyDataSet;
         private System.Windows.Forms.BindingSource counterpartyBindingSource;
         private datasets.counterparty.CounterpartyDataSetTableAdapters.CounterpartyTableAdapter counterpartyTableAdapter;
         private System.Windows.Forms.Button btnFilterCA;
@@ -1067,12 +1058,6 @@ namespace KRIS
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn expr1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn termnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private System.Windows.Forms.Button btnFilterPA;
         private System.Windows.Forms.Button btnRefreshPA;
         private System.Windows.Forms.Button btnDeletePA;
@@ -1087,7 +1072,6 @@ namespace KRIS
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
         private System.Windows.Forms.Button btnFilterB;
         private System.Windows.Forms.Button btnRefreshB;
-        private System.Windows.Forms.Button btnDeleteB;
         private System.Windows.Forms.Button btnEditB;
         private System.Windows.Forms.Button btnAddB;
         private System.Windows.Forms.Button btnFilterBP;
@@ -1103,10 +1087,6 @@ namespace KRIS
         private System.Windows.Forms.BindingSource BidProductBindingSource;
         private datasets.bidproduct.BidProduct bidProductDataSet;
         private datasets.bidproduct.BidProductTableAdapters.BidProductTableAdapter bidProductTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bidnumberDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productcountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productpriceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn inn;
         private System.Windows.Forms.DataGridViewTextBoxColumn term_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn attr_value;
@@ -1120,5 +1100,15 @@ namespace KRIS
         private System.Windows.Forms.DataGridViewTextBoxColumn statusdateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Expr1;
         private System.Windows.Forms.DataGridViewTextBoxColumn expr1DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bidnumberDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productcountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productpriceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn expr1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn termnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
     }
 }

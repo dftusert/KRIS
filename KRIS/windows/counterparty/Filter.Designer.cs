@@ -91,7 +91,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(12, 187);
+            this.btnClear.Location = new System.Drawing.Point(11, 171);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 39);
             this.btnClear.TabIndex = 6;
@@ -101,7 +101,7 @@
             // 
             // btnSetup
             // 
-            this.btnSetup.Location = new System.Drawing.Point(136, 187);
+            this.btnSetup.Location = new System.Drawing.Point(135, 171);
             this.btnSetup.Name = "btnSetup";
             this.btnSetup.Size = new System.Drawing.Size(75, 39);
             this.btnSetup.TabIndex = 7;
@@ -113,7 +113,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(223, 238);
+            this.ClientSize = new System.Drawing.Size(223, 223);
             this.Controls.Add(this.btnSetup);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.tbKPP);

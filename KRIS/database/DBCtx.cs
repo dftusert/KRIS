@@ -1,10 +1,5 @@
 ﻿using KRIS.database.entity;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KRIS.database
 {
@@ -25,6 +20,5 @@ namespace KRIS.database
         public DbSet<BidProduct> BidProduct { get; set; }
         public DbSet<Dictionary> Dictionary { get; set; }
         public DbSet<Entity> Entity { get; set; }
-
     }
 }
