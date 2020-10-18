@@ -80,10 +80,6 @@ namespace KRIS.windows.bid
                 return;
             }
 
-            MessageBox.Show(String.Format("bid_number like '%{0}%' and {1} and term_name like '%{2}%' " +
-                                      "and {3} and Expr1 like '%{4}%' and inn like '%{5}%'",
-                                      bidNumber, createDate, status, statusDate, type, inn));
-
             bs.Filter = String.Format("bid_number like '%{0}%' and {1} and term_name like '%{2}%' " +
                                       "and {3} and Expr1 like '%{4}%' and inn like '%{5}%'",
                                       bidNumber, createDate, status, statusDate, type, inn);

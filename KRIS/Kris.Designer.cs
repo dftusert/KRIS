@@ -1,9 +1,4 @@
-﻿using KRIS.database.entity;
-using KRIS.datasets;
-using KRIS.datasets.counterparty;
-using KRIS.datasets.counterpartyattrs.CounterpartyAttrsTableAdapters;
-
-namespace KRIS
+﻿namespace KRIS
 {
     partial class Kris
     {

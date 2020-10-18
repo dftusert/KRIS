@@ -62,6 +62,23 @@ namespace KRIS.windows.bidproduct
                     return;
                 }
 
+                Dictionary status = (from d in db.Dictionary
+                                     where d.id == bid.status_id
+                                     select d).FirstOrDefault();
+
+                if (status == null)
+                {
+                    MessageBox.Show("Ошибка получения статуса", "Информация");
+                    return;
+                }
+
+                if (status.term_name == "Закрыт")
+                {
+                    MessageBox.Show("Нельзя изменять товар в закрытой заявке", "Информация");
+                    return;
+                }
+
+
                 Product product = (from p in db.Product
                                    where p.vendor_code == vendorCode && p.deleted == null
                                    select p).FirstOrDefault();

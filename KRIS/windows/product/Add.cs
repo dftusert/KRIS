@@ -74,7 +74,7 @@ namespace KRIS.windows.product
                 }
 
                 Product product = (from p in db.Product
-                                   where p.vendor_code == vendorCode && p.name == name && p.okei_id == okei_id && p.type_id == type_id && p.deleted == null
+                                   where p.vendor_code == vendorCode && p.name == name && p.okei_id == okei_id && p.type_id == type_id && p.deleted != null
                                    select p).FirstOrDefault();
 
                 if (product == null)
@@ -97,11 +97,11 @@ namespace KRIS.windows.product
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Произошла ошибка, атрибут покупателя или поставщика не был восстановлен", "Информация");
+                    MessageBox.Show("Произошла ошибка, товар не был восстановлен", "Информация");
                     return;
                 }
 
-                MessageBox.Show("Атрибут покупателя или поставщика успешно восстановлен в системе", "Информация");
+                MessageBox.Show("Товар успешно восстановлен в системе", "Информация");
                 this.Close();
             }
         }

@@ -45,8 +45,18 @@
             this.tbINN = new System.Windows.Forms.TextBox();
             this.btnModify = new System.Windows.Forms.Button();
             this.dictionaryTableAdapter = new KRIS.datasets.bid.StatusForComboboxTableAdapters.DictionaryTableAdapter();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.counterpartyDataSet = new KRIS.datasets.counterparty.CounterpartyDataSet();
+            this.counterpartyDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.counterpartyTableAdapter = new KRIS.datasets.counterparty.CounterpartyDataSetTableAdapters.CounterpartyTableAdapter();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.innDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kppDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.statusForComboboxBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusForCombobox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counterpartyDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counterpartyDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -185,11 +195,64 @@
             // 
             this.dictionaryTableAdapter.ClearBeforeFill = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nameDataGridViewTextBoxColumn,
+            this.innDataGridViewTextBoxColumn,
+            this.kppDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.counterpartyDataSetBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(262, 13);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(343, 356);
+            this.dataGridView1.TabIndex = 13;
+            // 
+            // counterpartyDataSet
+            // 
+            this.counterpartyDataSet.DataSetName = "CounterpartyDataSet";
+            this.counterpartyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // counterpartyDataSetBindingSource
+            // 
+            this.counterpartyDataSetBindingSource.DataMember = "Counterparty";
+            this.counterpartyDataSetBindingSource.DataSource = this.counterpartyDataSet;
+            // 
+            // counterpartyTableAdapter
+            // 
+            this.counterpartyTableAdapter.ClearBeforeFill = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Наименование";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // innDataGridViewTextBoxColumn
+            // 
+            this.innDataGridViewTextBoxColumn.DataPropertyName = "inn";
+            this.innDataGridViewTextBoxColumn.HeaderText = "ИНН";
+            this.innDataGridViewTextBoxColumn.Name = "innDataGridViewTextBoxColumn";
+            this.innDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // kppDataGridViewTextBoxColumn
+            // 
+            this.kppDataGridViewTextBoxColumn.DataPropertyName = "kpp";
+            this.kppDataGridViewTextBoxColumn.HeaderText = "КПП";
+            this.kppDataGridViewTextBoxColumn.Name = "kppDataGridViewTextBoxColumn";
+            this.kppDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // Modify
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 381);
+            this.ClientSize = new System.Drawing.Size(612, 381);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnModify);
             this.Controls.Add(this.tbINN);
             this.Controls.Add(this.cbStatus);
@@ -208,8 +271,12 @@
             this.Name = "Modify";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Изменение заявки";
+            this.Load += new System.EventHandler(this.Modify_Load);
             ((System.ComponentModel.ISupportInitialize)(this.statusForComboboxBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusForCombobox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counterpartyDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counterpartyDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,5 +300,12 @@
         private System.Windows.Forms.BindingSource statusForComboboxBindingSource;
         private datasets.bid.StatusForCombobox statusForCombobox;
         private datasets.bid.StatusForComboboxTableAdapters.DictionaryTableAdapter dictionaryTableAdapter;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource counterpartyDataSetBindingSource;
+        private datasets.counterparty.CounterpartyDataSet counterpartyDataSet;
+        private datasets.counterparty.CounterpartyDataSetTableAdapters.CounterpartyTableAdapter counterpartyTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn innDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kppDataGridViewTextBoxColumn;
     }
 }

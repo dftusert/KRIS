@@ -73,15 +73,13 @@ namespace KRIS.windows.bid
             {
                 Bid nwbid = (from b in db.Bid
                              where b.bid_number == oldBid.bid_number &&
-                                   b.create_date == oldBid.create_date &&
-                                   b.status_date == oldBid.status_date &&
                                    b.status_id == oldBid.status_id &&
                                    b.counterparty_id == oldBid.counterparty_id &&
                                    b.type_id == oldBid.type_id
                              select b).FirstOrDefault();
                 if (nwbid == null)
                 {
-                    MessageBox.Show("Ошибка получения атрибута, возможно он был удален");
+                    MessageBox.Show("Ошибка получения заявки, возможно она была удалена");
                     return;
                 }
 
@@ -117,6 +115,11 @@ namespace KRIS.windows.bid
                 MessageBox.Show("Заявка успешно обновлена в системе", "Информация");
                 this.Close();
             }
+        }
+
+        private void Modify_Load(object sender, EventArgs e)
+        {
+            this.counterpartyTableAdapter.Fill(this.counterpartyDataSet.Counterparty);
         }
     }
 }
