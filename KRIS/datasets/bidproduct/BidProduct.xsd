@@ -9,10 +9,10 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BidProductTableAdapter" GeneratorDataComponentClassName="BidProductTableAdapter" Name="BidProduct" UserDataComponentName="BidProductTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="desktop-up485f2.KRIS.dbo" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="desktop-up485f2.KRIS.dbo" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        b.bid_number, p.vendor_code, bp.product_count, bp.product_price
+                    <CommandText>SELECT        b.bid_number, p.vendor_code, CONVERT(VARCHAR(MAX), bp.product_count) AS product_count, CONVERT(VARCHAR(MAX), bp.product_price) AS product_price
 FROM            BidProduct AS bp INNER JOIN
                          Product AS p ON bp.product_id = p.id INNER JOIN
                          Bid AS b ON bp.bid_id = b.id</CommandText>
@@ -37,7 +37,7 @@ FROM            BidProduct AS bp INNER JOIN
   <xs:element name="BidProduct" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="BidProduct" msprop:Generator_UserDSName="BidProduct">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="BidProduct" msprop:Generator_TableClassName="BidProductDataTable" msprop:Generator_TableVarName="tableBidProduct" msprop:Generator_TablePropName="_BidProduct" msprop:Generator_RowDeletingName="BidProductRowDeleting" msprop:Generator_RowChangingName="BidProductRowChanging" msprop:Generator_RowEvHandlerName="BidProductRowChangeEventHandler" msprop:Generator_RowDeletedName="BidProductRowDeleted" msprop:Generator_UserTableName="BidProduct" msprop:Generator_RowChangedName="BidProductRowChanged" msprop:Generator_RowEvArgName="BidProductRowChangeEvent" msprop:Generator_RowClassName="BidProductRow">
+        <xs:element name="BidProduct" msprop:Generator_TableClassName="BidProductDataTable" msprop:Generator_TableVarName="tableBidProduct" msprop:Generator_RowChangedName="BidProductRowChanged" msprop:Generator_TablePropName="_BidProduct" msprop:Generator_RowDeletingName="BidProductRowDeleting" msprop:Generator_RowChangingName="BidProductRowChanging" msprop:Generator_RowEvHandlerName="BidProductRowChangeEventHandler" msprop:Generator_RowDeletedName="BidProductRowDeleted" msprop:Generator_RowClassName="BidProductRow" msprop:Generator_UserTableName="BidProduct" msprop:Generator_RowEvArgName="BidProductRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="bid_number" msprop:Generator_ColumnVarNameInTable="columnbid_number" msprop:Generator_ColumnPropNameInRow="bid_number" msprop:Generator_ColumnPropNameInTable="bid_numberColumn" msprop:Generator_UserColumnName="bid_number">
@@ -54,8 +54,20 @@ FROM            BidProduct AS bp INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="product_count" msprop:Generator_ColumnVarNameInTable="columnproduct_count" msprop:Generator_ColumnPropNameInRow="product_count" msprop:Generator_ColumnPropNameInTable="product_countColumn" msprop:Generator_UserColumnName="product_count" type="xs:int" />
-              <xs:element name="product_price" msprop:Generator_ColumnVarNameInTable="columnproduct_price" msprop:Generator_ColumnPropNameInRow="product_price" msprop:Generator_ColumnPropNameInTable="product_priceColumn" msprop:Generator_UserColumnName="product_price" type="xs:int" />
+              <xs:element name="product_count" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnproduct_count" msprop:Generator_ColumnPropNameInRow="product_count" msprop:Generator_ColumnPropNameInTable="product_countColumn" msprop:Generator_UserColumnName="product_count" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="product_price" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnproduct_price" msprop:Generator_ColumnPropNameInRow="product_price" msprop:Generator_ColumnPropNameInTable="product_priceColumn" msprop:Generator_UserColumnName="product_price" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

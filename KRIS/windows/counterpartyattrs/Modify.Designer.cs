@@ -143,7 +143,6 @@
             this.Name = "Modify";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Изменение атр. пок. или пост.";
-            this.Load += new System.EventHandler(this.Modify_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dictionaryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.attrsForComboBox)).EndInit();
             this.ResumeLayout(false);

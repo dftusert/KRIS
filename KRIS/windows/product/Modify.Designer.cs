@@ -40,18 +40,18 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cbOKEI = new System.Windows.Forms.ComboBox();
-            this.cbType = new System.Windows.Forms.ComboBox();
-            this.btnModify = new System.Windows.Forms.Button();
-            this.oKEIForCombobox = new KRIS.datasets.product.OKEIForCombobox();
             this.oKEIForComboboxBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dictionaryTableAdapter = new KRIS.datasets.product.OKEIForComboboxTableAdapters.DictionaryTableAdapter();
-            this.typeForCombobox = new KRIS.datasets.product.TypeForCombobox();
+            this.oKEIForCombobox = new KRIS.datasets.product.OKEIForCombobox();
+            this.cbType = new System.Windows.Forms.ComboBox();
             this.typeForComboboxBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.typeForCombobox = new KRIS.datasets.product.TypeForCombobox();
+            this.btnModify = new System.Windows.Forms.Button();
+            this.dictionaryTableAdapter = new KRIS.datasets.product.OKEIForComboboxTableAdapters.DictionaryTableAdapter();
             this.dictionaryTableAdapter1 = new KRIS.datasets.product.TypeForComboboxTableAdapters.DictionaryTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.oKEIForCombobox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.oKEIForComboboxBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.typeForCombobox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.oKEIForCombobox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.typeForComboboxBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.typeForCombobox)).BeginInit();
             this.SuspendLayout();
             // 
             // tbVendorCode
@@ -154,6 +154,16 @@
             this.cbOKEI.TabIndex = 12;
             this.cbOKEI.ValueMember = "id";
             // 
+            // oKEIForComboboxBindingSource
+            // 
+            this.oKEIForComboboxBindingSource.DataMember = "Dictionary";
+            this.oKEIForComboboxBindingSource.DataSource = this.oKEIForCombobox;
+            // 
+            // oKEIForCombobox
+            // 
+            this.oKEIForCombobox.DataSetName = "OKEIForCombobox";
+            this.oKEIForCombobox.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // cbType
             // 
             this.cbType.DataSource = this.typeForComboboxBindingSource;
@@ -166,6 +176,16 @@
             this.cbType.TabIndex = 13;
             this.cbType.ValueMember = "id";
             // 
+            // typeForComboboxBindingSource
+            // 
+            this.typeForComboboxBindingSource.DataMember = "Dictionary";
+            this.typeForComboboxBindingSource.DataSource = this.typeForCombobox;
+            // 
+            // typeForCombobox
+            // 
+            this.typeForCombobox.DataSetName = "TypeForCombobox";
+            this.typeForCombobox.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // btnModify
             // 
             this.btnModify.Location = new System.Drawing.Point(15, 347);
@@ -176,29 +196,9 @@
             this.btnModify.UseVisualStyleBackColor = true;
             this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
-            // oKEIForCombobox
-            // 
-            this.oKEIForCombobox.DataSetName = "OKEIForCombobox";
-            this.oKEIForCombobox.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // oKEIForComboboxBindingSource
-            // 
-            this.oKEIForComboboxBindingSource.DataMember = "Dictionary";
-            this.oKEIForComboboxBindingSource.DataSource = this.oKEIForCombobox;
-            // 
             // dictionaryTableAdapter
             // 
             this.dictionaryTableAdapter.ClearBeforeFill = true;
-            // 
-            // typeForCombobox
-            // 
-            this.typeForCombobox.DataSetName = "TypeForCombobox";
-            this.typeForCombobox.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // typeForComboboxBindingSource
-            // 
-            this.typeForComboboxBindingSource.DataMember = "Dictionary";
-            this.typeForComboboxBindingSource.DataSource = this.typeForCombobox;
             // 
             // dictionaryTableAdapter1
             // 
@@ -208,7 +208,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(273, 393);
+            this.ClientSize = new System.Drawing.Size(269, 393);
             this.Controls.Add(this.btnModify);
             this.Controls.Add(this.cbType);
             this.Controls.Add(this.cbOKEI);
@@ -227,11 +227,10 @@
             this.Name = "Modify";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Изменение товара";
-            this.Load += new System.EventHandler(this.Modify_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.oKEIForCombobox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.oKEIForComboboxBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.typeForCombobox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.oKEIForCombobox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.typeForComboboxBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.typeForCombobox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

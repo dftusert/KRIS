@@ -1,14 +1,10 @@
 ﻿using KRIS.database;
 using KRIS.database.entity;
-using KRIS.datasets.product.ProductTableAdapters;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KRIS
@@ -164,7 +160,7 @@ namespace KRIS
             if ((dgvCounterparty.SelectedRows == null || dgvCounterparty.SelectedRows.Count != 1) &&
                (dgvCounterparty.SelectedCells == null || dgvCounterparty.SelectedCells.Count != 1))
             {
-                MessageBox.Show("Не выбрана запись для редактирования или выбрано больше одной", "Информация");
+                MessageBox.Show("Не выбрана запись для удаления или выбрано больше одной", "Информация");
                 return;
             }
 
@@ -269,7 +265,7 @@ namespace KRIS
             if ((dgvCounterpartyAttrs.SelectedRows == null || dgvCounterpartyAttrs.SelectedRows.Count != 1) &&
                (dgvCounterpartyAttrs.SelectedCells == null || dgvCounterpartyAttrs.SelectedCells.Count != 1))
             {
-                MessageBox.Show("Не выбрана запись для редактирования или выбрано больше одной", "Информация");
+                MessageBox.Show("Не выбрана запись для удаления или выбрано больше одной", "Информация");
                 return;
             }
 
@@ -404,7 +400,7 @@ namespace KRIS
             if ((dgvProduct.SelectedRows == null || dgvProduct.SelectedRows.Count != 1) &&
                (dgvProduct.SelectedCells == null || dgvProduct.SelectedCells.Count != 1))
             {
-                MessageBox.Show("Не выбрана запись для редактирования или выбрано больше одной", "Информация");
+                MessageBox.Show("Не выбрана запись для удаления или выбрано больше одной", "Информация");
                 return;
             }
 
@@ -522,7 +518,7 @@ namespace KRIS
             if ((dgvProductAttrs.SelectedRows == null || dgvProductAttrs.SelectedRows.Count != 1) &&
                (dgvProductAttrs.SelectedCells == null || dgvProductAttrs.SelectedCells.Count != 1))
             {
-                MessageBox.Show("Не выбрана запись для редактирования или выбрано больше одной", "Информация");
+                MessageBox.Show("Не выбрана запись для удаления или выбрано больше одной", "Информация");
                 return;
             }
 
@@ -542,6 +538,177 @@ namespace KRIS
             refreshProductAttrs();
         }
         /****************************** PRODUCTATTRS END *****************************************/
+
+        /****************************** BID *****************************************/
+        private void filterBid(object sender, EventArgs e)
+        {
+            windows.bid.Filter filter = new windows.bid.Filter(ref BidBindingSource);
+            filter.ShowDialog();
+
+            dgvBid.ClearSelection();
+            if (BidBindingSource.Filter != null && BidBindingSource.Filter != "")
+                btnFilterB.BackColor = Color.Green;
+            else
+                btnFilterB.BackColor = ButtonBase.DefaultBackColor;
+        }
+
+        private void addBid(object sender, EventArgs e)
+        {
+            windows.bid.Add add = new windows.bid.Add(username);
+            add.ShowDialog();
+
+            refreshBid();
+        }
+
+        private void modifyBid(object sender, EventArgs e)
+        {
+            if ((dgvBid.SelectedRows == null || dgvBid.SelectedRows.Count != 1) &&
+               (dgvBid.SelectedCells == null || dgvBid.SelectedCells.Count != 1))
+            {
+                MessageBox.Show("Не выбрана запись для редактирования или выбрано больше одной", "Информация");
+                return;
+            }
+
+            int rowIndex;
+            if (dgvBid.SelectedCells != null && dgvBid.SelectedCells.Count == 1)
+                rowIndex = dgvBid.SelectedCells[0].RowIndex;
+            else
+                rowIndex = dgvBid.SelectedRows[0].Index;
+
+            Bid bid = new Bid();
+            bool isBidClosed = false;
+            bid.bid_number = dgvBid.Rows[rowIndex].Cells[0].Value.ToString();
+            bid.create_date = DateTime.Parse(dgvBid.Rows[rowIndex].Cells[1].Value.ToString());
+            bid.status_date = DateTime.Parse(dgvBid.Rows[rowIndex].Cells[3].Value.ToString());
+
+            string status_str = dgvBid.Rows[rowIndex].Cells[2].Value.ToString();
+            string type_str = dgvBid.Rows[rowIndex].Cells[4].Value.ToString();
+            string inn_str = dgvBid.Rows[rowIndex].Cells[5].Value.ToString();
+            using (DBCtx db = new DBCtx())
+            {
+                Dictionary status = (from d in db.Dictionary
+                                     from _e in db.Entity
+                                     where d.term_name == status_str &&
+                                           d.target == "STATUS" && _e.id == d.entity_id && _e.name == "bid"
+                                     select d).FirstOrDefault();
+
+                if (status == null)
+                {
+                    MessageBox.Show("Ошибка получения атрибута", "Информация");
+                    return;
+                }
+
+                if (status.term_name == "Закрыт") isBidClosed = true;
+
+                Dictionary type = (from d in db.Dictionary
+                                   from _e in db.Entity
+                                   where d.term_name == type_str &&
+                                         d.target == "TYPE" && _e.id == d.entity_id && _e.name == "bid"
+                                   select d).FirstOrDefault();
+
+                if (type == null)
+                {
+                    MessageBox.Show("Ошибка получения атрибута", "Информация");
+                    return;
+                }
+
+                Counterparty counterparty = (from c in db.Counterparty
+                                             where c.inn == inn_str
+                                             select c).FirstOrDefault();
+
+                bid.type_id = type.id;
+                bid.status_id = status.id;
+                bid.counterparty_id = counterparty.id;
+                bid.Counterparty = counterparty;
+            }
+
+            if(isBidClosed)
+            {
+                MessageBox.Show("Нельзя изменять уже закрытую заявку", "Информация");
+                return;
+            }
+            windows.bid.Modify modify = new windows.bid.Modify(username, bid);
+            modify.ShowDialog();
+
+            refreshBid();
+        }
+        /****************************** BID END *****************************************/
+
+        /****************************** BIDPRODUCT *****************************************/
+        private void filterBidProduct(object sender, EventArgs e)
+        {
+            windows.bidproduct.Filter filter = new windows.bidproduct.Filter(ref BidProductBindingSource);
+            filter.ShowDialog();
+
+            dgvBidProduct.ClearSelection();
+            if (BidProductBindingSource.Filter != null && BidProductBindingSource.Filter != "")
+                btnFilterBP.BackColor = Color.Green;
+            else
+                btnFilterBP.BackColor = ButtonBase.DefaultBackColor;
+        }
+
+        private void addBidProduct(object sender, EventArgs e)
+        {
+            windows.bidproduct.Add add = new windows.bidproduct.Add(username);
+            add.ShowDialog();
+
+            refreshBidProduct();
+        }
+
+        private void modifyBidProduct(object sender, EventArgs e)
+        {
+            if ((dgvBidProduct.SelectedRows == null || dgvBidProduct.SelectedRows.Count != 1) &&
+               (dgvBidProduct.SelectedCells == null || dgvBidProduct.SelectedCells.Count != 1))
+            {
+                MessageBox.Show("Не выбрана запись для редактирования или выбрано больше одной", "Информация");
+                return;
+            }
+
+            int rowIndex;
+            if (dgvBidProduct.SelectedCells != null && dgvBidProduct.SelectedCells.Count == 1)
+                rowIndex = dgvBidProduct.SelectedCells[0].RowIndex;
+            else
+                rowIndex = dgvBidProduct.SelectedRows[0].Index;
+
+            string bidNumber = dgvBidProduct.Rows[rowIndex].Cells[0].Value.ToString();
+            string vendorCode = dgvBidProduct.Rows[rowIndex].Cells[1].Value.ToString();
+            int count, price;
+            int.TryParse(dgvBidProduct.Rows[rowIndex].Cells[2].Value.ToString(), out count);
+            int.TryParse(dgvBidProduct.Rows[rowIndex].Cells[3].Value.ToString(), out price);
+
+            windows.bidproduct.Modify modify = new windows.bidproduct.Modify(username, bidNumber, vendorCode, count, price);
+            modify.ShowDialog();
+
+            refreshBidProduct();
+        }
+
+        private void deleteBidProduct(object sender, EventArgs e)
+        {
+            if ((dgvBidProduct.SelectedRows == null || dgvBidProduct.SelectedRows.Count != 1) &&
+                (dgvBidProduct.SelectedCells == null || dgvBidProduct.SelectedCells.Count != 1))
+            {
+                MessageBox.Show("Не выбрана запись для удаления или выбрано больше одной", "Информация");
+                return;
+            }
+
+            int rowIndex;
+            if (dgvBidProduct.SelectedCells != null && dgvBidProduct.SelectedCells.Count == 1)
+                rowIndex = dgvBidProduct.SelectedCells[0].RowIndex;
+            else
+                rowIndex = dgvBidProduct.SelectedRows[0].Index;
+
+            string bidNumber = dgvBidProduct.Rows[rowIndex].Cells[0].Value.ToString();
+            string vendorCode = dgvBidProduct.Rows[rowIndex].Cells[1].Value.ToString();
+            int count, price;
+            int.TryParse(dgvBidProduct.Rows[rowIndex].Cells[2].Value.ToString(), out count);
+            int.TryParse(dgvBidProduct.Rows[rowIndex].Cells[3].Value.ToString(), out price);
+
+            windows.bidproduct.Delete delete = new windows.bidproduct.Delete(username, bidNumber, vendorCode, count, price);
+            delete.ShowDialog();
+
+            refreshBidProduct();
+        }
+        /****************************** BIDPRODUCT END *****************************************/
 
         private void Kris_Load(object sender, EventArgs e)
         {

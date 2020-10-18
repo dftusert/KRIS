@@ -1,13 +1,8 @@
 ﻿using KRIS.database;
 using KRIS.database.entity;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KRIS.windows.product
@@ -22,9 +17,8 @@ namespace KRIS.windows.product
 
             this.username = username;
             this.oldProduct = oldProduct;
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "typeForCombobox.Dictionary". При необходимости она может быть перемещена или удалена.
+
             this.dictionaryTableAdapter1.Fill(this.typeForCombobox.Dictionary);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "oKEIForCombobox.Dictionary". При необходимости она может быть перемещена или удалена.
             this.dictionaryTableAdapter.Fill(this.oKEIForCombobox.Dictionary);
 
             tbVendorCode.Text = oldProduct.vendor_code;
@@ -112,7 +106,6 @@ namespace KRIS.windows.product
                     return;
                 }
 
-
                 Product nwproduct = (from p in db.Product
                                                where p.vendor_code == oldProduct.vendor_code &&
                                                      p.name == oldProduct.name &&
@@ -177,16 +170,8 @@ namespace KRIS.windows.product
                 }
 
                 MessageBox.Show("Товар успешно обновлен в системе", "Информация");
+                this.Close();
             }
-        }
-
-        private void Modify_Load(object sender, EventArgs e)
-        {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "typeForCombobox.Dictionary". При необходимости она может быть перемещена или удалена.
-            // this.dictionaryTableAdapter1.Fill(this.typeForCombobox.Dictionary);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "oKEIForCombobox.Dictionary". При необходимости она может быть перемещена или удалена.
-            // this.dictionaryTableAdapter.Fill(this.oKEIForCombobox.Dictionary);
-
         }
     }
 }

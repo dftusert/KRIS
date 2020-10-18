@@ -1,14 +1,8 @@
 ﻿using KRIS.database;
 using KRIS.database.entity;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KRIS.windows.product
@@ -25,11 +19,8 @@ namespace KRIS.windows.product
 
         private void Add_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "typeForCombobox.Dictionary". При необходимости она может быть перемещена или удалена.
             this.dictionaryTableAdapter1.Fill(this.typeForCombobox.Dictionary);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "oKEIForCombobox.Dictionary". При необходимости она может быть перемещена или удалена.
             this.dictionaryTableAdapter.Fill(this.oKEIForCombobox.Dictionary);
-
         }
 
         private void btnCheck_Click(object sender, EventArgs e)
@@ -111,6 +102,7 @@ namespace KRIS.windows.product
                 }
 
                 MessageBox.Show("Атрибут покупателя или поставщика успешно восстановлен в системе", "Информация");
+                this.Close();
             }
         }
 
@@ -176,9 +168,9 @@ namespace KRIS.windows.product
                 }
 
                 MessageBox.Show("Товар успешно создан в системе", "Информация");
+                this.Close();
             }
         }
-
 
         private bool fillCheck(bool ignValue = false)
         {

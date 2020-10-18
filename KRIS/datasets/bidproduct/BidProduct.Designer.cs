@@ -389,7 +389,7 @@ namespace KRIS.datasets.bidproduct {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public BidProductRow AddBidProductRow(string bid_number, string vendor_code, int product_count, int product_price) {
+            public BidProductRow AddBidProductRow(string bid_number, string vendor_code, string product_count, string product_price) {
                 BidProductRow rowBidProductRow = ((BidProductRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         bid_number,
@@ -431,16 +431,18 @@ namespace KRIS.datasets.bidproduct {
                 base.Columns.Add(this.columnbid_number);
                 this.columnvendor_code = new global::System.Data.DataColumn("vendor_code", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnvendor_code);
-                this.columnproduct_count = new global::System.Data.DataColumn("product_count", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnproduct_count = new global::System.Data.DataColumn("product_count", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnproduct_count);
-                this.columnproduct_price = new global::System.Data.DataColumn("product_price", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnproduct_price = new global::System.Data.DataColumn("product_price", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnproduct_price);
                 this.columnbid_number.AllowDBNull = false;
                 this.columnbid_number.MaxLength = 50;
                 this.columnvendor_code.AllowDBNull = false;
                 this.columnvendor_code.MaxLength = 50;
-                this.columnproduct_count.AllowDBNull = false;
-                this.columnproduct_price.AllowDBNull = false;
+                this.columnproduct_count.ReadOnly = true;
+                this.columnproduct_count.MaxLength = 2147483647;
+                this.columnproduct_price.ReadOnly = true;
+                this.columnproduct_price.MaxLength = 2147483647;
                 this.ExtendedProperties.Add("Generator_TablePropName", "_BidProduct");
                 this.ExtendedProperties.Add("Generator_UserTableName", "BidProduct");
             }
@@ -607,9 +609,14 @@ namespace KRIS.datasets.bidproduct {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int product_count {
+            public string product_count {
                 get {
-                    return ((int)(this[this.tableBidProduct.product_countColumn]));
+                    try {
+                        return ((string)(this[this.tableBidProduct.product_countColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'product_count\' в таблице \'BidProduct\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableBidProduct.product_countColumn] = value;
@@ -618,13 +625,42 @@ namespace KRIS.datasets.bidproduct {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int product_price {
+            public string product_price {
                 get {
-                    return ((int)(this[this.tableBidProduct.product_priceColumn]));
+                    try {
+                        return ((string)(this[this.tableBidProduct.product_priceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'product_price\' в таблице \'BidProduct\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableBidProduct.product_priceColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isproduct_countNull() {
+                return this.IsNull(this.tableBidProduct.product_countColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setproduct_countNull() {
+                this[this.tableBidProduct.product_countColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isproduct_priceNull() {
+                return this.IsNull(this.tableBidProduct.product_priceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setproduct_priceNull() {
+                this[this.tableBidProduct.product_priceColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -808,10 +844,10 @@ namespace KRIS.datasets.bidproduct.BidProductTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        b.bid_number, p.vendor_code, bp.product_count, bp.product_price\r\nFR" +
-                "OM            BidProduct AS bp INNER JOIN\r\n                         Product AS p" +
-                " ON bp.product_id = p.id INNER JOIN\r\n                         Bid AS b ON bp.bid" +
-                "_id = b.id";
+            this._commandCollection[0].CommandText = @"SELECT        b.bid_number, p.vendor_code, CONVERT(VARCHAR(MAX), bp.product_count) AS product_count, CONVERT(VARCHAR(MAX), bp.product_price) AS product_price
+FROM            BidProduct AS bp INNER JOIN
+                         Product AS p ON bp.product_id = p.id INNER JOIN
+                         Bid AS b ON bp.bid_id = b.id";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

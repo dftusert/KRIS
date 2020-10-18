@@ -12,8 +12,8 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="bid_number" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="counterparty_id" Type="int" Nullable="false" />
-          <Property Name="create_date" Type="date" Nullable="false" />
-          <Property Name="status_date" Type="date" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="status_date" Type="datetime" Nullable="false" />
           <Property Name="status_id" Type="int" Nullable="false" />
           <Property Name="type_id" Type="int" Nullable="false" />
         </EntityType>
@@ -372,8 +372,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="bid_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="counterparty_id" Type="Int32" Nullable="false" />
-          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="status_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="status_id" Type="Int32" Nullable="false" />
           <Property Name="type_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Counterparty" Relationship="Self.FK_Bid_Counterparty" FromRole="Bid" ToRole="Counterparty" />

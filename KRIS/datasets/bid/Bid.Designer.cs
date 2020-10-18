@@ -281,15 +281,15 @@ namespace KRIS.datasets.bid {
             
             private global::System.Data.DataColumn columnbid_number;
             
-            private global::System.Data.DataColumn columncreate_date;
-            
-            private global::System.Data.DataColumn columnstatus_date;
-            
             private global::System.Data.DataColumn columnterm_name;
             
             private global::System.Data.DataColumn columnExpr1;
             
             private global::System.Data.DataColumn columninn;
+            
+            private global::System.Data.DataColumn columncreate_date;
+            
+            private global::System.Data.DataColumn columnstatus_date;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -334,22 +334,6 @@ namespace KRIS.datasets.bid {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn create_dateColumn {
-                get {
-                    return this.columncreate_date;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn status_dateColumn {
-                get {
-                    return this.columnstatus_date;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn term_nameColumn {
                 get {
                     return this.columnterm_name;
@@ -369,6 +353,22 @@ namespace KRIS.datasets.bid {
             public global::System.Data.DataColumn innColumn {
                 get {
                     return this.columninn;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn create_dateColumn {
+                get {
+                    return this.columncreate_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn status_dateColumn {
+                get {
+                    return this.columnstatus_date;
                 }
             }
             
@@ -409,15 +409,15 @@ namespace KRIS.datasets.bid {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public BidRow AddBidRow(string bid_number, System.DateTime create_date, System.DateTime status_date, string term_name, string Expr1, string inn) {
+            public BidRow AddBidRow(string bid_number, string term_name, string Expr1, string inn, System.DateTime create_date, System.DateTime status_date) {
                 BidRow rowBidRow = ((BidRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         bid_number,
-                        create_date,
-                        status_date,
                         term_name,
                         Expr1,
-                        inn};
+                        inn,
+                        create_date,
+                        status_date};
                 rowBidRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBidRow);
                 return rowBidRow;
@@ -441,11 +441,11 @@ namespace KRIS.datasets.bid {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnbid_number = base.Columns["bid_number"];
-                this.columncreate_date = base.Columns["create_date"];
-                this.columnstatus_date = base.Columns["status_date"];
                 this.columnterm_name = base.Columns["term_name"];
                 this.columnExpr1 = base.Columns["Expr1"];
                 this.columninn = base.Columns["inn"];
+                this.columncreate_date = base.Columns["create_date"];
+                this.columnstatus_date = base.Columns["status_date"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -453,26 +453,26 @@ namespace KRIS.datasets.bid {
             private void InitClass() {
                 this.columnbid_number = new global::System.Data.DataColumn("bid_number", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnbid_number);
-                this.columncreate_date = new global::System.Data.DataColumn("create_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncreate_date);
-                this.columnstatus_date = new global::System.Data.DataColumn("status_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnstatus_date);
                 this.columnterm_name = new global::System.Data.DataColumn("term_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnterm_name);
                 this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnExpr1);
                 this.columninn = new global::System.Data.DataColumn("inn", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columninn);
+                this.columncreate_date = new global::System.Data.DataColumn("create_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncreate_date);
+                this.columnstatus_date = new global::System.Data.DataColumn("status_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstatus_date);
                 this.columnbid_number.AllowDBNull = false;
                 this.columnbid_number.MaxLength = 50;
-                this.columncreate_date.AllowDBNull = false;
-                this.columnstatus_date.AllowDBNull = false;
                 this.columnterm_name.AllowDBNull = false;
                 this.columnterm_name.MaxLength = 50;
                 this.columnExpr1.AllowDBNull = false;
                 this.columnExpr1.MaxLength = 50;
                 this.columninn.AllowDBNull = false;
                 this.columninn.MaxLength = 15;
+                this.columncreate_date.AllowDBNull = false;
+                this.columnstatus_date.AllowDBNull = false;
                 this.ExtendedProperties.Add("Generator_TablePropName", "_Bid");
                 this.ExtendedProperties.Add("Generator_UserTableName", "Bid");
             }
@@ -628,28 +628,6 @@ namespace KRIS.datasets.bid {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime create_date {
-                get {
-                    return ((global::System.DateTime)(this[this.tableBid.create_dateColumn]));
-                }
-                set {
-                    this[this.tableBid.create_dateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime status_date {
-                get {
-                    return ((global::System.DateTime)(this[this.tableBid.status_dateColumn]));
-                }
-                set {
-                    this[this.tableBid.status_dateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string term_name {
                 get {
                     return ((string)(this[this.tableBid.term_nameColumn]));
@@ -678,6 +656,28 @@ namespace KRIS.datasets.bid {
                 }
                 set {
                     this[this.tableBid.innColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime create_date {
+                get {
+                    return ((global::System.DateTime)(this[this.tableBid.create_dateColumn]));
+                }
+                set {
+                    this[this.tableBid.create_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime status_date {
+                get {
+                    return ((global::System.DateTime)(this[this.tableBid.status_dateColumn]));
+                }
+                set {
+                    this[this.tableBid.status_dateColumn] = value;
                 }
             }
         }
@@ -842,11 +842,11 @@ namespace KRIS.datasets.bid.BidTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Bid";
             tableMapping.ColumnMappings.Add("bid_number", "bid_number");
-            tableMapping.ColumnMappings.Add("create_date", "create_date");
-            tableMapping.ColumnMappings.Add("status_date", "status_date");
             tableMapping.ColumnMappings.Add("term_name", "term_name");
             tableMapping.ColumnMappings.Add("Expr1", "Expr1");
             tableMapping.ColumnMappings.Add("inn", "inn");
+            tableMapping.ColumnMappings.Add("create_date", "create_date");
+            tableMapping.ColumnMappings.Add("status_date", "status_date");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
