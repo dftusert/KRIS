@@ -755,8 +755,7 @@ namespace KRIS.datasets.counterpartyattrs.AttrsForComboBoxTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-UP485F2;Initial Catalog=KRIS;User ID=dbuser;Password=dbpasswo" +
-                "rd";
+            this._connection.ConnectionString = global::KRIS.Properties.Settings.Default.KRISConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

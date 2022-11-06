@@ -8,6 +8,10 @@ namespace KRIS.datasets.counterpartyattrs
 
 namespace KRIS.datasets.counterpartyattrs
 {
+}
+
+namespace KRIS.datasets.counterpartyattrs
+{
 
 
     partial class CounterpartyAttrsDataSet

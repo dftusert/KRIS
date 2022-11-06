@@ -2,14 +2,15 @@
 <xs:schema id="TypeForCombobox" targetNamespace="http://tempuri.org/TypeForCombobox.xsd" xmlns:mstns="http://tempuri.org/TypeForCombobox.xsd" xmlns="http://tempuri.org/TypeForCombobox.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection ConnectionStringObject="Data Source=DESKTOP-UP485F2;Initial Catalog=KRIS;User ID=dbuser;Password=dbpassword" IsAppSettingsProperty="false" Modifier="Assembly" Name="desktop-up485f2.KRIS.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="KRISConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="KRISConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.KRIS.Properties.Settings.GlobalReference.Default.KRISConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DictionaryTableAdapter" GeneratorDataComponentClassName="DictionaryTableAdapter" Name="Dictionary" UserDataComponentName="DictionaryTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="desktop-up485f2.KRIS.dbo" DbObjectName="KRIS.dbo.Dictionary" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="KRISConnectionString (Settings)" DbObjectName="KRIS.dbo.Dictionary" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Dictionary.id, Dictionary.term_name
@@ -35,7 +36,7 @@ WHERE        (Entity.name = 'product') AND (Dictionary.target = 'TYPE') AND (Dic
   <xs:element name="TypeForCombobox" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="TypeForCombobox" msprop:Generator_UserDSName="TypeForCombobox">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Dictionary" msprop:Generator_TableClassName="DictionaryDataTable" msprop:Generator_TableVarName="tableDictionary" msprop:Generator_TablePropName="Dictionary" msprop:Generator_RowDeletingName="DictionaryRowDeleting" msprop:Generator_RowChangingName="DictionaryRowChanging" msprop:Generator_RowEvHandlerName="DictionaryRowChangeEventHandler" msprop:Generator_RowDeletedName="DictionaryRowDeleted" msprop:Generator_UserTableName="Dictionary" msprop:Generator_RowChangedName="DictionaryRowChanged" msprop:Generator_RowEvArgName="DictionaryRowChangeEvent" msprop:Generator_RowClassName="DictionaryRow">
+        <xs:element name="Dictionary" msprop:Generator_TableClassName="DictionaryDataTable" msprop:Generator_TableVarName="tableDictionary" msprop:Generator_RowChangedName="DictionaryRowChanged" msprop:Generator_TablePropName="Dictionary" msprop:Generator_RowDeletingName="DictionaryRowDeleting" msprop:Generator_RowChangingName="DictionaryRowChanging" msprop:Generator_RowEvHandlerName="DictionaryRowChangeEventHandler" msprop:Generator_RowDeletedName="DictionaryRowDeleted" msprop:Generator_RowClassName="DictionaryRow" msprop:Generator_UserTableName="Dictionary" msprop:Generator_RowEvArgName="DictionaryRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />

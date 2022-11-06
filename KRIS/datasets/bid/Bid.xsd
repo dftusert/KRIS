@@ -2,14 +2,15 @@
 <xs:schema id="Bid" targetNamespace="http://tempuri.org/Bid.xsd" xmlns:mstns="http://tempuri.org/Bid.xsd" xmlns="http://tempuri.org/Bid.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection ConnectionStringObject="Data Source=DESKTOP-UP485F2;Initial Catalog=KRIS;User ID=dbuser;Password=dbpassword" IsAppSettingsProperty="false" Modifier="Assembly" Name="desktop-up485f2.KRIS.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="KRISConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="KRISConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.KRIS.Properties.Settings.GlobalReference.Default.KRISConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BidTableAdapter" GeneratorDataComponentClassName="BidTableAdapter" Name="Bid" UserDataComponentName="BidTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="desktop-up485f2.KRIS.dbo" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="KRISConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        b.bid_number, b.create_date, b.status_date, d1.term_name, d2.term_name AS Expr1, c.inn
@@ -40,7 +41,7 @@ FROM            Bid AS b INNER JOIN
   <xs:element name="Bid" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Bid" msprop:Generator_UserDSName="Bid">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Bid" msprop:Generator_TableClassName="BidDataTable" msprop:Generator_TableVarName="tableBid" msprop:Generator_RowChangedName="BidRowChanged" msprop:Generator_TablePropName="_Bid" msprop:Generator_RowDeletingName="BidRowDeleting" msprop:Generator_RowChangingName="BidRowChanging" msprop:Generator_RowEvHandlerName="BidRowChangeEventHandler" msprop:Generator_RowDeletedName="BidRowDeleted" msprop:Generator_RowClassName="BidRow" msprop:Generator_UserTableName="Bid" msprop:Generator_RowEvArgName="BidRowChangeEvent">
+        <xs:element name="Bid" msprop:Generator_TableClassName="BidDataTable" msprop:Generator_TableVarName="tableBid" msprop:Generator_TablePropName="_Bid" msprop:Generator_RowDeletingName="BidRowDeleting" msprop:Generator_RowChangingName="BidRowChanging" msprop:Generator_RowEvHandlerName="BidRowChangeEventHandler" msprop:Generator_RowDeletedName="BidRowDeleted" msprop:Generator_UserTableName="Bid" msprop:Generator_RowChangedName="BidRowChanged" msprop:Generator_RowEvArgName="BidRowChangeEvent" msprop:Generator_RowClassName="BidRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="bid_number" msprop:Generator_ColumnVarNameInTable="columnbid_number" msprop:Generator_ColumnPropNameInRow="bid_number" msprop:Generator_ColumnPropNameInTable="bid_numberColumn" msprop:Generator_UserColumnName="bid_number">

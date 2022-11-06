@@ -74,7 +74,7 @@ namespace KRIS
             bidProductTableAdapter.Fill(bidProductDataSet._BidProduct);
             dgvBidProduct.ClearSelection();
         }
-        /****************************** REFRESH BASE BLOCK END *****************************/
+        /****************************** REFRESH BASE BLOCK ENDS *****************************/
 
         /******************************* REFRESH ACTION BLOCK *******************************/
         private void refreshCounterparty(object sender, EventArgs e)

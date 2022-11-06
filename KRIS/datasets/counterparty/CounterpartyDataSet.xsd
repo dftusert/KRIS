@@ -2,14 +2,15 @@
 <xs:schema id="CounterpartyDataSet" targetNamespace="http://tempuri.org/CounterpartyDataSet.xsd" xmlns:mstns="http://tempuri.org/CounterpartyDataSet.xsd" xmlns="http://tempuri.org/CounterpartyDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection ConnectionStringObject="Data Source=DESKTOP-UP485F2;Initial Catalog=KRIS;User ID=dbuser;Password=dbpassword" IsAppSettingsProperty="false" Modifier="Assembly" Name="desktop-up485f2.KRIS.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="KRISConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="KRISConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.KRIS.Properties.Settings.GlobalReference.Default.KRISConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CounterpartyTableAdapter" GeneratorDataComponentClassName="CounterpartyTableAdapter" Name="Counterparty" UserDataComponentName="CounterpartyTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="desktop-up485f2.KRIS.dbo" DbObjectName="KRIS.dbo.Counterparty" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="KRISConnectionString (Settings)" DbObjectName="KRIS.dbo.Counterparty" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [Counterparty] WHERE (([name] = @Original_name) AND ([inn] = @Original_inn) AND ([kpp] = @Original_kpp) AND ([id] = @Original_id))</CommandText>
@@ -69,7 +70,7 @@
   <xs:element name="CounterpartyDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="CounterpartyDataSet" msprop:Generator_UserDSName="CounterpartyDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Counterparty" msprop:Generator_TableClassName="CounterpartyDataTable" msprop:Generator_TableVarName="tableCounterparty" msprop:Generator_RowChangedName="CounterpartyRowChanged" msprop:Generator_TablePropName="Counterparty" msprop:Generator_RowDeletingName="CounterpartyRowDeleting" msprop:Generator_RowChangingName="CounterpartyRowChanging" msprop:Generator_RowEvHandlerName="CounterpartyRowChangeEventHandler" msprop:Generator_RowDeletedName="CounterpartyRowDeleted" msprop:Generator_RowClassName="CounterpartyRow" msprop:Generator_UserTableName="Counterparty" msprop:Generator_RowEvArgName="CounterpartyRowChangeEvent">
+        <xs:element name="Counterparty" msprop:Generator_TableClassName="CounterpartyDataTable" msprop:Generator_TableVarName="tableCounterparty" msprop:Generator_TablePropName="Counterparty" msprop:Generator_RowDeletingName="CounterpartyRowDeleting" msprop:Generator_RowChangingName="CounterpartyRowChanging" msprop:Generator_RowEvHandlerName="CounterpartyRowChangeEventHandler" msprop:Generator_RowDeletedName="CounterpartyRowDeleted" msprop:Generator_UserTableName="Counterparty" msprop:Generator_RowChangedName="CounterpartyRowChanged" msprop:Generator_RowEvArgName="CounterpartyRowChangeEvent" msprop:Generator_RowClassName="CounterpartyRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name">

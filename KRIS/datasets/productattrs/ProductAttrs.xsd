@@ -2,14 +2,15 @@
 <xs:schema id="ProductAttrs" targetNamespace="http://tempuri.org/ProductAttrs.xsd" xmlns:mstns="http://tempuri.org/ProductAttrs.xsd" xmlns="http://tempuri.org/ProductAttrs.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection ConnectionStringObject="Data Source=DESKTOP-UP485F2;Initial Catalog=KRIS;User ID=dbuser;Password=dbpassword" IsAppSettingsProperty="false" Modifier="Assembly" Name="desktop-up485f2.KRIS.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="KRISConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="KRISConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.KRIS.Properties.Settings.GlobalReference.Default.KRISConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProductAttrsTableAdapter" GeneratorDataComponentClassName="ProductAttrsTableAdapter" Name="ProductAttrs" UserDataComponentName="ProductAttrsTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="desktop-up485f2.KRIS.dbo" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="KRISConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Product.vendor_code, Dictionary.term_name, ProductAttrs.attr_value
@@ -37,7 +38,7 @@ WHERE        (Product.deleted IS NULL) AND (ProductAttrs.deleted IS NULL)</Comma
   <xs:element name="ProductAttrs" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ProductAttrs" msprop:Generator_UserDSName="ProductAttrs">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="ProductAttrs" msprop:Generator_TableClassName="ProductAttrsDataTable" msprop:Generator_TableVarName="tableProductAttrs" msprop:Generator_TablePropName="_ProductAttrs" msprop:Generator_RowDeletingName="ProductAttrsRowDeleting" msprop:Generator_RowChangingName="ProductAttrsRowChanging" msprop:Generator_RowEvHandlerName="ProductAttrsRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductAttrsRowDeleted" msprop:Generator_UserTableName="ProductAttrs" msprop:Generator_RowChangedName="ProductAttrsRowChanged" msprop:Generator_RowEvArgName="ProductAttrsRowChangeEvent" msprop:Generator_RowClassName="ProductAttrsRow">
+        <xs:element name="ProductAttrs" msprop:Generator_TableClassName="ProductAttrsDataTable" msprop:Generator_TableVarName="tableProductAttrs" msprop:Generator_RowChangedName="ProductAttrsRowChanged" msprop:Generator_TablePropName="_ProductAttrs" msprop:Generator_RowDeletingName="ProductAttrsRowDeleting" msprop:Generator_RowChangingName="ProductAttrsRowChanging" msprop:Generator_RowEvHandlerName="ProductAttrsRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductAttrsRowDeleted" msprop:Generator_RowClassName="ProductAttrsRow" msprop:Generator_UserTableName="ProductAttrs" msprop:Generator_RowEvArgName="ProductAttrsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="vendor_code" msprop:Generator_ColumnVarNameInTable="columnvendor_code" msprop:Generator_ColumnPropNameInRow="vendor_code" msprop:Generator_ColumnPropNameInTable="vendor_codeColumn" msprop:Generator_UserColumnName="vendor_code">

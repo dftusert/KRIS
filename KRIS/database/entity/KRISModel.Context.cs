@@ -13,10 +13,10 @@ namespace KRIS.database.entity
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class DBConn : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public DBConn()
+            : base("name=DBConn")
         {
         }
     

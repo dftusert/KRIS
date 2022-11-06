@@ -678,7 +678,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBConn" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bid" EntityType="Self.Bid" />
           <EntitySet Name="BidProduct" EntityType="Self.BidProduct" />
           <EntitySet Name="Counterparty" EntityType="Self.Counterparty" />
@@ -753,7 +753,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище KRISModelContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище KRISModelContainer" CdmEntityContainer="DBConn">
           <EntitySetMapping Name="Bid">
             <EntityTypeMapping TypeName="KRISModel.Bid">
               <MappingFragment StoreEntitySet="Bid">
